@@ -1,4 +1,4 @@
-@Library('jenkins-lib@main')
+@Library('jenkins_lib@main')
 import Commands
 import ProjectMetadata
 
