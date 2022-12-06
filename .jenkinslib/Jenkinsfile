@@ -1,6 +1,6 @@
 @Library('jenkins_lib@main')
-import Commands
-import ProjectMetadata
+import br.com.alfa.Commands
+import br.com.alfa.ProjectMetadata
 
 def projectMetadata = new ProjectMetadata();
 def cmd = new Commands();
