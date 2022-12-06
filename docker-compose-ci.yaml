@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  alfa_postgres:
+    image: postgres:12-alpine
+    container_name: alfa_postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - alfa_pg_data:/var/lib/postgresql/data
+    expose:
+      - 5432
+    networks:
+      - alfa_postgres_network
+
+  alfa_api:
+    image: ${DOCKER_IMAGE}
+    container_name: ${CONTAINER_NAME}
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - alfa_postgres
+    expose:
+      - 3333
+    networks:
+      - nginx_proxymanager
+      - alfa_postgres_network
+
+volumes:
+  alfa_pg_data:
+
+networks:
+  nginx_proxymanager:
+    external: true
+  alfa_postgres_network:
+    name: alfa_postgres_network

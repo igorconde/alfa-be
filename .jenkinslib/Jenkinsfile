@@ -1,0 +1,14 @@
+@Library('jenkins-lib@main')
+import Commands
+import ProjectMetadata
+
+def projectMetadata = new ProjectMetadata();
+def cmd = new Commands();
+
+projectMetadata.projectName = "alfa-be"
+projectMetadata.dockerfile = "Dockerfile"
+projectMetadata.language = "alfa"
+projectMetadata.version = "1.0"
+projectMetadata.sourcesPath = "src"
+
+cmd.exec(projectMetadata);
