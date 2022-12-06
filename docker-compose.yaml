@@ -28,7 +28,7 @@ services:
     depends_on:
       - alfa_postgres
     ports:
-      - 3333:3333
+      - 3001:3001
     networks:
       - nginx_proxymanager
       - alfa_postgres_network

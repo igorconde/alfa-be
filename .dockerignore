@@ -1,0 +1,7 @@
+test/
+.jenkins/
+package-lock.json
+docker-compose-ci.yaml
+docker-compose.yaml
+Dockerfile
+README.md

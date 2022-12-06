@@ -6,9 +6,9 @@ WORKDIR /app
 
 COPY . .
 
-RUN yarn
+RUN npm install
 #RUN yarn prisma generate
-RUN yarn build
+RUN npm run build
 
 FROM node:16.13.1-alpine as runner
 
@@ -21,6 +21,6 @@ COPY --from=build /app/package.json /app/package.json
 COPY --from=build /app/.env /app/.env
 COPY --from=build /app/start.sh /app/start.sh
 
-EXPOSE 3333
+EXPOSE 3001
 
 ENTRYPOINT ["sh","start.sh"]

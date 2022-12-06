@@ -25,7 +25,7 @@ services:
     depends_on:
       - alfa_postgres
     expose:
-      - 3333
+      - 3001
     networks:
       - nginx_proxymanager
       - alfa_postgres_network
