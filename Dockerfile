@@ -1,26 +1,15 @@
-FROM node:16.13.1-alpine as build
 
-USER root
+FROM node:18.1-alpine3.15
 
-WORKDIR /app
+RUN apk add --no-cache bash
 
-COPY . .
+RUN npm i -g @nestjs/cli@9.1.5
 
-RUN npm install
-#RUN yarn prisma generate
-RUN npm run build
+ENV DOCKERIZE_VERSION v0.6.1
+RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
-FROM node:16.13.1-alpine as runner
+USER node
 
-WORKDIR /app
-
-#COPY --from=build /app/src/shared/infra/prisma /app/src/shared/infra/prisma
-COPY --from=build /app/node_modules /app/node_modules
-COPY --from=build /app/dist /app/dist
-COPY --from=build /app/package.json /app/package.json
-COPY --from=build /app/.env /app/.env
-COPY --from=build /app/start.sh /app/start.sh
-
-EXPOSE 3001
-
-ENTRYPOINT ["sh","start.sh"]
+WORKDIR /home/node/app

@@ -1,43 +1,26 @@
-version: '3.8'
+version: '3'
 
 services:
-  alfa_postgres:
-    image: postgres:12-alpine
-    container_name: alfa_postgres
-    restart: always
-    environment:
-      - POSTGRES_DB=alfa_db
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=Alfa@2022
+  app:
+    build: .
+    entrypoint: dockerize -wait tcp://db:5432 -timeout 40s ./.docker/entrypoint.sh
+    container_name: alfa-api
+    ports:
+      - 3000:3000
     volumes:
-      - alfa_pg_data:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
-    networks:
-      - alfa_postgres_network
-
-  alfa_api:
-    image: alfa_api:latest
-    container_name: alfa_api
-    build:
-      context: .  
-      dockerfile: Dockerfile
-    restart: always
-    env_file:
-      - .env
+      - .:/home/node/app
     depends_on:
-      - alfa_postgres
+      - db
+
+  db:
+    build: .docker/postgres
+    container_name: alfa-db
     ports:
-      - 3001:3001
-    networks:
-      - nginx_proxymanager
-      - alfa_postgres_network
-
-volumes:
-  alfa_pg_data:
-
-networks:
-  nginx_proxymanager:
-    external: true
-  alfa_postgres_network:
-    name: alfa_postgres_network
+      - 5435:5432
+    restart: always
+    tty: true
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=postgres
+    volumes:
+      - .docker/dbdata:/var/lib/postgresql/data
