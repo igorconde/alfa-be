@@ -1,5 +1,7 @@
 test/
 .jenkins/
+/node_modules
+node_modules
 package-lock.json
 docker-compose-ci.yaml
 docker-compose.yaml
