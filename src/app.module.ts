@@ -8,19 +8,19 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UsuarioModule } from './usuario/usuario.module';
 import databaseConf from './core/config/database.conf';
+import jwtConf from './core/config/jwt.conf';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [databaseConf],
+      load: [databaseConf, jwtConf],
       envFilePath: `${process.cwd()}/.env.${process.env.NODE_ENV}`,
     }),
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigService,
       dataSourceFactory: async (options) => {
         const dataSource = await new DataSource(options).initialize();
-        console.log('dataSource', dataSource);
         return dataSource;
       },
     }),
