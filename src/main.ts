@@ -8,16 +8,20 @@ import {
   ValidationError,
   ValidationPipe,
 } from '@nestjs/common';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
   app.use(compression());
+  app.use(cookieParser());
+  /*
   app.enableCors({
     origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type',
   });
+  */
 
   // Ativar posteriormente
   //app.use(helmet());
@@ -53,6 +57,6 @@ async function bootstrap() {
 
   SwaggerModule.setup('api-docs', app, document);
 
-  await app.listen(3001);
+  await app.listen(3000);
 }
 bootstrap();
