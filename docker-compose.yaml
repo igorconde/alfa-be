@@ -6,7 +6,7 @@ services:
     entrypoint: dockerize -wait tcp://db:5432 -timeout 40s ./.docker/entrypoint.sh
     container_name: alfa-api
     ports:
-      - 3000:3000
+      - 3001:3001
     volumes:
       - .:/home/node/app
     depends_on:
