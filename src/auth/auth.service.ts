@@ -2,15 +2,16 @@ import { UsuarioService } from './../usuario/usuario.service';
 import { TypeOrmConfigService } from './../database/ typeorm-config.service';
 import { Usuario } from './../usuario/entities/usuario.entity';
 import { LoginAuthDto } from './dto/login-auth.dto';
-import { Injectable, Logger } from '@nestjs/common';
-import { CreateAuthDto } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
+import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 
 import { JwtService } from '@nestjs/jwt';
 import { RegisterAuthDto } from './dto/register-auth.dto';
+import { ConfigService } from '@nestjs/config';
+import { Response, Request } from 'express';
+import { LoginResponseDto } from './dto/refresh-token.dto';
 
 @Injectable()
 export class AuthService {
@@ -21,9 +22,10 @@ export class AuthService {
     private usuarioRepository: Repository<Usuario>,
     private jwtService: JwtService,
     private usuarioService: UsuarioService,
-  ) {}
+    private configService: ConfigService
+  ) { }
 
-  async login(body: LoginAuthDto) {
+  async login(body: LoginAuthDto, response: Response) {
     const user = await this.usuarioRepository.findOne({
       where: { email: body.email },
     });
@@ -35,13 +37,28 @@ export class AuthService {
       );
 
       if (isValidPassword) {
-        this.logger.log(
-          `Credentials are matched, signing jwt for user ${user.email}`,
+        this.logger.log(`Credentials are matched, signing jwt for user ${user.email}`, AuthService.name);
+
+
+        const { id, email, nome, status } = user;
+
+        const accessToken = await this.jwtService.signAsync(
+          { email, nome, status },
+          { subject: id.toString(), expiresIn: '15m', secret: this.configService.get('JWT_SECRET') },
         );
-        return this.jwtService.sign(
-          { id: user.id, email: user.email },
-          { secret: 'secret' },
+
+        /* Gera um refresh Token e faz o store em um Token Httponly */
+        const refreshToken = await this.jwtService.signAsync(
+          { email, nome, status },
+          { subject: id.toString(), expiresIn: '1y', secret: this.configService.get('JWT_REFRESH_SECRET') },
         );
+
+        await this.usuarioService.setRefreshToken(id, refreshToken);
+
+        response.cookie('refresh-token', refreshToken, { httpOnly: true });
+
+        return { token: accessToken, user };
+
       }
     }
 
@@ -49,6 +66,14 @@ export class AuthService {
 
     throw new Error('WRONG_CREDENTIALS');
   }
+
+  async logout(request: Request, response: Response): Promise<boolean> {
+    const userId = request.user['userId'];
+    await this.usuarioService.setRefreshToken(userId, null);
+    response.clearCookie('refresh-token');
+    return true;
+  }
+
 
   async register(body: RegisterAuthDto) {
     const salt = await bcrypt.genSalt(10);
@@ -63,5 +88,51 @@ export class AuthService {
       { id: user.id, email: user.email },
       { secret: 'secret' },
     );
+  }
+
+
+  async refresh(
+    refreshToken: string,
+    response: Response,
+  ): Promise<LoginResponseDto> {
+    if (!refreshToken) {
+      throw new HttpException('Refresh token required', HttpStatus.BAD_REQUEST);
+    }
+
+    const decoded = this.jwtService.decode(refreshToken);
+
+
+    const user = await this.usuarioService.findById(decoded['sub']);
+
+    console.log(user);
+
+    const { id, email, nome, status } = user;
+
+    if (!(await bcrypt.compare(refreshToken, user.refreshToken))) {
+      response.clearCookie('refresh-token');
+      throw new HttpException(
+        'Refresh token is not valid',
+        HttpStatus.FORBIDDEN,
+      );
+    }
+
+    try {
+      await this.jwtService.verifyAsync(refreshToken, {
+        secret: this.configService.get('jwt.refresh_token_secret'),
+      });
+      const accessToken = await this.jwtService.signAsync(
+        { id, email, nome, status },
+        { subject: id.toString(), expiresIn: '15m', secret: this.configService.get('JWT_SECRET') },
+      );
+
+      return { token: accessToken, usuario: user };
+    } catch (error) {
+      response.clearCookie('refresh-token');
+      await this.usuarioService.setRefreshToken(id, null);
+      throw new HttpException(
+        'Refresh token is not valid',
+        HttpStatus.FORBIDDEN,
+      );
+    }
   }
 }
