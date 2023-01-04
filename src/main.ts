@@ -15,13 +15,12 @@ async function bootstrap() {
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
   app.use(compression());
   app.use(cookieParser());
-  /*
+
   app.enableCors({
-    origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    origin: true,
+    credentials: true,
     allowedHeaders: 'Content-Type',
   });
-  */
 
   // Ativar posteriormente
   //app.use(helmet());
