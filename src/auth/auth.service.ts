@@ -22,8 +22,8 @@ export class AuthService {
     private usuarioRepository: Repository<Usuario>,
     private jwtService: JwtService,
     private usuarioService: UsuarioService,
-    private configService: ConfigService
-  ) { }
+    private configService: ConfigService,
+  ) {}
 
   async login(body: LoginAuthDto, response: Response) {
     const user = await this.usuarioRepository.findOne({
@@ -37,20 +37,30 @@ export class AuthService {
       );
 
       if (isValidPassword) {
-        this.logger.log(`Credentials are matched, signing jwt for user ${user.email}`, AuthService.name);
-
+        this.logger.log(
+          `Credentials are matched, signing jwt for user ${user.email}`,
+          AuthService.name,
+        );
 
         const { id, email, nome, status } = user;
 
         const accessToken = await this.jwtService.signAsync(
           { email, nome, status },
-          { subject: id.toString(), expiresIn: '15m', secret: this.configService.get('JWT_SECRET') },
+          {
+            subject: id.toString(),
+            expiresIn: '15m',
+            secret: this.configService.get('JWT_SECRET'),
+          },
         );
 
         /* Gera um refresh Token e faz o store em um Token Httponly */
         const refreshToken = await this.jwtService.signAsync(
           { email, nome, status },
-          { subject: id.toString(), expiresIn: '1y', secret: this.configService.get('JWT_REFRESH_SECRET') },
+          {
+            subject: id.toString(),
+            expiresIn: '1y',
+            secret: this.configService.get('JWT_REFRESH_SECRET'),
+          },
         );
 
         await this.usuarioService.setRefreshToken(id, refreshToken);
@@ -58,7 +68,6 @@ export class AuthService {
         response.cookie('refresh-token', refreshToken, { httpOnly: true });
 
         return { token: accessToken, user };
-
       }
     }
 
@@ -73,7 +82,6 @@ export class AuthService {
     response.clearCookie('refresh-token');
     return true;
   }
-
 
   async register(body: RegisterAuthDto) {
     const salt = await bcrypt.genSalt(10);
@@ -90,7 +98,6 @@ export class AuthService {
     );
   }
 
-
   async refresh(
     refreshToken: string,
     response: Response,
@@ -101,14 +108,16 @@ export class AuthService {
 
     const decoded = this.jwtService.decode(refreshToken);
 
-
     const user = await this.usuarioService.findById(decoded['sub']);
-
-    console.log(user);
 
     const { id, email, nome, status } = user;
 
-    if (!(await bcrypt.compare(refreshToken, user.refreshToken))) {
+    console.log('user', user);
+    console.log('refreshToken', refreshToken);
+    console.log('user.refreshToken', user.refreshToken);
+    console.log('difference?', refreshToken != user.refreshToken);
+
+    if (refreshToken != user.refreshToken) {
       response.clearCookie('refresh-token');
       throw new HttpException(
         'Refresh token is not valid',
@@ -118,19 +127,24 @@ export class AuthService {
 
     try {
       await this.jwtService.verifyAsync(refreshToken, {
-        secret: this.configService.get('jwt.refresh_token_secret'),
+        secret: this.configService.get('JWT_REFRESH_SECRET'),
       });
       const accessToken = await this.jwtService.signAsync(
         { id, email, nome, status },
-        { subject: id.toString(), expiresIn: '15m', secret: this.configService.get('JWT_SECRET') },
+        {
+          subject: id.toString(),
+          expiresIn: '15m',
+          secret: this.configService.get('JWT_SECRET'),
+        },
       );
 
       return { token: accessToken, usuario: user };
     } catch (error) {
+      this.logger.log(error);
       response.clearCookie('refresh-token');
       await this.usuarioService.setRefreshToken(id, null);
       throw new HttpException(
-        'Refresh token is not valid',
+        'Refresh token is not valid XXX',
         HttpStatus.FORBIDDEN,
       );
     }

@@ -3,13 +3,14 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { Repository } from 'typeorm';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsuarioService {
   constructor(
     @InjectRepository(Usuario)
     private usuarioRepository: Repository<Usuario>,
-  ) { }
+  ) {}
 
   async createUser(
     createUsuarioDto: CreateUsuarioDto,
@@ -23,10 +24,9 @@ export class UsuarioService {
     }
   }
 
-
   async findById(id: number): Promise<Usuario> {
     const user = await this.usuarioRepository.findOne({
-      where: { id }
+      where: { id },
     });
 
     if (!user) {
@@ -42,8 +42,10 @@ export class UsuarioService {
   /* Hash the refresh token and save it to the database */
   async setRefreshToken(id: number, refreshToken: string): Promise<void> {
     const usuario = await this.usuarioRepository.findOne({
-      where: { id }
+      where: { id },
     });
+
+    console.log('setRefreshToken', usuario);
 
     if (!usuario) {
       throw new Error(`Usuário com id ${id} não foi encontrado`);
