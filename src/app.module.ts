@@ -9,6 +9,8 @@ import { AuthModule } from './auth/auth.module';
 import { UsuarioModule } from './usuario/usuario.module';
 import databaseConf from './core/config/database.conf';
 import jwtConf from './core/config/jwt.conf';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { TransformInterceptor } from './core/interceptors/transform.interceptor';
 
 @Module({
   imports: [
@@ -28,6 +30,12 @@ import jwtConf from './core/config/jwt.conf';
     UsuarioModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: TransformInterceptor,
+    },
+  ],
 })
 export class AppModule {}
