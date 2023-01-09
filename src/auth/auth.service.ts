@@ -1,17 +1,16 @@
-import { UsuarioService } from './../usuario/usuario.service';
-import { TypeOrmConfigService } from './../database/ typeorm-config.service';
-import { Usuario } from './../usuario/entities/usuario.entity';
-import { LoginAuthDto } from './dto/login-auth.dto';
 import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import * as bcrypt from 'bcrypt';
-
-import { JwtService } from '@nestjs/jwt';
-import { RegisterAuthDto } from './dto/register-auth.dto';
 import { ConfigService } from '@nestjs/config';
-import { Response, Request } from 'express';
+import { JwtService } from '@nestjs/jwt';
+import { InjectRepository } from '@nestjs/typeorm';
+import * as bcrypt from 'bcrypt';
+import { Request, Response } from 'express';
+import { Repository } from 'typeorm';
+
+import { Usuario } from './../usuario/entities/usuario.entity';
+import { UsuarioService } from './../usuario/usuario.service';
+import { LoginAuthDto } from './dto/login-auth.dto';
 import { LoginResponseDto } from './dto/refresh-token.dto';
+import { RegisterAuthDto } from './dto/register-auth.dto';
 
 @Injectable()
 export class AuthService {
@@ -31,16 +30,10 @@ export class AuthService {
     });
 
     if (user) {
-      const isValidPassword = await bcrypt.compare(
-        body.password,
-        user.password,
-      );
+      const isValidPassword = await bcrypt.compare(body.password, user.password);
 
       if (isValidPassword) {
-        this.logger.log(
-          `Credentials are matched, signing jwt for user ${user.email}`,
-          AuthService.name,
-        );
+        this.logger.log(`Credentials are matched, signing jwt for user ${user.email}`, AuthService.name);
 
         const { id, email, nome, status } = user;
 
@@ -58,7 +51,7 @@ export class AuthService {
           { email, nome, status },
           {
             subject: id.toString(),
-            expiresIn: '1y',
+            expiresIn: '1w',
             secret: this.configService.get('JWT_REFRESH_SECRET'),
           },
         );
@@ -73,7 +66,7 @@ export class AuthService {
 
     this.logger.log(`Invalid login attempt for user ${body.email}`);
 
-    throw new Error('WRONG_CREDENTIALS');
+    return { message: 'Invalid credentials', data: 'teste' };
   }
 
   async logout(request: Request, response: Response): Promise<boolean> {
@@ -92,16 +85,10 @@ export class AuthService {
     this.logger.log(`User registered successfully ${body.email}`);
     this.logger.log(`Signing jwt for user ${user.email}`);
 
-    return this.jwtService.sign(
-      { id: user.id, email: user.email },
-      { secret: 'secret' },
-    );
+    return this.jwtService.sign({ id: user.id, email: user.email }, { secret: 'secret' });
   }
 
-  async refresh(
-    refreshToken: string,
-    response: Response,
-  ): Promise<LoginResponseDto> {
+  async refresh(refreshToken: string, response: Response): Promise<LoginResponseDto> {
     if (!refreshToken) {
       throw new HttpException('Refresh token required', HttpStatus.BAD_REQUEST);
     }
@@ -119,10 +106,7 @@ export class AuthService {
 
     if (refreshToken != user.refreshToken) {
       response.clearCookie('refresh-token');
-      throw new HttpException(
-        'Refresh token is not valid',
-        HttpStatus.FORBIDDEN,
-      );
+      throw new HttpException('Refresh token is not valid', HttpStatus.FORBIDDEN);
     }
 
     try {
@@ -143,10 +127,7 @@ export class AuthService {
       this.logger.log(error);
       response.clearCookie('refresh-token');
       await this.usuarioService.setRefreshToken(id, null);
-      throw new HttpException(
-        'Refresh token is not valid XXX',
-        HttpStatus.FORBIDDEN,
-      );
+      throw new HttpException('Refresh token is not valid XXX', HttpStatus.FORBIDDEN);
     }
   }
 }

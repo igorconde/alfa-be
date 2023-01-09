@@ -1,20 +1,20 @@
-import { Controller, Post, Body, Res, HttpCode, Req, HttpStatus, UseGuards } from '@nestjs/common';
+import { Body, Controller, HttpCode, HttpStatus, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth } from '@nestjs/swagger';
+import { Request, Response } from 'express';
+
 import { AuthService } from './auth.service';
 import { LoginAuthDto } from './dto/login-auth.dto';
-import { RegisterAuthDto } from './dto/register-auth.dto';
-import { Request, Response } from 'express';
-import { ApiBearerAuth } from '@nestjs/swagger';
-import { JwtGuard } from './guards/jwt.guard';
 import { LoginResponseDto } from './dto/refresh-token.dto';
-
+import { RegisterAuthDto } from './dto/register-auth.dto';
+import { JwtGuard } from './guards/jwt.guard';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) { }
+  constructor(private readonly authService: AuthService) {}
 
   @Post('login')
   @HttpCode(HttpStatus.OK)
-  async login(@Body() loginAuthDto: LoginAuthDto, @Res({ passthrough: true }) response: Response,) {
+  async login(@Body() loginAuthDto: LoginAuthDto, @Res({ passthrough: true }) response: Response) {
     return this.authService.login(loginAuthDto, response);
   }
 
@@ -22,10 +22,7 @@ export class AuthController {
   @Post('/logout')
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
-  async logout(
-    @Req() request: Request,
-    @Res({ passthrough: true }) response: Response,
-  ): Promise<boolean> {
+  async logout(@Req() request: Request, @Res({ passthrough: true }) response: Response): Promise<boolean> {
     return await this.authService.logout(request, response);
   }
 
@@ -36,11 +33,7 @@ export class AuthController {
 
   @Post('refresh')
   @HttpCode(HttpStatus.OK)
-  async refresh(
-    @Req() request: Request,
-    @Res({ passthrough: true }) response: Response,
-  ): Promise<LoginResponseDto> {
-
+  async refresh(@Req() request: Request, @Res({ passthrough: true }) response: Response): Promise<LoginResponseDto> {
     console.log(request.cookies);
     const refresh = request.cookies['refresh-token'];
 

@@ -1,9 +1,9 @@
-import { Usuario } from './entities/usuario.entity';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { Repository } from 'typeorm';
-import * as bcrypt from 'bcrypt';
+
+import { CreateUsuarioDto } from './dto/create-usuario.dto';
+import { Usuario } from './entities/usuario.entity';
 
 @Injectable()
 export class UsuarioService {
@@ -12,9 +12,7 @@ export class UsuarioService {
     private usuarioRepository: Repository<Usuario>,
   ) {}
 
-  async createUser(
-    createUsuarioDto: CreateUsuarioDto,
-  ): Promise<Usuario | null> {
+  async createUser(createUsuarioDto: CreateUsuarioDto): Promise<Usuario | null> {
     console.log(createUsuarioDto);
     try {
       return await this.usuarioRepository.save(createUsuarioDto);
@@ -30,10 +28,7 @@ export class UsuarioService {
     });
 
     if (!user) {
-      throw new HttpException(
-        `Could not find user with matching id ${id}`,
-        HttpStatus.NOT_FOUND,
-      );
+      throw new HttpException(`Could not find user with matching id ${id}`, HttpStatus.NOT_FOUND);
     }
 
     return user;
