@@ -1,5 +1,5 @@
-import { UsuarioService } from './../usuario/usuario.service';
-import { Usuario } from './../usuario/entities/usuario.entity';
+import { UsuarioService } from '../../usuario/usuario.service';
+import { Usuario } from '../../usuario/entities/usuario.entity';
 import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
