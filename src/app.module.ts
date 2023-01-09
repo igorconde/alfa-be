@@ -1,11 +1,11 @@
-import { TypeOrmConfigService } from './core/database/ typeorm-config.service';
-import { Module } from '@nestjs/common';
+import { TypeOrmConfigService } from './database/ typeorm-config.service';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AuthModule } from './core/auth/auth.module';
+import { AuthModule } from './auth/auth.module';
 import { UsuarioModule } from './usuario/usuario.module';
 import databaseConf from './core/config/database.conf';
 import jwtConf from './core/config/jwt.conf';

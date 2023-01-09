@@ -1,5 +1,6 @@
-import { UsuarioService } from '../../usuario/usuario.service';
-import { Usuario } from '../../usuario/entities/usuario.entity';
+import { UsuarioService } from './../usuario/usuario.service';
+import { TypeOrmConfigService } from './../database/ typeorm-config.service';
+import { Usuario } from './../usuario/entities/usuario.entity';
 import { LoginAuthDto } from './dto/login-auth.dto';
 import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -110,6 +111,11 @@ export class AuthService {
     const user = await this.usuarioService.findById(decoded['sub']);
 
     const { id, email, nome, status } = user;
+
+    console.log('user', user);
+    console.log('refreshToken', refreshToken);
+    console.log('user.refreshToken', user.refreshToken);
+    console.log('difference?', refreshToken != user.refreshToken);
 
     if (refreshToken != user.refreshToken) {
       response.clearCookie('refresh-token');
