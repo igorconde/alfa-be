@@ -61,6 +61,14 @@ export class Usuario extends BaseEntity {
     nullable: true,
     type: 'varchar',
     length: 500,
+    comment: 'role',
+  })
+  role: string;
+
+  @Column({
+    nullable: true,
+    type: 'varchar',
+    length: 500,
     comment: 'refreshToken para renovar o acesso do Token.',
   })
   refreshToken: string;

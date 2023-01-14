@@ -25,17 +25,17 @@ export class AuthService {
   ) {}
 
   async login(body: LoginAuthDto, response: Response) {
-    const user = await this.usuarioRepository.findOne({
+    const userData = await this.usuarioRepository.findOne({
       where: { email: body.email },
     });
 
-    if (user) {
-      const isValidPassword = await bcrypt.compare(body.password, user.password);
+    if (userData) {
+      const isValidPassword = await bcrypt.compare(body.password, userData.password);
 
       if (isValidPassword) {
-        this.logger.log(`Credentials are matched, signing jwt for user ${user.email}`, AuthService.name);
+        this.logger.log(`Credentials are matched, signing jwt for user ${userData.email}`, AuthService.name);
 
-        const { id, email, nome, status } = user;
+        const { id, email, nome, status } = userData;
 
         const accessToken = await this.jwtService.signAsync(
           { email, nome, status },
@@ -60,11 +60,28 @@ export class AuthService {
 
         response.cookie('refresh-token', refreshToken, { httpOnly: true });
 
-        return { token: accessToken, user };
+        userData.role = 'admin';
+
+        return {
+          data: {
+            accessToken,
+            userData: {
+              id: userData.id,
+              role: userData.role,
+              nome: userData.nome,
+              username: userData.email,
+              email: userData.email,
+            },
+          },
+        };
       }
     }
 
+    console.log('body', body);
+
     this.logger.log(`Invalid login attempt for user ${body.email}`);
+
+    throw new HttpException('Invalid Credentials', HttpStatus.BAD_REQUEST);
 
     return { message: 'Invalid credentials', data: 'teste' };
   }

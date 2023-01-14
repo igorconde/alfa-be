@@ -1,4 +1,4 @@
-import { Body, Controller, HttpCode, HttpStatus, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { Request, Response } from 'express';
 
@@ -11,6 +11,25 @@ import { JwtGuard } from './guards/jwt.guard';
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
+
+  @Get('me')
+  @ApiBearerAuth()
+  @HttpCode(HttpStatus.OK)
+  async me(@Req() request: Request) {
+    return {
+      data: {
+        accessToken:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imlnb3JAZ21haWwuY29tIiwibm9tZSI6Iklnb3IgR2FicmllbCIsInN0YXR1cyI6dHJ1ZSwiaWF0IjoxNjczNjU3MTkzLCJleHAiOjE2NzM2NTgwOTMsInN1YiI6IjEifQ.zj7JojjjCCXhPOTSFUcVhR0TdzgwFrlY9ArPQ7YUXPo',
+        userData: {
+          id: 1,
+          role: 'admin',
+          nome: 'Administrador',
+          username: 'admin@gmail.com',
+          email: 'admin@gmail.com',
+        },
+      },
+    };
+  }
 
   @Post('login')
   @HttpCode(HttpStatus.OK)
