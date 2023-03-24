@@ -107,7 +107,7 @@ export class AuthService {
     // Update the user's refresh token to null using the decoded access token
     const updated = await this.usuarioService.setRefreshToken(Number(userId), null);
 
-    return updated;
+    return true;
   }
 
   async register(body: RegisterAuthDto) {
