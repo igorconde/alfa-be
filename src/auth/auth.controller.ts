@@ -51,9 +51,7 @@ export class AuthController {
     return this.authService.login(loginAuthDto, response);
   }
 
-  @UseGuards(JwtGuard)
-  @Post('/logout')
-  @ApiBearerAuth()
+  @Get('logout')
   @HttpCode(HttpStatus.OK)
   async logout(@Req() request: Request, @Res({ passthrough: true }) response: Response): Promise<boolean> {
     return await this.authService.logout(request, response);
