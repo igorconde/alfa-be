@@ -58,9 +58,9 @@ export class AuthService {
 
         await this.usuarioService.setRefreshToken(id, refreshToken);
 
-        response.cookie('logged_in', true, { httpOnly: true });
-        response.cookie('access_token', accessToken, { httpOnly: true });
-        response.cookie('refresh_token', refreshToken, { httpOnly: true });
+        response.cookie('logged_in', true, { httpOnly: true, sameSite: 'lax' });
+        response.cookie('access_token', accessToken, { httpOnly: true, sameSite: 'lax' });
+        response.cookie('refresh_token', refreshToken, { httpOnly: true, sameSite: 'lax' });
 
         userData.role = 'admin';
 
@@ -89,25 +89,25 @@ export class AuthService {
   }
 
   async logout(request: Request, response: Response): Promise<boolean> {
-    // Get the JWT token from the cookie
     const accessToken = request.cookies['access_token'];
+    if (!accessToken) {
+      return false;
+    }
 
     // Decode the JWT token to get the userId
     const decodedToken = this.jwtService.decode(accessToken) as { userId: string };
     console.log('🚀 ~ file: auth.service.ts:97 ~ AuthService ~ logout ~ decodedToken:', decodedToken);
-
-    // Extract the userId from the decoded JWT token
     const userId = decodedToken.userId;
 
-    // Clear the cookies
+    // Clear all cookies
     response.clearCookie('logged_in');
     response.clearCookie('access_token');
     response.clearCookie('refresh_token');
 
-    // Update the user's refresh token to null
-    await this.usuarioService.setRefreshToken(Number(userId), null);
+    // Update the user's refresh token to null using the decoded access token
+    const updated = await this.usuarioService.setRefreshToken(Number(userId), null);
 
-    return true;
+    return updated;
   }
 
   async register(body: RegisterAuthDto) {
