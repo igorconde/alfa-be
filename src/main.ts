@@ -4,6 +4,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { useContainer } from 'class-validator';
 import * as compression from 'compression';
 import * as cookieParser from 'cookie-parser';
+import * as swaggerStats from 'swagger-stats';
 
 import { AppModule } from './app.module';
 
@@ -50,6 +51,7 @@ async function bootstrap() {
       validationError: { target: false, value: false },
     }),
   );
+  app.use(swaggerStats.getMiddleware({ swaggerSpec: document }));
 
   SwaggerModule.setup('api-docs', app, document);
 
