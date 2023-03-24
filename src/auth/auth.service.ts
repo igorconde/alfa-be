@@ -58,7 +58,9 @@ export class AuthService {
 
         await this.usuarioService.setRefreshToken(id, refreshToken);
 
-        response.cookie('refresh-token', refreshToken, { httpOnly: true });
+        response.cookie('logged_in', true, { httpOnly: true });
+        response.cookie('access_token', accessToken, { httpOnly: true });
+        response.cookie('refresh_token', refreshToken, { httpOnly: true });
 
         userData.role = 'admin';
 

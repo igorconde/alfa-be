@@ -18,7 +18,21 @@ export class AuthController {
   async me(@Req() request: Request) {
     return {
       data: {
-        accessToken:
+        user: {
+          _id: '6418fc34e42c60fec7fc9464',
+          name: 'Igor Gabriel',
+          email: 'igorgconde@gmail.com',
+          role: 'user',
+          photo: 'default.png',
+          verified: true,
+          provider: 'local',
+          createdAt: '2023-03-21T00:37:08.024Z',
+          updatedAt: '2023-03-21T00:38:18.325Z',
+          id: '6418fc34e42c60fec7fc9464',
+          __v: 0,
+        },
+        logged_in: true,
+        access_token:
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imlnb3JAZ21haWwuY29tIiwibm9tZSI6Iklnb3IgR2FicmllbCIsInN0YXR1cyI6dHJ1ZSwiaWF0IjoxNjczNjU3MTkzLCJleHAiOjE2NzM2NTgwOTMsInN1YiI6IjEifQ.zj7JojjjCCXhPOTSFUcVhR0TdzgwFrlY9ArPQ7YUXPo',
         userData: {
           id: 1,
