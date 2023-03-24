@@ -38,7 +38,7 @@ export class AuthService {
         const { id, email, nome, status } = userData;
 
         const accessToken = await this.jwtService.signAsync(
-          { email, nome, status },
+          { userId: id, email, nome, status },
           {
             subject: id.toString(),
             expiresIn: '15m',
@@ -89,9 +89,24 @@ export class AuthService {
   }
 
   async logout(request: Request, response: Response): Promise<boolean> {
-    const userId = request.user['userId'];
-    await this.usuarioService.setRefreshToken(userId, null);
-    response.clearCookie('refresh-token');
+    // Get the JWT token from the cookie
+    const accessToken = request.cookies['access_token'];
+
+    // Decode the JWT token to get the userId
+    const decodedToken = this.jwtService.decode(accessToken) as { userId: string };
+    console.log('🚀 ~ file: auth.service.ts:97 ~ AuthService ~ logout ~ decodedToken:', decodedToken);
+
+    // Extract the userId from the decoded JWT token
+    const userId = decodedToken.userId;
+
+    // Clear the cookies
+    response.clearCookie('logged_in');
+    response.clearCookie('access_token');
+    response.clearCookie('refresh_token');
+
+    // Update the user's refresh token to null
+    await this.usuarioService.setRefreshToken(Number(userId), null);
+
     return true;
   }
 
@@ -124,7 +139,7 @@ export class AuthService {
     console.log('difference?', refreshToken != user.refreshToken);
 
     if (refreshToken != user.refreshToken) {
-      response.clearCookie('refresh-token');
+      response.clearCookie('refresh_token');
       throw new HttpException('Refresh token is not valid', HttpStatus.FORBIDDEN);
     }
 
@@ -144,7 +159,7 @@ export class AuthService {
       return { token: accessToken, usuario: user };
     } catch (error) {
       this.logger.log(error);
-      response.clearCookie('refresh-token');
+      response.clearCookie('refresh_token');
       await this.usuarioService.setRefreshToken(id, null);
       throw new HttpException('Refresh token is not valid XXX', HttpStatus.FORBIDDEN);
     }
