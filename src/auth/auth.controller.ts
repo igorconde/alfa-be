@@ -68,7 +68,7 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   async refresh(@Req() request: Request, @Res({ passthrough: true }) response: Response): Promise<LoginResponseDto> {
     console.log(request.cookies);
-    const refresh = request.cookies['refresh-token'];
+    const refresh = request.cookies['refresh_token'];
 
     return await this.authService.refresh(refresh, response);
   }
