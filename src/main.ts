@@ -5,6 +5,8 @@ import { useContainer } from 'class-validator';
 import * as compression from 'compression';
 import * as cookieParser from 'cookie-parser';
 import * as swaggerStats from 'swagger-stats';
+import * as session from 'express-session';
+import * as passport from 'passport';
 
 import { AppModule } from './app.module';
 
@@ -19,6 +21,14 @@ async function bootstrap() {
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
   });
+
+  app.use(
+    session({
+      secret: 'my-secret',
+      resave: false,
+      saveUninitialized: false,
+    }),
+  );
 
   // Ativar posteriormente
   //app.use(helmet());
@@ -51,6 +61,9 @@ async function bootstrap() {
       validationError: { target: false, value: false },
     }),
   );
+
+  app.use(passport.initialize());
+  app.use(passport.session());
   app.use(swaggerStats.getMiddleware({ swaggerSpec: document }));
 
   SwaggerModule.setup('api-docs', app, document);

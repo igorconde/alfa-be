@@ -24,6 +24,14 @@ export class Usuario extends BaseEntity {
   email: string | null;
 
   @Column({
+    nullable: true,
+    type: 'varchar',
+    length: 200,
+    comment: 'Username',
+  })
+  username: string | null;
+
+  @Column({
     nullable: false,
     type: 'varchar',
     length: 200,

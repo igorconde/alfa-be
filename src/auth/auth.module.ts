@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { JwtModule, JwtService } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
@@ -11,8 +10,8 @@ import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt.strategy';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Usuario]), PassportModule, JwtModule.register({})],
+  imports: [TypeOrmModule.forFeature([Usuario]), PassportModule.register({ session: true })],
   controllers: [AuthController],
-  providers: [AuthService, JwtService, UsuarioService, JwtStrategy, ConfigService],
+  providers: [AuthService, UsuarioService, JwtStrategy, ConfigService],
 })
 export class AuthModule {}

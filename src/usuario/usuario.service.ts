@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
@@ -48,5 +48,27 @@ export class UsuarioService {
 
     usuario.refreshToken = refreshToken;
     await this.usuarioRepository.save(usuario);
+  }
+
+  async getByEmail(email: string): Promise<Usuario> {
+    const usuario = await this.usuarioRepository.findOne({
+      where: { email },
+      select: ['id', 'nome', 'email', 'password', 'refreshToken'],
+    });
+
+    if (usuario) return usuario;
+
+    throw new NotFoundException('User not found');
+  }
+
+  async getByUsername(username: string): Promise<Usuario> {
+    const usuario = await this.usuarioRepository.findOne({
+      where: { username },
+      select: ['id', 'nome', 'email', 'password', 'refreshToken'],
+    });
+
+    if (usuario) return usuario;
+
+    throw new NotFoundException('User not found');
   }
 }
