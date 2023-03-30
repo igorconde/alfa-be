@@ -7,11 +7,16 @@ import * as cookieParser from 'cookie-parser';
 import * as swaggerStats from 'swagger-stats';
 import * as session from 'express-session';
 import * as passport from 'passport';
+import { ConfigService } from '@nestjs/config';
 
 import { AppModule } from './app.module';
 
+import * as createRedisStore from 'connect-redis';
+import { createClient } from 'redis';
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const configService = app.get(ConfigService);
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
   app.use(compression());
   app.use(cookieParser());
@@ -22,9 +27,16 @@ async function bootstrap() {
     allowedHeaders: ['Content-Type', 'Authorization'],
   });
 
+  const RedisStore = createRedisStore(session);
+  const redisClient = createClient({
+    host: configService.get('redis.host'),
+    port: configService.get('redis.port'),
+  });
+
   app.use(
     session({
-      secret: 'my-secret',
+      store: new RedisStore({ client: redisClient }),
+      secret: 'secret',
       resave: false,
       saveUninitialized: false,
     }),
