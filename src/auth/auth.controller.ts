@@ -1,7 +1,9 @@
+import { RegisterDto } from './dto/register.dto';
 import { LocalAuthGuard } from './guards/localAuth.guard';
-import { Controller, HttpCode, HttpStatus, Post, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, HttpCode, HttpStatus, Post, Request, UseGuards } from '@nestjs/common';
 
 import { AuthService } from './auth.service';
+import { Usuario } from 'src/usuario/entities/usuario.entity';
 
 @Controller('auth')
 export class AuthController {
@@ -12,5 +14,10 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   signIn(@Request() req): any {
     return req.user;
+  }
+
+  @Post('register')
+  async register(@Body() registerationData: RegisterDto): Promise<Usuario> {
+    return this.authService.registerUser(registerationData);
   }
 }

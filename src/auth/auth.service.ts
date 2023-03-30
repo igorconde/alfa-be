@@ -1,11 +1,12 @@
-import { ForbiddenException, Injectable, Logger, NotFoundException } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { ForbiddenException, HttpException, HttpStatus, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
+import postgresErrorMessages from 'src/database/postgresErrorMessages.enum';
 import { Repository } from 'typeorm';
 
 import { Usuario } from './../usuario/entities/usuario.entity';
 import { UsuarioService } from './../usuario/usuario.service';
+import { RegisterDto } from './dto/register.dto';
 
 @Injectable()
 export class AuthService {
@@ -52,5 +53,22 @@ export class AuthService {
 
       throw new NotFoundException("User doesn't exist");
     }
+  }
+
+  async registerUser(registrationData: RegisterDto): Promise<Usuario> {
+    const hashedPassword = await bcrypt.hash(registrationData.password, 10);
+
+    const createdUser = await this.usuarioService.createUser({
+      ...registrationData,
+      password: hashedPassword,
+    });
+
+    if (!createdUser) {
+      throw new HttpException('Internal server error', HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    this.logger.log(`User registered successfully: ${createdUser.email}`);
+
+    return createdUser;
   }
 }
