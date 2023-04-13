@@ -7,6 +7,7 @@ import { Repository } from 'typeorm';
 import { Usuario } from './../usuario/entities/usuario.entity';
 import { UsuarioService } from './../usuario/usuario.service';
 import { RegisterDto } from './dto/register.dto';
+import { CryptoUtils } from 'src/core/utils/crypto.utils';
 
 @Injectable()
 export class AuthService {
@@ -16,7 +17,23 @@ export class AuthService {
     @InjectRepository(Usuario)
     private usuarioRepository: Repository<Usuario>,
     private usuarioService: UsuarioService,
+    private cryptoUtils: CryptoUtils,
   ) {}
+
+  /**
+   * Método que realiza a autenticação do usuário por email e senha.
+   *
+   * @param email O email do usuário.
+   * @param password A senha do usuário.
+   * @returns Retorna o usuário autenticado ou null se as credenciais não estiverem corretas.
+   */
+  async authenticate(email: string, password: string): Promise<Usuario | null> {
+    const user = await this.usuarioService.findByEmail(email);
+    if (user && (await this.cryptoUtils.compare(password, user.password))) {
+      return user;
+    }
+    return null;
+  }
 
   async signIn(usernameOrEmail: string, password: string): Promise<Usuario> {
     const isEmail = usernameOrEmail.includes('@');
@@ -32,12 +49,12 @@ export class AuthService {
 
         if (!isValidPassword) throw new ForbiddenException('Invalid Credentials');
 
-        return await this.usuarioService.getByEmail(user.email);
+        return await this.usuarioService.findByEmail(user.email);
       }
 
       throw new NotFoundException("User doesn't exist");
     }
-
+    /*
     if (isUsername) {
       const user = await this.usuarioRepository.findOne({
         where: { email: usernameOrEmail },
@@ -53,6 +70,7 @@ export class AuthService {
 
       throw new NotFoundException("User doesn't exist");
     }
+*/
   }
 
   async registerUser(registrationData: RegisterDto): Promise<Usuario> {

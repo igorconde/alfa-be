@@ -34,36 +34,9 @@ export class UsuarioService {
     return user;
   }
 
-  /* Hash the refresh token and save it to the database */
-  async setRefreshToken(id: number, refreshToken: string): Promise<void> {
-    const usuario = await this.usuarioRepository.findOne({
-      where: { id },
-    });
-
-    console.log('setRefreshToken', usuario);
-
-    if (!usuario) {
-      throw new Error(`Usuário com id ${id} não foi encontrado`);
-    }
-
-    usuario.refreshToken = refreshToken;
-    await this.usuarioRepository.save(usuario);
-  }
-
-  async getByEmail(email: string): Promise<Usuario> {
+  async findByEmail(email: string): Promise<Usuario> {
     const usuario = await this.usuarioRepository.findOne({
       where: { email },
-      select: ['id', 'nome', 'email', 'password', 'refreshToken'],
-    });
-
-    if (usuario) return usuario;
-
-    throw new NotFoundException('User not found');
-  }
-
-  async getByUsername(username: string): Promise<Usuario> {
-    const usuario = await this.usuarioRepository.findOne({
-      where: { username },
       select: ['id', 'nome', 'email', 'password', 'refreshToken'],
     });
 
