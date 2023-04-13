@@ -7,11 +7,10 @@ import { Usuario } from './../usuario/entities/usuario.entity';
 import { UsuarioService } from './../usuario/usuario.service';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { JwtStrategy } from './jwt.strategy';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Usuario]), PassportModule.register({ session: true })],
   controllers: [AuthController],
-  providers: [AuthService, UsuarioService, JwtStrategy, ConfigService],
+  providers: [AuthService, UsuarioService, ConfigService],
 })
 export class AuthModule {}
