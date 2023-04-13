@@ -33,12 +33,20 @@ async function bootstrap() {
     port: configService.get('redis.port'),
   });
 
+  redisClient.on('error', (err) => console.log('❌ Não foi possível estabelecer uma conexão com o Redis. ' + err));
+  redisClient.on('connect', () => console.log('✅ Conectado ao Redis com sucesso.'));
+
   app.use(
     session({
       store: new RedisStore({ client: redisClient }),
       secret: 'secret',
       resave: false,
       saveUninitialized: false,
+      cookie: {
+        secure: false,
+        httpOnly: true,
+        maxAge: 1000 * 60 * 15, // 15 minutos em milissegundos
+      },
     }),
   );
 
@@ -118,8 +126,10 @@ async function bootstrap() {
     }),
   );
 
+  // Inicialização do Passport
   app.use(passport.initialize());
   app.use(passport.session());
+
   app.use(swaggerStats.getMiddleware({ swaggerSpec: document }));
 
   SwaggerModule.setup('api-docs', app, document, customOptions);
