@@ -44,9 +44,10 @@ async function bootstrap() {
       saveUninitialized: false,
       cookie: {
         secure: false,
-        httpOnly: true,
+        sameSite: true,
         maxAge: 1000 * 60 * 15, // 15 minutos em milissegundos
       },
+      name: 'connect.sid', // Verifique se o nome corresponde ao que você está tentando limpar
     }),
   );
 
