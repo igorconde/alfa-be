@@ -1,3 +1,4 @@
+import { UsuarioService } from './../usuario/usuario.service';
 import { RegisterDto } from './dto/register.dto';
 import {
   Body,
@@ -23,9 +24,9 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @HttpCode(200)
-  @Get()
+  @Get('/me')
   async authenticate(@Req() request: any): Promise<any> {
-    return request;
+    return { data: request.user };
   }
 
   @PublicRoute()
