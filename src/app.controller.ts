@@ -1,12 +1,12 @@
-import { Controller, Get, Query, Session, UseGuards } from '@nestjs/common';
+import { Controller, Get, Query, Session } from '@nestjs/common';
 import { AppService } from './app.service';
-import { IsAuthenticatedGuard } from './auth/guards/is-authenticated.guard';
+import { PublicRoute } from './core/decorators/public-route.decorator';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @UseGuards(IsAuthenticatedGuard)
+  @PublicRoute()
   @Get()
   getHello(): any {
     return this.appService.getHello();

@@ -15,20 +15,20 @@ import { AuthService } from './auth.service';
 import { Usuario } from 'src/usuario/entities/usuario.entity';
 import { LogInWithCredentialsGuard } from './guards/local-auth.guard';
 import { LoginAuthDto } from './dto/login-auth.dto';
-import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
 import { Request, Response } from 'express';
+import { PublicRoute } from 'src/core/decorators/public-route.decorator';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @HttpCode(200)
-  @UseGuards(IsAuthenticatedGuard)
   @Get()
   async authenticate(@Req() request: any): Promise<any> {
     return request;
   }
 
+  @PublicRoute()
   @UseGuards(LogInWithCredentialsGuard)
   @Post('login')
   async login(@Body() loginDto: LoginAuthDto): Promise<any> {
@@ -36,7 +36,6 @@ export class AuthController {
   }
 
   @HttpCode(200)
-  @UseGuards(IsAuthenticatedGuard)
   @Post('logout')
   async logout(@Req() request: Request, @Res({ passthrough: true }) response: Response) {
     const logoutError = await new Promise((resolve) =>

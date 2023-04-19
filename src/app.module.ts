@@ -12,6 +12,8 @@ import redisConf from './core/config/redis.conf';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TransformInterceptor } from './core/interceptors/transform.interceptor';
 import { PassportModule } from '@nestjs/passport';
+import { APP_GUARD } from '@nestjs/core';
+import { PublicRoutesGuard } from './auth/guards/public-routes.guard';
 
 @Module({
   imports: [
@@ -37,6 +39,10 @@ import { PassportModule } from '@nestjs/passport';
     {
       provide: APP_INTERCEPTOR,
       useClass: TransformInterceptor,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: PublicRoutesGuard,
     },
   ],
 })
