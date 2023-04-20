@@ -41,11 +41,12 @@ async function bootstrap() {
       store: new RedisStore({ client: redisClient }),
       secret: 'secret',
       resave: false,
+      rolling: true,
       saveUninitialized: false,
       cookie: {
         secure: false,
         sameSite: true,
-        maxAge: 1000 * 60 * 15, // 15 minutos em milissegundos
+        maxAge: 1000 * 60 * 1, // 15 minutos em milissegundos
       },
       name: 'connect.sid', // Verifique se o nome corresponde ao que você está tentando limpar
     }),
