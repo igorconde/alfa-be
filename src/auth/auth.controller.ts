@@ -36,6 +36,7 @@ export class AuthController {
     return this.authService.authenticate(loginDto.email, loginDto.password);
   }
 
+  @PublicRoute()
   @HttpCode(200)
   @Post('logout')
   async logout(@Req() request: Request, @Res({ passthrough: true }) response: Response) {
@@ -56,6 +57,7 @@ export class AuthController {
     };
   }
 
+  @PublicRoute()
   @Post('register')
   async register(@Body() registerationData: RegisterDto): Promise<Usuario> {
     return this.authService.registerUser(registerationData);
