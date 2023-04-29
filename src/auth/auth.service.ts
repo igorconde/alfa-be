@@ -1,4 +1,12 @@
-import { ForbiddenException, HttpException, HttpStatus, Injectable, Logger, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  ForbiddenException,
+  HttpException,
+  HttpStatus,
+  Injectable,
+  Logger,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 import postgresErrorMessages from 'src/database/postgresErrorMessages.enum';
@@ -20,14 +28,11 @@ export class AuthService {
     private cryptoUtils: CryptoUtils,
   ) {}
 
-  /**
-   * Método que realiza a autenticação do usuário por email e senha.
-   *
-   * @param email O email do usuário.
-   * @param password A senha do usuário.
-   * @returns Retorna o usuário autenticado ou null se as credenciais não estiverem corretas.
-   */
   async authenticate(email: string, password: string): Promise<Usuario | null> {
+    if (!email || !password) {
+      throw new BadRequestException('Email and password must be provided');
+    }
+
     const user = await this.usuarioService.findByEmail(email);
     if (user && (await this.cryptoUtils.compare(password, user.password))) {
       return user;
