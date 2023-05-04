@@ -7,10 +7,7 @@ import {
   Logger,
   NotFoundException,
 } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
-import postgresErrorMessages from 'src/database/postgresErrorMessages.enum';
-import { Repository } from 'typeorm';
 
 import { Usuario } from './../usuario/entities/usuario.entity';
 import { UsuarioService } from './../usuario/usuario.service';
@@ -21,19 +18,14 @@ import { CryptoUtils } from 'src/core/utils/crypto.utils';
 export class AuthService {
   private readonly logger = new Logger(AuthService.name);
 
-  constructor(
-    @InjectRepository(Usuario)
-    private usuarioRepository: Repository<Usuario>,
-    private usuarioService: UsuarioService,
-    private cryptoUtils: CryptoUtils,
-  ) {}
+  constructor(private usuarioService: UsuarioService, private cryptoUtils: CryptoUtils) {}
 
   async authenticate(email: string, password: string): Promise<Usuario | null> {
     if (!email || !password) {
       throw new BadRequestException('Email and password must be provided');
     }
 
-    const user = await this.usuarioService.findByEmail(email);
+    const [user] = await this.usuarioService.findBy({ email });
     if (user && (await this.cryptoUtils.compare(password, user.password))) {
       return user;
     }
@@ -42,40 +34,22 @@ export class AuthService {
 
   async signIn(usernameOrEmail: string, password: string): Promise<Usuario> {
     const isEmail = usernameOrEmail.includes('@');
-    const isUsername = !isEmail;
 
     if (isEmail) {
-      const user = await this.usuarioRepository.findOne({
-        where: { email: usernameOrEmail },
-      });
+      const [user] = await this.usuarioService.findBy({ email: usernameOrEmail });
 
-      if (user) {
-        const isValidPassword = await this.cryptoUtils.compare(password, user.password);
-
-        if (!isValidPassword) throw new ForbiddenException('Invalid Credentials');
-
-        return await this.usuarioService.findByEmail(user.email);
+      if (!user) {
+        throw new NotFoundException("User doesn't exist");
       }
 
-      throw new NotFoundException("User doesn't exist");
-    }
-    /*
-    if (isUsername) {
-      const user = await this.usuarioRepository.findOne({
-        where: { email: usernameOrEmail },
-      });
+      const isValidPassword = await this.cryptoUtils.compare(password, user.password);
 
-      if (user) {
-        const isValidPassword = await bcrypt.compare(password, user.password);
-
-        if (!isValidPassword) throw new ForbiddenException('Invalid Credentials');
-
-        return await this.usuarioService.getByUsername(user.username);
+      if (!isValidPassword) {
+        throw new ForbiddenException('Invalid Credentials');
       }
 
-      throw new NotFoundException("User doesn't exist");
+      return user;
     }
-*/
   }
 
   async registerUser(registrationData: RegisterDto): Promise<Usuario> {

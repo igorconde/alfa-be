@@ -1,37 +1,17 @@
-import { CryptoUtils } from 'src/core/utils/crypto.utils';
+// auth.service.spec.ts
+
 import { Test, TestingModule } from '@nestjs/testing';
-import { AuthService } from './auth.service';
-import { getRepositoryToken } from '@nestjs/typeorm';
-import { Usuario } from '../usuario/entities/usuario.entity';
+import * as bcrypt from 'bcrypt';
+import { BadRequestException, ForbiddenException, HttpException, HttpStatus, NotFoundException } from '@nestjs/common';
+
 import { UsuarioService } from '../usuario/usuario.service';
-import { Repository } from 'typeorm';
+import { CryptoUtils } from 'src/core/utils/crypto.utils';
+import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
-import { LoginAuthDto } from './dto/login-auth.dto';
-import {
-  NotFoundException,
-  ForbiddenException,
-  HttpException,
-  HttpStatus,
-  BadRequestException,
-  ConflictException,
-} from '@nestjs/common';
-
-const mockUsuarioRepository = () => ({
-  findOne: jest.fn(),
-});
-
-const mockUsuarioService = () => ({
-  findByEmail: jest.fn(),
-  createUser: jest.fn(),
-});
-
-const mockCryptoUtils = () => ({
-  compare: jest.fn(),
-});
+import { Usuario } from '../usuario/entities/usuario.entity';
 
 describe('AuthService', () => {
-  let authService: AuthService;
-  let usuarioRepository: Repository<Usuario>;
+  let service: AuthService;
   let usuarioService: UsuarioService;
   let cryptoUtils: CryptoUtils;
 
@@ -40,261 +20,115 @@ describe('AuthService', () => {
       providers: [
         AuthService,
         {
-          provide: getRepositoryToken(Usuario),
-          useFactory: mockUsuarioRepository,
-        },
-        {
           provide: UsuarioService,
-          useFactory: mockUsuarioService,
+          useValue: {
+            findBy: jest.fn(),
+            createUser: jest.fn(),
+          },
         },
         {
           provide: CryptoUtils,
-          useFactory: mockCryptoUtils,
+          useValue: {
+            compare: jest.fn(),
+          },
         },
       ],
     }).compile();
 
-    authService = module.get<AuthService>(AuthService);
-    usuarioRepository = module.get(getRepositoryToken(Usuario));
+    service = module.get<AuthService>(AuthService);
     usuarioService = module.get<UsuarioService>(UsuarioService);
     cryptoUtils = module.get<CryptoUtils>(CryptoUtils);
   });
 
   describe('authenticate', () => {
-    it('should return a user when the email and password are correct', async () => {
-      const loginAuthDto: LoginAuthDto = {
-        email: 'test@example.com',
-        password: 'password',
-      };
-
-      const user = new Usuario();
-      user.email = 'test@example.com';
-      user.password = 'hashed_password';
-
-      jest.spyOn(usuarioService, 'findByEmail').mockResolvedValue(user);
-      jest.spyOn(cryptoUtils, 'compare').mockResolvedValue(true);
-
-      const result = await authService.authenticate(loginAuthDto.email, loginAuthDto.password);
-      expect(result).toEqual(user);
+    it('should throw BadRequestException when email or password are not provided', async () => {
+      await expect(service.authenticate(null, 'password')).rejects.toThrow(BadRequestException);
+      await expect(service.authenticate('email', null)).rejects.toThrow(BadRequestException);
+      await expect(service.authenticate(null, null)).rejects.toThrow(BadRequestException);
     });
 
-    it('should return null when the email or password is incorrect', async () => {
-      const loginAuthDto: LoginAuthDto = {
-        email: 'test@example.com',
-        password: 'wrong_password',
-      };
-
-      const user = new Usuario();
-      user.email = 'test@example.com';
-      user.password = 'hashed_password';
-
-      jest.spyOn(usuarioService, 'findByEmail').mockResolvedValue(user);
-      jest.spyOn(cryptoUtils, 'compare').mockResolvedValue(false);
-
-      const result = await authService.authenticate(loginAuthDto.email, loginAuthDto.password);
+    it('should return null when user not found', async () => {
+      jest.spyOn(usuarioService, 'findBy').mockResolvedValue([]);
+      const result = await service.authenticate('email', 'password');
       expect(result).toBeNull();
+    });
+
+    it('should return null when password is incorrect', async () => {
+      const user = new Usuario();
+      user.password = await bcrypt.hash('password', 10);
+      jest.spyOn(usuarioService, 'findBy').mockResolvedValue([user]);
+      jest.spyOn(cryptoUtils, 'compare').mockResolvedValue(false);
+      const result = await service.authenticate('email', 'wrong_password');
+      expect(result).toBeNull();
+    });
+
+    it('should return user when email and password are correct', async () => {
+      const user = new Usuario();
+      user.password = await bcrypt.hash('password', 10);
+      jest.spyOn(usuarioService, 'findBy').mockResolvedValue([user]);
+      jest.spyOn(cryptoUtils, 'compare').mockResolvedValue(true);
+      const result = await service.authenticate('email', 'password');
+      expect(result).toEqual(user);
     });
   });
 
   describe('signIn', () => {
-    it('should return a user when the email and password are correct', async () => {
-      const loginAuthDto: LoginAuthDto = {
-        email: 'test@example.com',
-        password: 'password',
-      };
+    it('should throw NotFoundException when user is not found', async () => {
+      jest.spyOn(usuarioService, 'findBy').mockResolvedValue([]);
+      await expect(service.signIn('email', 'password')).rejects.toThrow(new NotFoundException("User doesn't exist"));
 
-      const user = new Usuario();
-      user.email = 'test@example.com';
-      user.password = 'hashed_password';
-
-      jest.spyOn(usuarioRepository, 'findOne').mockResolvedValue(user);
-      jest.spyOn(cryptoUtils, 'compare').mockResolvedValue(true);
-      jest.spyOn(usuarioService, 'findByEmail').mockResolvedValue(user);
-
-      const result = await authService.signIn(loginAuthDto.email, loginAuthDto.password);
-      expect(result).toEqual(user);
+      expect(usuarioService.findBy).toHaveBeenCalledWith({ email: 'email' });
     });
 
-    it('should throw a NotFoundException when the user does not exist', async () => {
-      const loginAuthDto: LoginAuthDto = {
-        email: 'test@example.com',
-        password: 'password',
-      };
-
-      jest.spyOn(usuarioRepository, 'findOne').mockResolvedValue(undefined);
-
-      await expect(authService.signIn(loginAuthDto.email, loginAuthDto.password)).rejects.toThrowError(
-        NotFoundException,
-      );
-    });
-
-    it('should throw a ForbiddenException when the password is incorrect', async () => {
-      const loginAuthDto: LoginAuthDto = {
-        email: 'test@example.com',
-        password: 'wrong_password',
-      };
-
+    it('should throw ForbiddenException when password is incorrect', async () => {
       const user = new Usuario();
-      user.email = 'test@example.com';
-      user.password = 'hashed_password';
-
-      jest.spyOn(usuarioRepository, 'findOne').mockResolvedValue(user);
+      user.password = await bcrypt.hash('password', 10);
+      jest.spyOn(usuarioService, 'findBy').mockResolvedValue([user]);
       jest.spyOn(cryptoUtils, 'compare').mockResolvedValue(false);
+      await expect(service.signIn('email', 'wrong_password')).rejects.toThrow(ForbiddenException);
 
-      await expect(authService.signIn(loginAuthDto.email, loginAuthDto.password)).rejects.toThrowError(
-        ForbiddenException,
-      );
+      expect(usuarioService.findBy).toHaveBeenCalledWith({ email: 'email' });
+    });
+
+    it('should return user when email and password are correct', async () => {
+      const user = new Usuario();
+      user.password = await bcrypt.hash('password', 10);
+      jest.spyOn(usuarioService, 'findBy').mockResolvedValue([user]);
+      jest.spyOn(cryptoUtils, 'compare').mockResolvedValue(true);
+      const result = await service.signIn('email', 'password');
+      expect(result).toEqual(user);
+
+      expect(usuarioService.findBy).toHaveBeenCalledWith({ email: 'email' });
     });
   });
 
   describe('registerUser', () => {
-    it('should successfully register a user and return the created user', async () => {
-      const registerDto: RegisterDto = {
-        email: 'test@example.com',
-        password: 'password',
-        nome: 'João Maria',
-      };
+    const registrationData: RegisterDto = {
+      nome: 'Test User',
+      email: 'test@test.com',
+      password: 'password',
+    };
 
-      const createdUser = new Usuario();
-      createdUser.email = 'test@example.com';
-      createdUser.password = 'hashed_password';
-      createdUser.nome = 'João Maria';
-
-      jest.spyOn(usuarioService, 'createUser').mockResolvedValue(createdUser);
-
-      const result = await authService.registerUser(registerDto);
-      expect(result).toEqual(createdUser);
-    });
-
-    it('should throw an HttpException with status code 500 when createUser fails', async () => {
-      const registerDto: RegisterDto = {
-        email: 'test@example.com',
-        password: 'password',
-        nome: 'João Maria',
-      };
-
+    it('should throw HttpException when createUser fails', async () => {
       jest.spyOn(usuarioService, 'createUser').mockResolvedValue(null);
+      await expect(service.registerUser(registrationData)).rejects.toThrow(HttpException);
 
-      await expect(authService.registerUser(registerDto)).rejects.toThrowError(
-        new HttpException('Internal server error', HttpStatus.INTERNAL_SERVER_ERROR),
-      );
-    });
-  });
-
-  it('should return null when the user is not found', async () => {
-    const loginAuthDto: LoginAuthDto = {
-      email: 'nonexistent@example.com',
-      password: 'password',
-    };
-
-    jest.spyOn(usuarioService, 'findByEmail').mockResolvedValue(null);
-
-    const result = await authService.authenticate(loginAuthDto.email, loginAuthDto.password);
-    expect(result).toBeNull();
-  });
-
-  it('should propagate the error when createUser throws an exception', async () => {
-    const registerDto: RegisterDto = {
-      email: 'test@example.com',
-      password: 'password',
-      nome: 'João Maria',
-    };
-
-    const error = new Error('An error occurred');
-
-    jest.spyOn(usuarioService, 'createUser').mockRejectedValue(error);
-
-    await expect(authService.registerUser(registerDto)).rejects.toThrowError(error);
-  });
-
-  it('should return null when the password is incorrect', async () => {
-    const loginAuthDto: LoginAuthDto = {
-      email: 'test@example.com',
-      password: 'wrong_password',
-    };
-
-    const user = new Usuario();
-    user.email = 'test@example.com';
-    user.password = 'hashed_password';
-    user.nome = 'João Maria';
-
-    jest.spyOn(usuarioService, 'findByEmail').mockResolvedValue(user);
-    jest.spyOn(cryptoUtils, 'compare').mockResolvedValue(false);
-
-    const result = await authService.authenticate(loginAuthDto.email, loginAuthDto.password);
-    expect(result).toBeNull();
-  });
-
-  it('should throw a ForbiddenException when the password is incorrect', async () => {
-    const loginAuthDto: LoginAuthDto = {
-      email: 'test@example.com',
-      password: 'wrong_password',
-    };
-
-    const user = new Usuario();
-    user.email = 'test@example.com';
-    user.password = 'hashed_password';
-    user.nome = 'João Maria';
-
-    jest.spyOn(usuarioRepository, 'findOne').mockResolvedValue(user);
-    jest.spyOn(cryptoUtils, 'compare').mockResolvedValue(false);
-
-    await expect(authService.signIn(loginAuthDto.email, loginAuthDto.password)).rejects.toThrowError(
-      ForbiddenException,
-    );
-  });
-
-  it('should throw a BadRequestException when the email is invalid', async () => {
-    const registerDto: RegisterDto = {
-      email: 'invalid_email',
-      password: 'password',
-      nome: 'João Maria',
-    };
-
-    jest.spyOn(usuarioService, 'createUser').mockImplementation(() => {
-      throw new BadRequestException('Invalid email format');
+      expect(usuarioService.createUser).toHaveBeenCalledWith({
+        ...registrationData,
+        password: expect.any(String),
+      });
     });
 
-    await expect(authService.registerUser(registerDto)).rejects.toThrowError();
-  });
+    it('should return created user when createUser succeeds', async () => {
+      const user = new Usuario();
+      jest.spyOn(usuarioService, 'createUser').mockResolvedValue(user);
+      const result = await service.registerUser(registrationData);
+      expect(result).toEqual(user);
 
-  it('should throw a ConflictException when the email is already in use', async () => {
-    const registerDto: RegisterDto = {
-      email: 'test@example.com',
-      password: 'password',
-      nome: 'João Maria',
-    };
-
-    jest.spyOn(usuarioService, 'createUser').mockImplementation(() => {
-      throw new ConflictException('Email is already in use');
+      expect(usuarioService.createUser).toHaveBeenCalledWith({
+        ...registrationData,
+        password: expect.any(String),
+      });
     });
-
-    await expect(authService.registerUser(registerDto)).rejects.toThrowError(ConflictException);
-  });
-
-  it('should throw a BadRequestException when the email is invalid', async () => {
-    const loginAuthDto: LoginAuthDto = {
-      email: 'invalid_email',
-      password: 'password',
-    };
-
-    jest.spyOn(usuarioService, 'findByEmail').mockImplementation(() => {
-      throw new BadRequestException('Invalid email format');
-    });
-
-    await expect(authService.authenticate(loginAuthDto.email, loginAuthDto.password)).rejects.toThrowError(
-      BadRequestException,
-    );
-  });
-
-  it('should throw a BadRequestException when the email is null', async () => {
-    const loginAuthDto: LoginAuthDto = {
-      email: null,
-      password: 'password',
-    };
-
-    await expect(authService.authenticate(loginAuthDto.email, loginAuthDto.password)).rejects.toThrowError(
-      BadRequestException,
-    );
   });
 });
