@@ -14,6 +14,9 @@ import { TransformInterceptor } from './core/interceptors/transform.interceptor'
 import { PassportModule } from '@nestjs/passport';
 import { APP_GUARD } from '@nestjs/core';
 import { PublicRoutesGuard } from './auth/guards/public-routes.guard';
+import { AdministracaoModule } from './modules/administracao/administracao.module';
+import { SistemaModule } from './modules/sistema/sistema.module';
+import { PerfilModule } from './modules/perfil/perfil.module';
 
 @Module({
   imports: [
@@ -32,6 +35,9 @@ import { PublicRoutesGuard } from './auth/guards/public-routes.guard';
     }),
     AuthModule,
     UsuarioModule,
+    AdministracaoModule,
+    SistemaModule,
+    PerfilModule,
   ],
   controllers: [AppController],
   providers: [
