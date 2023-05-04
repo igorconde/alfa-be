@@ -1,52 +1,40 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { validate } from 'class-validator';
 
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { Usuario } from './entities/usuario.entity';
+import getPostgresErrorMessage from 'src/infrastructure/database/postgresErrorMessages.enum';
 
 @Injectable()
 export class UsuarioService {
   constructor(
     @InjectRepository(Usuario)
-    private usuarioRepository: Repository<Usuario>,
+    private readonly usuarioRepository: Repository<Usuario>,
   ) {}
 
-  async createUser(createUsuarioDto: CreateUsuarioDto): Promise<Usuario | null> {
-    console.log(createUsuarioDto);
+  async createUser(createUsuarioDto: CreateUsuarioDto): Promise<Usuario> {
+    const errors = await validate(createUsuarioDto);
+    if (errors.length > 0) {
+      throw new HttpException('Validation failed', HttpStatus.BAD_REQUEST);
+    }
+
     try {
       return await this.usuarioRepository.save(createUsuarioDto);
-    } catch (e) {
-      console.error(e);
-      return null;
+    } catch (error) {
+      const errorMessage = getPostgresErrorMessage(error.code);
+      throw new HttpException(errorMessage, HttpStatus.BAD_REQUEST);
     }
   }
 
-  async findById(id: number): Promise<Usuario> {
-    const user = await this.usuarioRepository.findOne({
-      where: { id },
-    });
+  async findBy(filter: any): Promise<Usuario[]> {
+    const usuarios = await this.usuarioRepository.find(filter);
 
-    if (!user) {
-      throw new HttpException(`Could not find user with matching id ${id}`, HttpStatus.NOT_FOUND);
+    if (!usuarios || usuarios.length === 0) {
+      throw new NotFoundException('No users found');
     }
 
-    return user;
-  }
-
-  /* Hash the refresh token and save it to the database */
-  async setRefreshToken(id: number, refreshToken: string): Promise<void> {
-    const usuario = await this.usuarioRepository.findOne({
-      where: { id },
-    });
-
-    console.log('setRefreshToken', usuario);
-
-    if (!usuario) {
-      throw new Error(`Usuário com id ${id} não foi encontrado`);
-    }
-
-    usuario.refreshToken = refreshToken;
-    await this.usuarioRepository.save(usuario);
+    return usuarios;
   }
 }
