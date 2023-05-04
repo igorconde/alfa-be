@@ -5,7 +5,7 @@ import { validate } from 'class-validator';
 
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { Usuario } from './entities/usuario.entity';
-import getPostgresErrorMessage from 'src/database/postgresErrorMessages.enum';
+import getPostgresErrorMessage from 'src/infrastructure/database/postgresErrorMessages.enum';
 
 @Injectable()
 export class UsuarioService {
