@@ -12,7 +12,7 @@ import * as bcrypt from 'bcrypt';
 import { Usuario } from './../usuario/entities/usuario.entity';
 import { UsuarioService } from './../usuario/usuario.service';
 import { RegisterDto } from './dto/register.dto';
-import { CryptoUtils } from 'src/core/utils/crypto.utils';
+import { CryptoUtils } from '../core/utils/crypto.utils';
 
 @Injectable()
 export class AuthService {

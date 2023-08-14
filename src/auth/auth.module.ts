@@ -9,7 +9,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { SessionSerializer } from './session.serializer';
 import { LocalStrategy } from './strategy/local.strategy';
-import { CryptoUtils } from 'src/core/utils/crypto.utils';
+import { CryptoUtils } from '../core/utils/crypto.utils';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Usuario]), PassportModule.register({ session: true })],
