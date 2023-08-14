@@ -17,12 +17,13 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
       synchronize: true /* process.env.NODE_ENV === 'dev' */,
       dropSchema: false,
       keepConnectionAlive: true,
-      logging: false, //process.env.NODE_ENV !== 'production',
-      entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-      migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
+      autoLoadEntities: true,
+      logging: true, //process.env.NODE_ENV !== 'production',
+      entities: [__dirname + '../../**/*.entity{.ts,.js}'],
+      migrations: [__dirname + '../migrations/**/*{.ts,.js}'],
       cli: {
         entitiesDir: 'src',
-        migrationsDir: 'src/database/migrations',
+        migrationsDir: '../database/migrations',
         subscribersDir: 'subscriber',
       },
       extra: {
