@@ -13,8 +13,10 @@ import { AppModule } from './app.module';
 
 import * as createRedisStore from 'connect-redis';
 import { createClient } from 'redis';
+// import { setupAutoInstrumenting } from './core/utils/tracing.otlp';
 
 async function bootstrap() {
+  // setupAutoInstrumenting();
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);
   useContainer(app.select(AppModule), { fallbackOnErrors: true });

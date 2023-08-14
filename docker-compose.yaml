@@ -24,7 +24,20 @@ services:
       - POSTGRES_DB=postgres
     volumes:
       - .docker/dbdata:/var/lib/postgresql/data
+
   redis:
     image: "redis:alpine"
     ports:
       - "6379:6380"
+ 
+  # otel-collector:
+  #   image: otel/opentelemetry-collector
+  #   command: ["--config=/etc/otel-collector-config.yml"]
+  #   volumes:
+  #     - ./infrastructure/otel-collector-config.yml:/etc/otel-collector-config.yml:ro,Z
+  #   ports:
+  #     - "1888:1888"
+  #     - "8888:8888"
+  #     - "8889:8889"
+  #     - "13133:13133"
+  #     - "4318:4318"
