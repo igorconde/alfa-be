@@ -1,3 +1,4 @@
+import { Role } from 'src/modules/role/entities/role.entity';
 import {
   BaseEntity,
   Entity,
@@ -7,6 +8,8 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
   Unique,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 
 @Entity()
@@ -47,6 +50,11 @@ export class Usuario extends BaseEntity {
   })
   role: string;
 */
+
+  @ManyToMany(() => Role, (role) => role.usuario)
+  @JoinTable()
+  roles?: Role[];
+
   @Column({
     nullable: false,
     default: true,
