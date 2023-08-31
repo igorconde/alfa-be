@@ -14,6 +14,8 @@ import { PassportModule } from '@nestjs/passport';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthModule } from './modules/auth/auth.module';
 import { PublicRoutesGuard } from './modules/auth/guards/public-routes.guard';
+import { PermissionModule } from './modules/permission/permission.module';
+import { RoleModule } from './modules/role/role.module';
 
 @Module({
   imports: [
@@ -32,6 +34,8 @@ import { PublicRoutesGuard } from './modules/auth/guards/public-routes.guard';
     }),
     AuthModule,
     UsuarioModule,
+    PermissionModule,
+    RoleModule,
   ],
   controllers: [AppController],
   providers: [
