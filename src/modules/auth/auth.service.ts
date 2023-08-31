@@ -9,10 +9,10 @@ import {
 } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 
-import { Usuario } from './../usuario/entities/usuario.entity';
-import { UsuarioService } from './../usuario/usuario.service';
 import { RegisterDto } from './dto/register.dto';
-import { CryptoUtils } from '../core/utils/crypto.utils';
+import { UsuarioService } from '../usuario/usuario.service';
+import { CryptoUtils } from '../../core/utils/crypto.utils';
+import { Usuario } from '../usuario/entities/usuario.entity';
 
 @Injectable()
 export class AuthService {

@@ -1,12 +1,12 @@
 import { RegisterDto } from './dto/register.dto';
 import { Body, Controller, Get, InternalServerErrorException, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { Usuario } from '../usuario/entities/usuario.entity';
 import { LogInWithCredentialsGuard } from './guards/local-auth.guard';
 import { LoginAuthDto } from './dto/login-auth.dto';
 import { Request, Response } from 'express';
-import { PublicRoute } from '../core/decorators/public-route.decorator';
 import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Usuario } from '../usuario/entities/usuario.entity';
+import { PublicRoute } from '../../core/decorators/public-route.decorator';
 
 @ApiTags('Authentication')
 @Controller('auth')

@@ -4,11 +4,11 @@ import { Test, TestingModule } from '@nestjs/testing';
 import * as bcrypt from 'bcrypt';
 import { BadRequestException, ForbiddenException, HttpException, HttpStatus, NotFoundException } from '@nestjs/common';
 
-import { UsuarioService } from '../usuario/usuario.service';
+import { UsuarioService } from '../modules/usuario/usuario.service';
 import { CryptoUtils } from '../core/utils/crypto.utils';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
-import { Usuario } from '../usuario/entities/usuario.entity';
+import { Usuario } from '../modules/usuario/entities/usuario.entity';
 
 describe('AuthService', () => {
   let service: AuthService;
