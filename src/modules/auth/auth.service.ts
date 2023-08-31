@@ -7,6 +7,7 @@ import {
   Logger,
   NotFoundException,
 } from '@nestjs/common';
+
 import * as bcrypt from 'bcrypt';
 
 import { RegisterDto } from './dto/register.dto';
@@ -14,19 +15,24 @@ import { UsuarioService } from '../usuario/usuario.service';
 import { CryptoUtils } from '../../core/utils/crypto.utils';
 import { Usuario } from '../usuario/entities/usuario.entity';
 
+const ERROR_EMAIL_PASSWORD_MISSING = 'E-mail e senha devem ser fornecidos';
+const ERROR_USER_NOT_FOUND = 'Usuário não encontrado';
+const ERROR_INVALID_CREDENTIALS = 'Credenciais inválidas';
+const ERROR_INTERNAL_SERVER = 'Erro interno do servidor';
+
 @Injectable()
 export class AuthService {
   private readonly logger = new Logger(AuthService.name);
 
-  constructor(private usuarioService: UsuarioService, private cryptoUtils: CryptoUtils) {}
+  constructor(private readonly usuarioService: UsuarioService, private readonly cryptoUtils: CryptoUtils) {}
 
   async authenticate(email: string, password: string): Promise<Usuario | null> {
     if (!email || !password) {
-      throw new BadRequestException('Email and password must be provided');
+      throw new BadRequestException(ERROR_EMAIL_PASSWORD_MISSING);
     }
 
     const [user] = await this.usuarioService.findBy({ email });
-    if (user && (await this.cryptoUtils.compare(password, user.password))) {
+    if (user && (await bcrypt.compare(password, user.password))) {
       return user;
     }
     return null;
@@ -34,22 +40,23 @@ export class AuthService {
 
   async signIn(usernameOrEmail: string, password: string): Promise<Usuario> {
     const isEmail = usernameOrEmail.includes('@');
+    let user: Usuario | null = null;
 
     if (isEmail) {
-      const [user] = await this.usuarioService.findBy({ email: usernameOrEmail });
-
-      if (!user) {
-        throw new NotFoundException("User doesn't exist");
-      }
-
-      const isValidPassword = await this.cryptoUtils.compare(password, user.password);
-
-      if (!isValidPassword) {
-        throw new ForbiddenException('Invalid Credentials');
-      }
-
-      return user;
+      [user] = await this.usuarioService.findBy({ email: usernameOrEmail });
     }
+
+    if (!user) {
+      throw new NotFoundException(ERROR_USER_NOT_FOUND);
+    }
+
+    const isValidPassword = await this.cryptoUtils.compare(password, user.password);
+
+    if (!isValidPassword) {
+      throw new ForbiddenException(ERROR_INVALID_CREDENTIALS);
+    }
+
+    return user;
   }
 
   async registerUser(registrationData: RegisterDto): Promise<Usuario> {
@@ -61,10 +68,11 @@ export class AuthService {
     });
 
     if (!createdUser) {
-      throw new HttpException('Internal server error', HttpStatus.INTERNAL_SERVER_ERROR);
+      this.logger.error(ERROR_INTERNAL_SERVER);
+      throw new HttpException(ERROR_INTERNAL_SERVER, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    this.logger.log(`User registered successfully: ${createdUser.email}`);
+    this.logger.log(`Usuário registrado com sucesso: ${createdUser.email}`);
 
     return createdUser;
   }

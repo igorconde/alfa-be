@@ -2,13 +2,18 @@
 
 import { Test, TestingModule } from '@nestjs/testing';
 import * as bcrypt from 'bcrypt';
-import { BadRequestException, ForbiddenException, HttpException, HttpStatus, NotFoundException } from '@nestjs/common';
+import { BadRequestException, ForbiddenException, HttpException, NotFoundException } from '@nestjs/common';
 
-import { UsuarioService } from '../modules/usuario/usuario.service';
-import { CryptoUtils } from '../core/utils/crypto.utils';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
-import { Usuario } from '../modules/usuario/entities/usuario.entity';
+import { UsuarioService } from '../usuario/usuario.service';
+import { CryptoUtils } from '../../core/utils/crypto.utils';
+import { Usuario } from '../usuario/entities/usuario.entity';
+
+const ERROR_EMAIL_PASSWORD_MISSING = 'E-mail e senha devem ser fornecidos';
+const ERROR_USER_NOT_FOUND = 'Usuário não encontrado';
+const ERROR_INVALID_CREDENTIALS = 'Credenciais inválidas';
+const ERROR_INTERNAL_SERVER = 'Erro interno do servidor';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -63,21 +68,34 @@ describe('AuthService', () => {
     });
 
     it('should return user when email and password are correct', async () => {
-      const user = new Usuario();
-      user.password = await bcrypt.hash('password', 10);
-      jest.spyOn(usuarioService, 'findBy').mockResolvedValue([user]);
-      jest.spyOn(cryptoUtils, 'compare').mockResolvedValue(true);
-      const result = await service.authenticate('email', 'password');
-      expect(result).toEqual(user);
+      // Preparar
+      const mockEmail = 'email@teste.com';
+      const mockPassword = 'password';
+      const hashedPassword = await bcrypt.hash(mockPassword, 10);
+
+      const mockUser = new Usuario();
+      mockUser.email = mockEmail;
+      mockUser.password = hashedPassword;
+
+      jest.spyOn(usuarioService, 'findBy').mockImplementation(async () => [mockUser]); // Mocking findBy method
+      jest.spyOn(cryptoUtils, 'compare').mockImplementation(async () => true); // Mocking compare method
+
+      // Agir
+      const result = await service.authenticate(mockEmail, mockPassword);
+
+      // Verificar
+      expect(result).toEqual(mockUser);
     });
   });
 
   describe('signIn', () => {
-    it('should throw NotFoundException when user is not found', async () => {
+    it('should throw NotFoundException when user (Email) is not found', async () => {
       jest.spyOn(usuarioService, 'findBy').mockResolvedValue([]);
-      await expect(service.signIn('email', 'password')).rejects.toThrow(new NotFoundException("User doesn't exist"));
+      await expect(service.signIn('email@teste.com', 'password')).rejects.toThrow(
+        new NotFoundException(ERROR_USER_NOT_FOUND),
+      );
 
-      expect(usuarioService.findBy).toHaveBeenCalledWith({ email: 'email' });
+      expect(usuarioService.findBy).toHaveBeenCalledWith({ email: 'email@teste.com' });
     });
 
     it('should throw ForbiddenException when password is incorrect', async () => {
@@ -85,9 +103,11 @@ describe('AuthService', () => {
       user.password = await bcrypt.hash('password', 10);
       jest.spyOn(usuarioService, 'findBy').mockResolvedValue([user]);
       jest.spyOn(cryptoUtils, 'compare').mockResolvedValue(false);
-      await expect(service.signIn('email', 'wrong_password')).rejects.toThrow(ForbiddenException);
+      await expect(service.signIn('email@teste.com', 'wrong_password')).rejects.toThrow(
+        new ForbiddenException(ERROR_INVALID_CREDENTIALS),
+      );
 
-      expect(usuarioService.findBy).toHaveBeenCalledWith({ email: 'email' });
+      expect(usuarioService.findBy).toHaveBeenCalledWith({ email: 'email@teste.com' });
     });
 
     it('should return user when email and password are correct', async () => {
@@ -95,10 +115,10 @@ describe('AuthService', () => {
       user.password = await bcrypt.hash('password', 10);
       jest.spyOn(usuarioService, 'findBy').mockResolvedValue([user]);
       jest.spyOn(cryptoUtils, 'compare').mockResolvedValue(true);
-      const result = await service.signIn('email', 'password');
+      const result = await service.signIn('email@teste.com', 'password');
       expect(result).toEqual(user);
 
-      expect(usuarioService.findBy).toHaveBeenCalledWith({ email: 'email' });
+      expect(usuarioService.findBy).toHaveBeenCalledWith({ email: 'email@teste.com' });
     });
   });
 
