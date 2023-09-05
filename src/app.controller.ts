@@ -16,7 +16,7 @@ export class AppController {
   getTest(@Session() session: Record<string, any>): any {
     session.visits = session.visits ? session.visits + 1 : 1;
 
-    return session;
+    return { data: session.visits };
   }
 
   @Get('pages/profile-table')
