@@ -28,8 +28,11 @@ export class UsuarioService {
     }
   }
 
-  async findBy(filter: any): Promise<Usuario[]> {
-    const usuarios = await this.usuarioRepository.find(filter);
+  async findBy(filter: any, relations?: string[]): Promise<Usuario[]> {
+    const usuarios = await this.usuarioRepository.find({
+      where: filter,
+      relations: relations,
+    });
 
     if (!usuarios || usuarios.length === 0) {
       throw new NotFoundException('No users found');

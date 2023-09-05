@@ -1,18 +1,42 @@
-import { Role } from 'src/modules/role/entities/role.entity';
-import { Index, Entity, Column, ManyToMany } from 'typeorm';
+import { Column, Entity, Index, ManyToMany, Unique } from 'typeorm';
 
-@Entity('permissions')
-export class Permission {
-  @Index('name')
-  @Column({ type: 'varchar', length: 64, unique: true })
-  name!: string;
+import { CustomBaseEntity } from '../../../core/entity/custom-base.entity';
+import { RoleEntity } from '../../role/entities/role.entity';
 
-  @Index('slug')
-  @Column({ type: 'varchar', length: 64, unique: true })
-  slug!: string;
+@Entity({
+  name: 'permission',
+})
+@Unique(['description'])
+export class PermissionEntity extends CustomBaseEntity {
+  @Column('varchar', { length: 100 })
+  resource: string;
 
-  slugGroup!: string;
+  @Column()
+  @Index({
+    unique: true,
+  })
+  description: string;
 
-  @ManyToMany(() => Role, (role) => role.permissions)
-  roles?: Role[];
+  @Column()
+  path: string;
+
+  @Column('varchar', {
+    default: 'get',
+    length: 20,
+  })
+  method: string;
+
+  @Column()
+  isDefault: boolean;
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  @ManyToMany((type) => RoleEntity, (role) => role.permission)
+  role: RoleEntity[];
+
+  constructor(data?: Partial<PermissionEntity>) {
+    super();
+    if (data) {
+      Object.assign(this, data);
+    }
+  }
 }

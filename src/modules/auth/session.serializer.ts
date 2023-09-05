@@ -14,7 +14,7 @@ export class SessionSerializer extends PassportSerializer {
   }
 
   async deserializeUser(userId: string, done: (err: Error, payload: Usuario) => void): Promise<any> {
-    const [usuario] = await this.usuarioService.findBy({ id: +userId });
+    const [usuario] = await this.usuarioService.findBy({ id: +userId }, ['role', 'role.permission']);
     if (!usuario) {
       done(new Error(`Não foi encontrado usuário com o ID: ${userId}`), null);
     }

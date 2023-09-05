@@ -31,7 +31,7 @@ export class AuthService {
       throw new BadRequestException(ERROR_EMAIL_PASSWORD_MISSING);
     }
 
-    const [user] = await this.usuarioService.findBy({ email });
+    const [user] = await this.usuarioService.findBy({ email }, ['role', 'role.permission']);
     if (user && (await bcrypt.compare(password, user.password))) {
       return user;
     }
@@ -43,7 +43,7 @@ export class AuthService {
     let user: Usuario | null = null;
 
     if (isEmail) {
-      [user] = await this.usuarioService.findBy({ email: usernameOrEmail });
+      [user] = await this.usuarioService.findBy({ email: usernameOrEmail }, ['role', 'role.permission']);
     }
 
     if (!user) {

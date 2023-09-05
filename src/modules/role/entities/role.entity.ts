@@ -1,21 +1,39 @@
-import { Permission } from 'src/modules/permission/entities/permission.entity';
-import { Usuario } from 'src/modules/usuario/entities/usuario.entity';
-import { Index, Entity, Column, JoinTable, ManyToMany } from 'typeorm';
+import { CustomBaseEntity } from '../../../core/entity/custom-base.entity';
+import { PermissionEntity } from '../../permission/entities/permission.entity';
+import { Column, Entity, Index, JoinTable, ManyToMany, Unique } from 'typeorm';
 
-@Entity('roles')
-export class Role {
-  @Index('nome')
-  @Column({ type: 'varchar', length: 32, unique: true })
-  name!: string;
+@Entity({
+  name: 'role',
+})
+@Unique(['name'])
+export class RoleEntity extends CustomBaseEntity {
+  @Column('varchar', { length: 100 })
+  @Index({
+    unique: true,
+  })
+  name: string;
 
-  @Index('slug')
-  @Column({ type: 'varchar', length: 32, unique: true })
-  slug!: string;
+  @Column('text')
+  description: string;
 
-  @ManyToMany(() => Permission, (permission) => permission.roles)
-  @JoinTable()
-  permissions?: Permission[];
+  @ManyToMany(() => PermissionEntity, (permission) => permission.role)
+  @JoinTable({
+    name: 'role_permission',
+    joinColumn: {
+      name: 'roleId',
+      referencedColumnName: 'id',
+    },
+    inverseJoinColumn: {
+      name: 'permissionId',
+      referencedColumnName: 'id',
+    },
+  })
+  permission: PermissionEntity[];
 
-  @ManyToMany(() => Usuario, (usuario) => usuario.roles)
-  usuario?: Usuario;
+  constructor(data?: Partial<RoleEntity>) {
+    super();
+    if (data) {
+      Object.assign(this, data);
+    }
+  }
 }
