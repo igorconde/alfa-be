@@ -4,11 +4,12 @@ import { DocumentBuilder, SwaggerCustomOptions, SwaggerModule } from '@nestjs/sw
 import * as swaggerStats from 'swagger-stats';
 
 export function setupSwagger(app: INestApplication, configService: ConfigService) {
-    const config = new DocumentBuilder()
-    .setTitle('Alfa Beta - API')
-    .setDescription( `### REST
+  const config = new DocumentBuilder()
+    .setTitle(configService.get('app.name'))
+    .setDescription(
+      `### REST
 
-    Routes is following REST standard (Richardson level 3)
+    Routes is following REST standard 
     
     <details><summary>Detailed specification</summary>
     <p>
@@ -47,8 +48,9 @@ export function setupSwagger(app: INestApplication, configService: ConfigService
           - Logged user is not **<user_id>**
           - The **<user_id>** have no access to **<resource_id>**
     </p>
-    </details>`)
-    .setVersion('1.0')
+    </details>`,
+    )
+    .setVersion(configService.get('app.apiVersion'))
     .addServer('http://localhost:3001', 'Local Server') // Adiciona um servidor com a URL base da API
     .addServer('https://api.alfabeta.com', 'Production Server') // Adiciona um servidor com a URL base da API de produção
     .addTag('users', 'Operações relacionadas a usuários') // Adiciona uma tag com uma descrição para agrupar as rotas relacionadas a usuários
@@ -69,35 +71,34 @@ export function setupSwagger(app: INestApplication, configService: ConfigService
     })
     .build();
 
-    const customOptions: SwaggerCustomOptions = {
-        customSiteTitle: 'Alfa Beta -  API Docs',
-        customCss: '.swagger-ui .topbar { background-color: #007ACC }',
-        customfavIcon: 'https://www.alfabeta.com.br/favicon.ico',
-        swaggerOptions: {
-          operationsSorter: 'alpha', // Ordena as operações alfabeticamente
-          tagsSorter: 'alpha', // Ordena as tags alfabeticamente
-          defaultModelsExpandDepth: -1, // Define o nível de profundidade em que os modelos são exibidos
-          displayRequestDuration: true, // Exibe o tempo de resposta das requisições no Swagger UI
-          filter: true, // Habilita a pesquisa e filtro na página do Swagger UI
-          persistAuthorization: true, // Mantém as informações de autenticação ao atualizar a página
-          showExtensions: true, // Exibe as extensões definidas na documentação
-          showCommonExtensions: true, // Exibe as extensões comuns do Swagger
-          deepLinking: true, // Habilita o deep linking na página do Swagger UI
-          validatorUrl: null, // Define a URL do validador de esquema JSON para as requisições
-          operationsSortKey: 'method', // Define o atributo usado para ordenar as operações
-          plugins: [], // Define os plugins adicionais do Swagger UI
-        },
-      };
+  const customOptions: SwaggerCustomOptions = {
+    customSiteTitle: `${configService.get('app.name')} - Documentação da API`,
+    customCss: '.swagger-ui .topbar { background-color: #007ACC }',
+    customfavIcon: 'https://www.alfabeta.com.br/favicon.ico',
+    swaggerOptions: {
+      operationsSorter: 'alpha', // Ordena as operações alfabeticamente
+      tagsSorter: 'alpha', // Ordena as tags alfabeticamente
+      defaultModelsExpandDepth: -1, // Define o nível de profundidade em que os modelos são exibidos
+      displayRequestDuration: true, // Exibe o tempo de resposta das requisições no Swagger UI
+      filter: true, // Habilita a pesquisa e filtro na página do Swagger UI
+      persistAuthorization: true, // Mantém as informações de autenticação ao atualizar a página
+      showExtensions: true, // Exibe as extensões definidas na documentação
+      showCommonExtensions: true, // Exibe as extensões comuns do Swagger
+      deepLinking: true, // Habilita o deep linking na página do Swagger UI
+      validatorUrl: null, // Define a URL do validador de esquema JSON para as requisições
+      operationsSortKey: 'method', // Define o atributo usado para ordenar as operações
+      plugins: [], // Define os plugins adicionais do Swagger UI
+    },
+  };
 
-      const document = SwaggerModule.createDocument(app, config, {
-        deepScanRoutes: true,
-        // Ignora o prefixo global definido na aplicação
-        ignoreGlobalPrefix: true,
-        // Adiciona um arquivo CSS personalizado com o título da página
-      });
+  const document = SwaggerModule.createDocument(app, config, {
+    deepScanRoutes: true,
+    // Ignora o prefixo global definido na aplicação
+    ignoreGlobalPrefix: true,
+    // Adiciona um arquivo CSS personalizado com o título da página
+  });
 
-      SwaggerModule.setup('api-docs', app, document, customOptions);
+  SwaggerModule.setup('api-docs', app, document, customOptions);
 
-      app.use(swaggerStats.getMiddleware({ swaggerSpec: document }));
-      
+  app.use(swaggerStats.getMiddleware({ swaggerSpec: document }));
 }
