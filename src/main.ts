@@ -1,18 +1,15 @@
-import { BadRequestException, ValidationError, ValidationPipe } from '@nestjs/common';
+import { BadRequestException, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { DocumentBuilder, SwaggerCustomOptions, SwaggerModule } from '@nestjs/swagger';
 import { useContainer } from 'class-validator';
 import * as compression from 'compression';
 import * as cookieParser from 'cookie-parser';
-import * as swaggerStats from 'swagger-stats';
-import * as session from 'express-session';
 import * as passport from 'passport';
 import { ConfigService } from '@nestjs/config';
 
 import { AppModule } from './app.module';
 
-import * as createRedisStore from 'connect-redis';
-import { createClient } from 'redis';
+import { setupSwagger } from './setup-swagger';
+import { setupRedis } from './setup-redis';
 // import { setupAutoInstrumenting } from './core/utils/tracing.otlp';
 
 async function bootstrap() {
@@ -29,85 +26,14 @@ async function bootstrap() {
     allowedHeaders: ['Content-Type', 'Authorization'],
   });
 
-  const RedisStore = createRedisStore(session);
-  const redisClient = createClient({
-    host: configService.get('redis.host'),
-    port: configService.get('redis.port'),
-  });
-
-  redisClient.on('error', (err) => console.log('❌ Não foi possível estabelecer uma conexão com o Redis. ' + err));
-  redisClient.on('connect', () => console.log('✅ Conectado ao Redis com sucesso.'));
-
-  app.use(
-    session({
-      store: new RedisStore({ client: redisClient }),
-      secret: 'secret',
-      resave: false,
-      rolling: true,
-      saveUninitialized: false,
-      cookie: {
-        secure: false,
-        sameSite: true,
-        maxAge: 1000 * 60 * 30, // 30 minutos em milissegundos
-      },
-      name: 'connect.sid', // Verifique se o nome corresponde ao que você está tentando limpar
-    }),
-  );
-
   // Ativar posteriormente
   //app.use(helmet());
 
-  // Configuração do Swagger
-  const config = new DocumentBuilder()
-    .setTitle('Alfa Beta - API')
-    .setDescription('API do Alfa Beta')
-    .setVersion('1.0')
-    .addServer('http://localhost:3001', 'Local Server') // Adiciona um servidor com a URL base da API
-    .addServer('https://api.alfabeta.com', 'Production Server') // Adiciona um servidor com a URL base da API de produção
-    .addTag('users', 'Operações relacionadas a usuários') // Adiciona uma tag com uma descrição para agrupar as rotas relacionadas a usuários
-    .setContact(
-      'Equipe Alfa Beta',
-      'https://www.alfabeta.com.br',
-      'contato@alfabeta.com.br', // Adiciona informações de contato para a equipe de desenvolvimento da API
-    )
-    .setLicense(
-      'Apache 2.0',
-      'https://www.apache.org/licenses/LICENSE-2.0.html', // Adiciona informações sobre a licença da API
-    )
-    .addApiKey({
-      type: 'apiKey',
-      name: 'X-API-KEY',
-      in: 'header',
-      description: 'API Key para autenticação',
-    })
-    .build();
+  // Inicia o Redis
+  setupRedis(app, configService);
 
-  const customOptions: SwaggerCustomOptions = {
-    customSiteTitle: 'Alfa Beta -  API Docs',
-    customCss: '.swagger-ui .topbar { background-color: #007ACC }',
-    customfavIcon: 'https://www.alfabeta.com.br/favicon.ico',
-    swaggerOptions: {
-      operationsSorter: 'alpha', // Ordena as operações alfabeticamente
-      tagsSorter: 'alpha', // Ordena as tags alfabeticamente
-      defaultModelsExpandDepth: -1, // Define o nível de profundidade em que os modelos são exibidos
-      displayRequestDuration: true, // Exibe o tempo de resposta das requisições no Swagger UI
-      filter: true, // Habilita a pesquisa e filtro na página do Swagger UI
-      persistAuthorization: true, // Mantém as informações de autenticação ao atualizar a página
-      showExtensions: true, // Exibe as extensões definidas na documentação
-      showCommonExtensions: true, // Exibe as extensões comuns do Swagger
-      deepLinking: true, // Habilita o deep linking na página do Swagger UI
-      validatorUrl: null, // Define a URL do validador de esquema JSON para as requisições
-      operationsSortKey: 'method', // Define o atributo usado para ordenar as operações
-      plugins: [], // Define os plugins adicionais do Swagger UI
-    },
-  };
-
-  const document = SwaggerModule.createDocument(app, config, {
-    deepScanRoutes: true,
-    // Ignora o prefixo global definido na aplicação
-    ignoreGlobalPrefix: true,
-    // Adiciona um arquivo CSS personalizado com o título da página
-  });
+  // Inicia o Swagger
+  setupSwagger(app, configService);
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -115,29 +41,29 @@ async function bootstrap() {
       forbidUnknownValues: true,
       stopAtFirstError: false,
       whitelist: true,
-      exceptionFactory: (errors): ValidationError[] => {
-        const messages = errors.map((error) => {
-          const constraint = error.constraints;
-          const messages = Object.values(constraint).map((n) => n);
-          return {
-            key: error.property,
-            messages,
-          };
-        });
+      exceptionFactory: (errors) => {
+        const messages = errors.map(({ property, constraints }) => ({
+          field: property,
+          messages: Object.values(constraints),
+        }));
         throw new BadRequestException(messages);
       },
       validationError: { target: false, value: false },
     }),
   );
+  
 
   // Inicialização do Passport
   app.use(passport.initialize());
   app.use(passport.session());
 
-  app.use(swaggerStats.getMiddleware({ swaggerSpec: document }));
+  const port = configService.get('app.port');
 
-  SwaggerModule.setup('api-docs', app, document, customOptions);
+  await app.listen(port);
 
-  await app.listen(3001);
+  console.info(`🚀🌐 O servidor foi iniciado com sucesso em http://localhost:${port}`);
+  console.info(`📖🔍 O Swagger está disponível e ativo em http://localhost:${port}/api-docs`);
+  console.info(`📊🔗 O serviço do swagger-stats está disponível e monitorando em http://localhost:${port}/swagger-stats`);
+
 }
 bootstrap();

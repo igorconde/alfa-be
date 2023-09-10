@@ -16,12 +16,13 @@ import { AuthModule } from './modules/auth/auth.module';
 import { PublicRoutesGuard } from './modules/auth/guards/public-routes.guard';
 import { PermissionModule } from './modules/permission/permission.module';
 import { RoleModule } from './modules/role/role.module';
+import appConf from './core/config/app.conf';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [databaseConf, redisConf],
+      load: [databaseConf, redisConf, appConf],
       envFilePath: `${process.cwd()}/.env.${process.env.NODE_ENV}`,
     }),
     PassportModule.register({ session: true }),
