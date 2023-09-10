@@ -10,10 +10,8 @@ import { UsuarioService } from '../usuario/usuario.service';
 import { CryptoUtils } from '../../core/utils/crypto.utils';
 import { Usuario } from '../usuario/entities/usuario.entity';
 
-const ERROR_EMAIL_PASSWORD_MISSING = 'E-mail e senha devem ser fornecidos';
 const ERROR_USER_NOT_FOUND = 'Usuário não encontrado';
 const ERROR_INVALID_CREDENTIALS = 'Credenciais inválidas';
-const ERROR_INTERNAL_SERVER = 'Erro interno do servidor';
 
 describe('AuthService', () => {
   let service: AuthService;

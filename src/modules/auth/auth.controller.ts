@@ -4,11 +4,11 @@ import { Request, Response } from 'express';
 
 import { AuthService } from './auth.service';
 import { LogInWithCredentialsGuard } from './guards/local-auth.guard';
-import { PublicRoute } from '../../core/decorators/public-route.decorator';
+import { PublicRoute } from '@/core/decorators/public-route.decorator';
 
 import { RegisterDto } from './dto/register.dto';
 import { LoginAuthDto } from './dto/login-auth.dto';
-import { Usuario } from '../usuario/entities/usuario.entity';
+import { Usuario } from '@modules/usuario/entities/usuario.entity';
 
 @ApiTags('Autenticação')
 @Controller('auth')

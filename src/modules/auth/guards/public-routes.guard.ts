@@ -1,7 +1,7 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Request } from 'express';
 import { Reflector } from '@nestjs/core';
-import { IS_PUBLIC_ROUTE } from '../../../core/decorators/public-route.decorator';
+import { IS_PUBLIC_ROUTE } from '@/core/decorators/public-route.decorator';
 
 @Injectable()
 export class PublicRoutesGuard implements CanActivate {
