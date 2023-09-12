@@ -1,6 +1,7 @@
-import { Controller, Get, Query, Session } from '@nestjs/common';
+import { Controller, Get, Query, Request, Session } from '@nestjs/common';
 import { AppService } from './app.service';
 import { PublicRoute } from './core/decorators/public-route.decorator';
+import { Request as ExpressRequest, Router } from 'express';
 
 @Controller()
 export class AppController {
@@ -23,5 +24,23 @@ export class AppController {
   getProject(@Query() query: any): any {
     //
     return this.appService.getProject(query);
+  }
+
+  @PublicRoute()
+  @Get('routes')
+  root(@Request() req: ExpressRequest) {
+    const router = req.app._router as Router;
+    console.log('🚀 ~ file: app.controller.ts:33 ~ AppController ~ root ~ router:', router);
+    return {
+      data: router.stack
+        .map((layer) => {
+          if (layer.route) {
+            const path = layer.route?.path;
+            const method = layer.route?.stack[0].method;
+            return `${method.toUpperCase()} ${path}`;
+          }
+        })
+        .filter((item) => item !== undefined),
+    };
   }
 }
