@@ -6,7 +6,7 @@ import { RoleEntity } from '@modules/role/entities/role.entity';
 @Entity({
   name: 'permission',
 })
-@Unique(['description'])
+@Unique('UQ_permission_description', ['description'])
 export class PermissionEntity extends CustomBaseEntity {
   @Column('varchar', { length: 100 })
   resource: string;
