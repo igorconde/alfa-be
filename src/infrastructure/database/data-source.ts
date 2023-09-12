@@ -10,7 +10,7 @@ export const AppDataSource = new DataSource({
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_NAME,
   synchronize: true /* process.env.DATABASE_SYNCHRONIZE === 'true' */,
-  dropSchema: false,
+  dropSchema: true,
   keepConnectionAlive: true,
   autoLoadEntities: true,
   logging: false,
