@@ -35,4 +35,12 @@ export class PermissionService {
   remove(id: number) {
     return `This action removes a #${id} permission`;
   }
+
+  /**
+   * Get Permission array by provided array of id
+   * @param ids
+   */
+  async whereInIds(ids: number[]): Promise<PermissionEntity[]> {
+    return this.repository.createQueryBuilder('permission').whereInIds(ids).getMany();
+  }
 }

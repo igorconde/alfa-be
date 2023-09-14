@@ -42,10 +42,6 @@ import appConf from '@config/app.conf';
   providers: [
     AppService,
     {
-      provide: APP_INTERCEPTOR,
-      useClass: TransformInterceptor,
-    },
-    {
       provide: APP_GUARD,
       useClass: PublicRoutesGuard,
     },

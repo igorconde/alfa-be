@@ -10,6 +10,7 @@ import { AppModule } from './app.module';
 import { setupSwagger } from './setup-swagger';
 import { setupRedis } from './setup-redis';
 import { CustomValidationPipe } from './core/pipes/custom-validation.pipe';
+import { ValidationPipe } from '@nestjs/common';
 // import { setupAutoInstrumenting } from './core/utils/tracing.otlp';
 
 async function bootstrap() {
@@ -36,6 +37,8 @@ async function bootstrap() {
   // Inicia o Swagger
   setupSwagger(app, configService);
 
+  app.useGlobalPipes(new ValidationPipe({ transform: true }));
+
   app.useGlobalPipes(new CustomValidationPipe());
 
   // Inicialização do Passport
@@ -52,4 +55,6 @@ async function bootstrap() {
     `📊🔗 O serviço do swagger-stats está disponível e monitorando em http://localhost:${port}/swagger-stats`,
   );
 }
-bootstrap();
+bootstrap().catch((error) => {
+  console.error('❌ Ocorreu um erro ao iniciar a aplicação:', error);
+});

@@ -29,11 +29,4 @@ export class RoleEntity extends CustomBaseEntity {
     },
   })
   permission: PermissionEntity[];
-
-  constructor(data?: Partial<RoleEntity>) {
-    super();
-    if (data) {
-      Object.assign(this, data);
-    }
-  }
 }

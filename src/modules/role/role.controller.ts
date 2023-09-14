@@ -1,7 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { RoleService } from './role.service';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
+import { PageOptionsDto } from '@/core/dto/page-options.dto';
+import { RoleEntity } from './entities/role.entity';
+import { PageDto } from '@/core/dto/page.dto';
 
 @Controller('role')
 export class RoleController {
@@ -13,8 +16,8 @@ export class RoleController {
   }
 
   @Get()
-  findAll() {
-    return this.roleService.findAll();
+  findAll(@Query() pageOptionsDto: PageOptionsDto): Promise<PageDto<RoleEntity>> {
+    return this.roleService.findAll(pageOptionsDto);
   }
 
   @Get(':id')
