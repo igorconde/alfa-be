@@ -64,7 +64,9 @@ export class Usuario extends BaseEntity {
   @JoinColumn()
   role: RoleEntity;
 
-  @Column()
+  @Column({
+    nullable: true,
+  })
   roleId: number;
 
   @Column({
