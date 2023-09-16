@@ -7,7 +7,6 @@ import { join, resolve } from 'path';
 import { UsuarioSeedModule } from './usuarios/usuarios.module';
 import { TypeOrmConfigService } from '../database/typeorm-config.service';
 import { PermissionSeedModule } from './permissions/permission.module';
-import { RoleFactoryServiceService } from './roles/role-factory.service';
 import { RoleSeedModule } from './roles/role.module';
 
 @Module({

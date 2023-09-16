@@ -8,15 +8,7 @@ import { PageOptionsDto } from '@/core/dto/page-options.dto';
 import { PageDto } from '@/core/dto/page.dto';
 import { Repository } from 'typeorm';
 import { PageMetaDto } from '@/core/dto/page-meta.dto';
-import {
-  FilterOperator,
-  FilterSuffix,
-  Paginate,
-  PaginateQuery,
-  paginate,
-  Paginated,
-  PaginateConfig,
-} from 'nestjs-paginate';
+import { FilterOperator, FilterSuffix, PaginateQuery, paginate, Paginated, PaginateConfig } from 'nestjs-paginate';
 
 @Injectable()
 export class RoleService {
@@ -64,7 +56,7 @@ export class RoleService {
   }
 
   async findAll(pageOptionsDto: PageOptionsDto): Promise<PageDto<RoleEntity>> {
-    const { order, skip, take, search, export: shouldExport, reqFields: fields, filters } = pageOptionsDto;
+    const { order, skip, take, search, export: shouldExport, reqFields: fields } = pageOptionsDto;
 
     const queryBuilder = this.roleRepository.createQueryBuilder('role');
 

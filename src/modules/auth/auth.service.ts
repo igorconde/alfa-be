@@ -1,3 +1,5 @@
+import { Usuario } from '@modules/usuario/entities/usuario.entity';
+import { UsuarioService } from '@modules/usuario/usuario.service';
 import {
   BadRequestException,
   ForbiddenException,
@@ -9,11 +11,7 @@ import {
 } from '@nestjs/common';
 
 import * as bcrypt from 'bcrypt';
-
 import { RegisterDto } from './dto/register.dto';
-import { UsuarioService } from '../usuario/usuario.service';
-import { CryptoUtils } from '../../core/utils/crypto.utils';
-import { Usuario } from '../usuario/entities/usuario.entity';
 
 const ERROR_EMAIL_PASSWORD_MISSING = 'E-mail e senha devem ser fornecidos';
 const ERROR_USER_NOT_FOUND = 'Usuário não encontrado';
@@ -24,7 +22,7 @@ const ERROR_INTERNAL_SERVER = 'Erro interno do servidor';
 export class AuthService {
   private readonly logger = new Logger(AuthService.name);
 
-  constructor(private readonly usuarioService: UsuarioService, private readonly cryptoUtils: CryptoUtils) {}
+  constructor(private readonly usuarioService: UsuarioService) {}
 
   async authenticate(email: string, password: string): Promise<Usuario | null> {
     if (!email || !password) {
@@ -50,7 +48,7 @@ export class AuthService {
       throw new NotFoundException(ERROR_USER_NOT_FOUND);
     }
 
-    const isValidPassword = await this.cryptoUtils.compare(password, user.password);
+    const isValidPassword = await bcrypt.compare(password, user.password);
 
     if (!isValidPassword) {
       throw new ForbiddenException(ERROR_INVALID_CREDENTIALS);
