@@ -1,6 +1,6 @@
 import { CustomBaseEntity } from '@/core/entity/custom-base.entity';
 import { PermissionEntity } from '@modules/permission/entities/permission.entity';
-import { Column, Entity, Index, JoinTable, ManyToMany, Unique } from 'typeorm';
+import { Column, Entity, Index, JoinTable, ManyToMany, Unique, VirtualColumn } from 'typeorm';
 
 @Entity({
   name: 'role',
@@ -15,6 +15,9 @@ export class RoleEntity extends CustomBaseEntity {
 
   @Column('text')
   description: string;
+
+  @VirtualColumn({ query: () => `SELECT COUNT(*) FROM "role"` })
+  totalEmployeesCount: number;
 
   @ManyToMany(() => PermissionEntity, (permission) => permission.role)
   @JoinTable({

@@ -8,6 +8,15 @@ import { PageOptionsDto } from '@/core/dto/page-options.dto';
 import { PageDto } from '@/core/dto/page.dto';
 import { Repository } from 'typeorm';
 import { PageMetaDto } from '@/core/dto/page-meta.dto';
+import {
+  FilterOperator,
+  FilterSuffix,
+  Paginate,
+  PaginateQuery,
+  paginate,
+  Paginated,
+  PaginateConfig,
+} from 'nestjs-paginate';
 
 @Injectable()
 export class RoleService {
@@ -29,6 +38,29 @@ export class RoleService {
     role.permissions = permissions;
 
     return this.roleRepository.save(role);
+  }
+
+  async findAllNestPaginate(query: PaginateQuery): Promise<Paginated<RoleEntity>> {
+    const paginateConfig: PaginateConfig<RoleEntity> = {
+      defaultLimit: 5,
+      sortableColumns: ['id', 'name'],
+      nullSort: 'last',
+      relations: ['permission'],
+      defaultSortBy: [['id', 'ASC']],
+      searchableColumns: ['name'],
+      select: ['id', 'name', 'description', 'permission.id', 'permission.resource', 'permission.path'],
+      filterableColumns: {
+        name: [FilterOperator.EQ, FilterSuffix.NOT, FilterOperator.ILIKE],
+        age: true,
+        'permission.path': [FilterOperator.EQ, FilterSuffix.NOT, FilterOperator.ILIKE],
+      },
+    };
+
+    const queryBuilder = this.roleRepository.createQueryBuilder('role');
+
+    const result = await paginate<any>(query, queryBuilder, paginateConfig);
+
+    return result;
   }
 
   async findAll(pageOptionsDto: PageOptionsDto): Promise<PageDto<RoleEntity>> {
