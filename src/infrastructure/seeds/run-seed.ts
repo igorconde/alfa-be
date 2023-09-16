@@ -11,8 +11,8 @@ const runSeed = async () => {
 
   // run
 
-  //await app.get(UsuarioFactoryServiceService).run();
-  //await app.get(PermissionFactoryServiceService).run();
+  await app.get(UsuarioFactoryServiceService).run();
+  await app.get(PermissionFactoryServiceService).run();
   await app.get(RoleFactoryServiceService).run();
 
   await app.close();
