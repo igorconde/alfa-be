@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
+import { DatabaseNamingStrategy } from './database-naming-strategy';
 
 @Injectable()
 export class TypeOrmConfigService implements TypeOrmOptionsFactory {
@@ -19,6 +20,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
       keepConnectionAlive: true,
       autoLoadEntities: true,
       logging: false,
+      namingStrategy: new DatabaseNamingStrategy(),
       entities: [__dirname + '../../../**/*.entity{.ts,.js}'],
       migrations: [__dirname + '../migrations/**/*{.ts,.js}'],
       cli: {

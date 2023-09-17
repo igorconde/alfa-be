@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import { DataSource, DataSourceOptions } from 'typeorm';
+import { DatabaseNamingStrategy } from './database-naming-strategy';
 
 export const AppDataSource = new DataSource({
   type: process.env.DATABASE_TYPE,
@@ -14,6 +15,7 @@ export const AppDataSource = new DataSource({
   keepConnectionAlive: true,
   autoLoadEntities: true,
   logging: false,
+  namingStrategy: new DatabaseNamingStrategy(),
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
   cli: {
