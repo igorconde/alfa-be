@@ -6,9 +6,7 @@ import { FilterOperator, FilterSuffix, PaginateConfig, PaginateQuery, Paginated,
 import { Repository } from 'typeorm';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
-
-const INVALID_PERMISSIONS_MESSAGE = 'Permissões inválidas';
-const TRANSACTION_FAILED_MESSAGE = 'Transação falhou';
+import { INVALID_PERMISSIONS_MESSAGE, TRANSACTION_FAILED_MESSAGE } from './role.message';
 
 @Injectable()
 export class RoleService {

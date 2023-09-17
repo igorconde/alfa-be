@@ -1,11 +1,11 @@
 import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 import { validate } from 'class-validator';
+import { Repository } from 'typeorm';
 
+import getPostgresErrorMessage from '@/infrastructure/database/postgres-error-messages.enum';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { Usuario } from './entities/usuario.entity';
-import getPostgresErrorMessage from '@/infrastructure/database/postgres-error-messages.enum';
 
 @Injectable()
 export class UsuarioService {
