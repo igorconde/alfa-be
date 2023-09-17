@@ -1,11 +1,14 @@
 import { PermissionService } from '@modules/permission/permission.service';
 import { RoleEntity } from '@modules/role/entities/role.entity';
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FilterOperator, FilterSuffix, PaginateConfig, PaginateQuery, Paginated, paginate } from 'nestjs-paginate';
 import { Repository } from 'typeorm';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
+
+const INVALID_PERMISSIONS_MESSAGE = 'Permissões inválidas';
+const TRANSACTION_FAILED_MESSAGE = 'Transação falhou';
 
 @Injectable()
 export class RoleService {
@@ -21,12 +24,16 @@ export class RoleService {
 
   async create(dto: CreateRoleDto): Promise<RoleEntity> {
     const permissions = await this.getPermissionByIds(dto.permissions);
-    if (!permissions.length) throw new Error('Permissões inválidas');
 
-    const role = this.RoleEntity.create(dto);
-    role.permissions = permissions;
+    if (!permissions.length) throw new BadRequestException(INVALID_PERMISSIONS_MESSAGE);
 
-    return this.roleRepository.save(role);
+    const role = this.roleRepository.create({ ...dto, permission: permissions });
+
+    return this.roleRepository.manager
+      .transaction(async (manager) => manager.save(RoleEntity, role))
+      .catch(() => {
+        throw new InternalServerErrorException(TRANSACTION_FAILED_MESSAGE);
+      });
   }
 
   async findAll(query: PaginateQuery): Promise<Paginated<RoleEntity>> {
@@ -52,15 +59,31 @@ export class RoleService {
     return result;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} role`;
+  async findOne(id: number): Promise<RoleEntity> {
+    try {
+      return await this.roleRepository.findOneOrFail({ where: { id }, relations: ['permission'] });
+    } catch (error) {
+      throw new NotFoundException(`Role com ID ${id} não encontrado`);
+    }
   }
 
-  update(id: number, updateRoleDto: UpdateRoleDto) {
-    return `This action updates a #${id} role`;
+  async update(id: number, updateRoleDto: UpdateRoleDto): Promise<RoleEntity> {
+    try {
+      const role = await this.roleRepository.findOneOrFail({ where: { id }, relations: ['permission'] });
+      console.log('🚀 ~ file: role.service.ts:74 ~ RoleService ~ update ~ role:', role);
+      if (updateRoleDto.permissions) {
+        role.permission = await this.getPermissionByIds(updateRoleDto.permissions);
+      }
+      return await this.roleRepository.save({ ...role, ...updateRoleDto });
+    } catch {
+      throw new NotFoundException(`Role com ID ${id} não encontrado`);
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} role`;
+  async remove(id: number): Promise<void> {
+    const result = await this.roleRepository.delete(id);
+    if (result.affected === 0) {
+      throw new NotFoundException(`Role com ID ${id} não encontrado`);
+    }
   }
 }

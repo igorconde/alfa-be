@@ -5,7 +5,7 @@ import { Column, Entity, Index, JoinTable, ManyToMany, Unique, VirtualColumn } f
 @Entity({
   name: 'role',
 })
-@Unique(['name'])
+@Unique('UQ_role_name', ['name'])
 export class RoleEntity extends CustomBaseEntity {
   @Column('varchar', { length: 100 })
   @Index({

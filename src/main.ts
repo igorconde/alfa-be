@@ -1,16 +1,16 @@
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { useContainer } from 'class-validator';
 import * as compression from 'compression';
 import * as cookieParser from 'cookie-parser';
 import * as passport from 'passport';
-import { ConfigService } from '@nestjs/config';
 
 import { AppModule } from './app.module';
 
-import { setupSwagger } from './setup-swagger';
-import { setupRedis } from './setup-redis';
-import { CustomValidationPipe } from './core/pipes/custom-validation.pipe';
 import { ValidationPipe } from '@nestjs/common';
+import { CustomValidationPipe } from './core/pipes/custom-validation.pipe';
+import { setupRedis } from './setup-redis';
+import { setupSwagger } from './setup-swagger';
 // import { setupAutoInstrumenting } from './core/utils/tracing.otlp';
 
 async function bootstrap() {
@@ -37,10 +37,7 @@ async function bootstrap() {
   // Inicia o Swagger
   setupSwagger(app, configService);
 
-  app.useGlobalPipes(
-    new CustomValidationPipe(),
-    new ValidationPipe({ transform: true })
-  );
+  app.useGlobalPipes(new CustomValidationPipe(), new ValidationPipe({ transform: true }));
 
   // Inicialização do Passport
   app.use(passport.initialize());

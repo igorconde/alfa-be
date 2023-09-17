@@ -1,22 +1,21 @@
-import { TypeOrmConfigService } from './infrastructure/database/typeorm-config.service';
+import appConf from '@config/app.conf';
+import databaseConf from '@config/database.conf';
+import redisConf from '@config/redis.conf';
+import { AuthModule } from '@modules/auth/auth.module';
+import { PermissionModule } from '@modules/permission/permission.module';
+import { RoleModule } from '@modules/role/role.module';
+import { UsuarioModule } from '@modules/usuario/usuario.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { APP_GUARD } from '@nestjs/core';
+import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { APP_INTERCEPTOR } from '@nestjs/core';
-import { TransformInterceptor } from './core/interceptors/transform.interceptor';
-import { PassportModule } from '@nestjs/passport';
-import { APP_GUARD } from '@nestjs/core';
+import { CoreModule } from './core/core.module';
+import { TypeOrmConfigService } from './infrastructure/database/typeorm-config.service';
 import { PublicRoutesGuard } from './modules/auth/guards/public-routes.guard';
-import { AuthModule } from '@modules/auth/auth.module';
-import { UsuarioModule } from '@modules/usuario/usuario.module';
-import { PermissionModule } from '@modules/permission/permission.module';
-import { RoleModule } from '@modules/role/role.module';
-import databaseConf from '@config/database.conf';
-import redisConf from '@config/redis.conf';
-import appConf from '@config/app.conf';
 
 @Module({
   imports: [
@@ -37,6 +36,7 @@ import appConf from '@config/app.conf';
     UsuarioModule,
     PermissionModule,
     RoleModule,
+    CoreModule,
   ],
   controllers: [AppController],
   providers: [
