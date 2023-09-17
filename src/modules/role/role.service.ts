@@ -1,14 +1,11 @@
+import { PermissionService } from '@modules/permission/permission.service';
 import { RoleEntity } from '@modules/role/entities/role.entity';
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { FilterOperator, FilterSuffix, PaginateConfig, PaginateQuery, Paginated, paginate } from 'nestjs-paginate';
+import { Repository } from 'typeorm';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
-import { InjectRepository } from '@nestjs/typeorm';
-import { PermissionService } from '@modules/permission/permission.service';
-import { PageOptionsDto } from '@/core/dto/page-options.dto';
-import { PageDto } from '@/core/dto/page.dto';
-import { Repository } from 'typeorm';
-import { PageMetaDto } from '@/core/dto/page-meta.dto';
-import { FilterOperator, FilterSuffix, PaginateQuery, paginate, Paginated, PaginateConfig } from 'nestjs-paginate';
 
 @Injectable()
 export class RoleService {
@@ -32,7 +29,7 @@ export class RoleService {
     return this.roleRepository.save(role);
   }
 
-  async findAllNestPaginate(query: PaginateQuery): Promise<Paginated<RoleEntity>> {
+  async findAll(query: PaginateQuery): Promise<Paginated<RoleEntity>> {
     const paginateConfig: PaginateConfig<RoleEntity> = {
       defaultLimit: 5,
       sortableColumns: ['id', 'name'],
@@ -53,55 +50,6 @@ export class RoleService {
     const result = await paginate<any>(query, queryBuilder, paginateConfig);
 
     return result;
-  }
-
-  async findAll(pageOptionsDto: PageOptionsDto): Promise<PageDto<RoleEntity>> {
-    const { order, skip, take, search, export: shouldExport, reqFields: fields } = pageOptionsDto;
-
-    const queryBuilder = this.roleRepository.createQueryBuilder('role');
-
-    // Seleção de campos
-    if (fields && fields.length) {
-      queryBuilder.select(fields);
-    } else {
-      queryBuilder.select(['role.id', 'role.name', 'role.description']);
-    }
-
-    // Ordenação
-    queryBuilder.orderBy('role.createdAt', order);
-
-    // Filtragem de pesquisa
-    if (search) {
-      queryBuilder.andWhere('role.name ILIKE :search', { search: `%${search}%` });
-    }
-
-    // Filtros adicionais
-    // if (filters) {
-    //   Object.entries(filters).forEach(([key, value]) => {
-    //     const filterValues = value.split(',');
-    //     queryBuilder.andWhere(`role.${key} IN (:...filterValues)`, { filterValues });
-    //   });
-    // }
-
-    // Paginação
-    queryBuilder.skip(skip).take(take);
-
-    // Obtenção de entidades e contagem
-    const [entities, itemCount] = await queryBuilder.getManyAndCount();
-    console.log(queryBuilder.getSql());
-
-    // Meta-informações
-    const pageMetaDto = new PageMetaDto({
-      pageOptionsDto,
-      itemCount,
-    });
-
-    // Caso exportação seja solicitada
-    if (shouldExport) {
-      // Lógica de exportação aqui
-    }
-
-    return new PageDto(entities, pageMetaDto);
   }
 
   findOne(id: number) {

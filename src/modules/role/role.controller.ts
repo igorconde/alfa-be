@@ -1,33 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
-import { RoleService } from './role.service';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Paginate, PaginateQuery, Paginated } from 'nestjs-paginate';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
-import { PageOptionsDto } from '@/core/dto/page-options.dto';
 import { RoleEntity } from './entities/role.entity';
-import { PageDto } from '@/core/dto/page.dto';
-import {
-  FilterOperator,
-  FilterSuffix,
-  Paginate,
-  PaginateConfig,
-  PaginateQuery,
-  Paginated,
-  PaginatedSwaggerDocs,
-} from 'nestjs-paginate';
-
-const ROLE_CONFIG: PaginateConfig<RoleEntity> = {
-  defaultLimit: 5,
-  relations: ['permission'],
-  sortableColumns: ['id', 'name'],
-  nullSort: 'last',
-  defaultSortBy: [['id', 'ASC']],
-  searchableColumns: ['name'],
-  select: ['id', 'name', 'description'],
-  filterableColumns: {
-    name: [FilterOperator.EQ, FilterSuffix.NOT, FilterOperator.ILIKE],
-    age: true,
-  },
-};
+import { RoleService } from './role.service';
 
 @Controller('role')
 export class RoleController {
@@ -39,14 +15,8 @@ export class RoleController {
   }
 
   @Get()
-  findAll(@Query() pageOptionsDto: PageOptionsDto): Promise<PageDto<RoleEntity>> {
-    return this.roleService.findAll(pageOptionsDto);
-  }
-
-  @Get('/new')
-  @PaginatedSwaggerDocs(CreateRoleDto, ROLE_CONFIG)
-  findAllNew(@Paginate() query: PaginateQuery): Promise<Paginated<RoleEntity>> {
-    return this.roleService.findAllNestPaginate(query);
+  findAll(@Paginate() query: PaginateQuery): Promise<Paginated<RoleEntity>> {
+    return this.roleService.findAll(query);
   }
 
   @Get(':id')
