@@ -52,7 +52,7 @@ export class RoleService {
 
     const queryBuilder = this.roleRepository.createQueryBuilder('role');
 
-    const result = await paginate<any>(query, queryBuilder, paginateConfig);
+    const result = await paginate<RoleEntity>(query, queryBuilder, paginateConfig);
 
     return result;
   }
@@ -68,7 +68,6 @@ export class RoleService {
   async update(id: number, updateRoleDto: UpdateRoleDto): Promise<RoleEntity> {
     try {
       const role = await this.roleRepository.findOneOrFail({ where: { id }, relations: ['permission'] });
-      console.log('🚀 ~ file: role.service.ts:74 ~ RoleService ~ update ~ role:', role);
       if (updateRoleDto.permissions) {
         role.permission = await this.getPermissionByIds(updateRoleDto.permissions);
       }

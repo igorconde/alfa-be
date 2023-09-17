@@ -1,14 +1,14 @@
 // auth.service.spec.ts
 
+import { BadRequestException, ForbiddenException, HttpException, NotFoundException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as bcrypt from 'bcrypt';
-import { BadRequestException, ForbiddenException, HttpException, NotFoundException } from '@nestjs/common';
 
-import { AuthService } from './auth.service';
-import { RegisterDto } from './dto/register.dto';
-import { UsuarioService } from '../usuario/usuario.service';
 import { CryptoUtils } from '../../core/utils/crypto.utils';
 import { Usuario } from '../usuario/entities/usuario.entity';
+import { UsuarioService } from '../usuario/usuario.service';
+import { AuthService } from './auth.service';
+import { RegisterDto } from './dto/register.dto';
 
 const ERROR_USER_NOT_FOUND = 'Usuário não encontrado';
 const ERROR_INVALID_CREDENTIALS = 'Credenciais inválidas';
@@ -26,7 +26,7 @@ describe('AuthService', () => {
           provide: UsuarioService,
           useValue: {
             findBy: jest.fn(),
-            createUser: jest.fn(),
+            create: jest.fn(),
           },
         },
         {
@@ -127,23 +127,23 @@ describe('AuthService', () => {
       password: 'password',
     };
 
-    it('should throw HttpException when createUser fails', async () => {
-      jest.spyOn(usuarioService, 'createUser').mockResolvedValue(null);
+    it('should throw HttpException when create fails', async () => {
+      jest.spyOn(usuarioService, 'create').mockResolvedValue(null);
       await expect(service.registerUser(registrationData)).rejects.toThrow(HttpException);
 
-      expect(usuarioService.createUser).toHaveBeenCalledWith({
+      expect(usuarioService.create).toHaveBeenCalledWith({
         ...registrationData,
         password: expect.any(String),
       });
     });
 
-    it('should return created user when createUser succeeds', async () => {
+    it('should return created user when create succeeds', async () => {
       const user = new Usuario();
-      jest.spyOn(usuarioService, 'createUser').mockResolvedValue(user);
+      jest.spyOn(usuarioService, 'create').mockResolvedValue(user);
       const result = await service.registerUser(registrationData);
       expect(result).toEqual(user);
 
-      expect(usuarioService.createUser).toHaveBeenCalledWith({
+      expect(usuarioService.create).toHaveBeenCalledWith({
         ...registrationData,
         password: expect.any(String),
       });

@@ -1,16 +1,16 @@
-import { RoleEntity } from '../../role/entities/role.entity';
 import {
   BaseEntity,
-  Entity,
-  PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
-  UpdateDateColumn,
   DeleteDateColumn,
-  Unique,
-  OneToOne,
+  Entity,
   JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+  Unique,
+  UpdateDateColumn,
 } from 'typeorm';
+import { RoleEntity } from '../../role/entities/role.entity';
 
 @Entity()
 @Unique(['email'])
@@ -64,9 +64,7 @@ export class Usuario extends BaseEntity {
   @JoinColumn()
   role: RoleEntity;
 
-  @Column({
-    nullable: true,
-  })
+  @Column({ nullable: true })
   roleId: number;
 
   @Column({
