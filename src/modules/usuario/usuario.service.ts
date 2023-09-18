@@ -19,7 +19,7 @@ export class UsuarioService {
   async findAll(query: PaginateQuery): Promise<Paginated<Usuario>> {
     const paginateConfig: PaginateConfig<Usuario> = {
       defaultLimit: 5,
-      sortableColumns: ['id', 'email', 'username'],
+      sortableColumns: ['id', 'email'],
       nullSort: 'last',
       defaultSortBy: [['id', 'ASC']],
       searchableColumns: ['email'],

@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer';
 import {
   BaseEntity,
   Column,
@@ -11,6 +12,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { RoleEntity } from '../../role/entities/role.entity';
+import { UsuarioSituacao } from '../enums/usuario-situacao.enum';
 
 @Entity()
 @Unique(['email'])
@@ -32,7 +34,7 @@ export class Usuario extends BaseEntity {
     length: 200,
     comment: 'Username',
   })
-  username: string | null;
+  login: string | null;
 
   @Column({
     nullable: false,
@@ -42,23 +44,14 @@ export class Usuario extends BaseEntity {
   })
   nome: string;
 
-  @Column({
-    nullable: false,
-    default: true,
-    comment: 'Situacao do usuário.',
-  })
-  status: boolean;
+  @Column({ nullable: true, type: 'enum', enum: UsuarioSituacao, default: UsuarioSituacao.ATIVO })
+  situacao: UsuarioSituacao;
 
+  @Exclude({
+    toPlainOnly: true,
+  })
   @Column({ nullable: false, comment: 'Senha do usuário' })
   password: string;
-
-  @Column({
-    nullable: true,
-    type: 'varchar',
-    length: 64,
-    comment: 'Token de confirmação de acesso do usuário.',
-  })
-  confirmationToken: string;
 
   @OneToOne(() => RoleEntity)
   @JoinColumn()
@@ -67,14 +60,9 @@ export class Usuario extends BaseEntity {
   @Column({ nullable: true })
   roleId: number;
 
-  @Column({
-    nullable: true,
-    type: 'varchar',
-    length: 500,
-    comment: 'refreshToken para renovar o acesso do Token.',
+  @Exclude({
+    toPlainOnly: true,
   })
-  refreshToken: string;
-
   @Column({
     nullable: true,
     type: 'varchar',
