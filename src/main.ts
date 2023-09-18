@@ -37,7 +37,10 @@ async function bootstrap() {
   // Inicia o Swagger
   setupSwagger(app, configService);
 
-  app.useGlobalPipes(new CustomValidationPipe(), new ValidationPipe({ transform: true }));
+  app.useGlobalPipes(
+    new CustomValidationPipe(),
+    new ValidationPipe({ transform: true, whitelist: true, forbidNonWhitelisted: true }),
+  );
 
   // Inicialização do Passport
   app.use(passport.initialize());
