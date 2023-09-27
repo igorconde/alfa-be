@@ -4,28 +4,38 @@ import 'winston-daily-rotate-file';
 
 export const winstonOptions: WinstonModuleOptions = {
   transports: [
-    // Log de erro com rotação diária
     new winston.transports.DailyRotateFile({
       filename: 'logs/%DATE%-error.log',
       level: 'error',
-      format: winston.format.combine(winston.format.timestamp(), winston.format.json()),
+      format: winston.format.combine(
+        winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+        winston.format.json(),
+        winston.format.metadata(),
+      ),
       datePattern: 'YYYY-MM-DD',
       zippedArchive: false,
-      maxFiles: '90d', // Máximo de 90 dias
-      maxSize: '1g', // Tamanho máximo de 1GB
+      maxFiles: '90d',
+      maxSize: '1g',
     }),
-    // Log combinado com rotação diária
     new winston.transports.DailyRotateFile({
       filename: 'logs/%DATE%-combined.log',
-      format: winston.format.combine(winston.format.timestamp(), winston.format.json()),
+      format: winston.format.combine(
+        winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+        winston.format.json(),
+      ),
       datePattern: 'YYYY-MM-DD',
       zippedArchive: false,
-      maxFiles: '90d', // Máximo de 90 dias
-      maxSize: '1g', // Tamanho máximo de 1GB
+      maxFiles: '90d',
+      maxSize: '1g',
     }),
-    // Log de console
     new winston.transports.Console({
-      format: winston.format.combine(winston.format.timestamp(), nestWinstonModuleUtilities.format.nestLike()),
+      level: 'silly',
+      format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.timestamp(),
+        nestWinstonModuleUtilities.format.nestLike(),
+      ),
     }),
   ],
+  exceptionHandlers: [new winston.transports.File({ filename: 'logs/exceptions.log' })],
 };
