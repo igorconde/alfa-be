@@ -1,15 +1,17 @@
-import { Controller, Get, Query, Request, Session } from '@nestjs/common';
+import { Controller, Get, Logger, Query, Request, Session } from '@nestjs/common';
 import { Request as ExpressRequest, Router } from 'express';
 import { AppService } from './app.service';
 import { PublicRoute } from './core/decorators/public-route.decorator';
 
 @Controller()
 export class AppController {
+  private logger = new Logger('AppController.name');
   constructor(private readonly appService: AppService) {}
 
   @PublicRoute()
   @Get()
   getHello(): any {
+    this.logger.verbose(`XPTO`);
     return this.appService.getHello();
   }
 

@@ -7,15 +7,22 @@ import * as passport from 'passport';
 
 import { AppModule } from './app.module';
 
-import { ValidationPipe } from '@nestjs/common';
+import { Logger, NestApplicationOptions, ValidationPipe } from '@nestjs/common';
+import { WinstonModule } from 'nest-winston';
+import { winstonOptions } from './app-logging';
 import { CustomValidationPipe } from './core/pipes/custom-validation.pipe';
 import { setupRedis } from './setup-redis';
 import { setupSwagger } from './setup-swagger';
 // import { setupAutoInstrumenting } from './core/utils/tracing.otlp';
 
 async function bootstrap() {
+  const logger =
+    process.env.NODE_ENV === 'production' ? WinstonModule.createLogger(winstonOptions) : new Logger('Bootstrap Logger');
+  const nestAppOptions: NestApplicationOptions = {
+    logger: logger,
+  };
   // setupAutoInstrumenting();
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, nestAppOptions);
   const configService = app.get(ConfigService);
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
 
