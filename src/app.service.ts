@@ -1,8 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
+import { MailService } from './mail/mail.service';
 
 @Injectable()
 export class AppService {
-  getHello(): any {
+  constructor(private mailService: MailService) {}
+  async getHello(): Promise<any> {
     const employees = [
       {
         name: 'John Smith',
@@ -20,6 +22,17 @@ export class AppService {
         salary: 60000,
       },
     ];
+
+    try {
+      await this.mailService.userSignUp({
+        to: 'test@gmail.com',
+        data: { hash: 'string' },
+      });
+    } catch (err) {
+      console.log('🚀 ~ file: app.service.ts:32 ~ AppService ~ getHello ~ err:', err);
+      throw new BadRequestException(err.message);
+    }
+
     return employees;
   }
 
