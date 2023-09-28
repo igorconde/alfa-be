@@ -1,22 +1,27 @@
 import * as session from 'express-session';
-import * as createRedisStore from 'connect-redis';
-import { createClient } from 'redis';
 import { ConfigService } from '@nestjs/config';
 import { INestApplication } from '@nestjs/common';
+import Redis from 'ioredis';
+import RedisStore from 'connect-redis';
 
-export function setupRedis(app: INestApplication, configService: ConfigService) {
-  const RedisStore = createRedisStore(session);
-  const redisClient = createClient({
-    host: configService.get('redis.host'),
-    port: configService.get('redis.port'),
+export async function setupRedis(app: INestApplication, configService: ConfigService) {
+
+  const redisClient = new Redis(
+    configService.get('redis.port'),
+    configService.get('redis.host'),
+  );
+
+  redisClient.on('error', (err) => {
+    console.log('❌ Não foi possível estabelecer uma conexão com o Redis. ' + err)
   });
-
-  redisClient.on('error', (err) => console.log('❌ Não foi possível estabelecer uma conexão com o Redis. ' + err));
-  redisClient.on('connect', () => console.log('✅ Conectado ao Redis com sucesso.'));
+  redisClient.on('connect', () => {
+    console.log('✅ Conectado ao Redis com sucesso.')
+  });
+  const redisStore = new RedisStore({ client: redisClient });
 
   app.use(
     session({
-      store: new RedisStore({ client: redisClient }),
+      store: redisStore,
       secret: 'secret',
       resave: false,
       rolling: true,
