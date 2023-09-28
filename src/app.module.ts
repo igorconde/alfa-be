@@ -20,6 +20,7 @@ import { TypeOrmConfigService } from './infrastructure/database/typeorm-config.s
 import { MailConfigService } from './mail/mail-config.service';
 import { MailModule } from './mail/mail.module';
 import { PublicRoutesGuard } from './modules/auth/guards/public-routes.guard';
+import { HealthCheckerModule } from './modules/health-checker/health-checker.module';
 
 @Module({
   imports: [
@@ -45,6 +46,7 @@ import { PublicRoutesGuard } from './modules/auth/guards/public-routes.guard';
     RoleModule,
     CoreModule,
     MailModule,
+    HealthCheckerModule,
   ],
   controllers: [AppController],
   providers: [
