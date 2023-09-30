@@ -22,6 +22,22 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+## 📖 Descrição 
+
+<p align="center">
+  <a href="link-para-o-repo-no-github" target="_blank"><img src="https://img.shields.io/maintenance/yes/2023.svg" alt="Manutenção" /></a>
+  <a href="https://github.com/igorconde/alfa-be" target="_blank"><img src="https://img.shields.io/github/last-commit/igorconde/alfa-be.svg" alt="Último Commit" /></a>
+  <a href="https://github.com/igorconde/alfa-be" target="_blank"><img src="https://img.shields.io/github/repo-size/igorconde/alfa-be.svg" alt="Tamanho do Repositório" /></a>
+  <a href="https://github.com/igorconde/alfa-be" target="_blank"><img src="https://img.shields.io/github/languages/code-size/igorconde/alfa-be.svg" alt="Tamanho do Código em Bytes" /></a>
+  <a href="https://github.com/igorconde/alfa-be" target="_blank"><img src="https://img.shields.io/github/languages/top/igorconde/alfa-be.svg" alt="Linguagem Principal" /></a>
+  <a href="https://github.com/igorconde/alfa-be" target="_blank"><img src="https://img.shields.io/github/languages/count/igorconde/alfa-be.svg" alt="Contagem de Linguagens" /></a>
+  <a href="https://github.com/igorconde/alfa-be" target="_blank"><img src="https://img.shields.io/github/contributors/igorconde/alfa-be.svg" alt="Contribuidores" /></a>
+  <a href="https://github.com/igorconde/alfa-be" target="_blank"><img src="https://img.shields.io/github/commit-activity/y/igorconde/alfa-be.svg" alt="Atividade de Commit Anual" /></a>
+  <a href="https://github.com/igorconde/alfa-be" target="_blank"><img src="https://img.shields.io/github/commit-activity/m/igorconde/alfa-be.svg" alt="Atividade de Commit Mensal" /></a>
+  <a href="https://github.com/igorconde/alfa-be" target="_blank"><img src="https://img.shields.io/github/commit-activity/w/igorconde/alfa-be.svg" alt="Atividade de Commit Semanal" /></a>
+  <a href="https://github.com/igorconde/alfa-be" target="_blank"><img src="https://img.shields.io/github/package-json/v/igorconde/alfa-be.svg" alt="Versão do package.json" /></a>
+</p>
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
