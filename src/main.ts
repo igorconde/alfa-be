@@ -16,8 +16,7 @@ import { setupSwagger } from './setup-swagger';
 // import { setupAutoInstrumenting } from './core/utils/tracing.otlp';
 
 async function bootstrap() {
-  const logger =
-    process.env.NODE_ENV === 'production' ? WinstonModule.createLogger(winstonOptions) : new Logger('Bootstrap Logger');
+  const logger = process.env.NODE_ENV === 'production' ? WinstonModule.createLogger(winstonOptions) : new Logger('Bootstrap Logger');
   const nestAppOptions: NestApplicationOptions = {
     logger: logger,
   };
@@ -44,10 +43,7 @@ async function bootstrap() {
   // Inicia o Swagger
   setupSwagger(app, configService);
 
-  app.useGlobalPipes(
-    new CustomValidationPipe(),
-    new ValidationPipe({ transform: true, whitelist: true, forbidNonWhitelisted: true }),
-  );
+  app.useGlobalPipes(new CustomValidationPipe(), new ValidationPipe({ transform: true, whitelist: true, forbidNonWhitelisted: true }));
 
   // Inicialização do Passport
   app.use(passport.initialize());
@@ -59,9 +55,7 @@ async function bootstrap() {
 
   console.info(`🚀🌐 O servidor foi iniciado com sucesso em http://localhost:${port}`);
   console.info(`📖🔍 O Swagger está disponível e ativo em http://localhost:${port}/api-docs`);
-  console.info(
-    `📊🔗 O serviço do swagger-stats está disponível e monitorando em http://localhost:${port}/swagger-stats`,
-  );
+  console.info(`📊🔗 O serviço do swagger-stats está disponível e monitorando em http://localhost:${port}/swagger-stats`);
 }
 bootstrap().catch((error) => {
   console.error('❌ Ocorreu um erro ao iniciar a aplicação:', error);

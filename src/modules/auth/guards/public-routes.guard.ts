@@ -11,10 +11,7 @@ export class PublicRoutesGuard implements CanActivate {
     const request = context.switchToHttp().getRequest<Request>();
 
     // Verifique se a rota atual é uma rota pública
-    const isPublicRoute = this.reflector.getAllAndOverride<boolean>(IS_PUBLIC_ROUTE, [
-      context.getHandler(),
-      context.getClass(),
-    ]);
+    const isPublicRoute = this.reflector.getAllAndOverride<boolean>(IS_PUBLIC_ROUTE, [context.getHandler(), context.getClass()]);
 
     if (isPublicRoute) {
       return true;

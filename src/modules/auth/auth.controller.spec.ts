@@ -3,12 +3,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { LogInWithCredentialsGuard } from './guards/local-auth.guard';
 import { RegisterDto } from './dto/register.dto';
-import {
-  BadRequestException,
-  ConflictException,
-  InternalServerErrorException,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { BadRequestException, ConflictException, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
 import { Request, Response } from 'express';
 
 jest.mock('./auth.service');
@@ -89,9 +84,7 @@ describe('AuthController', () => {
       clearCookie: jest.fn(),
     };
 
-    await expect(authController.logout(request as unknown as Request, response as unknown as Response)).rejects.toThrow(
-      InternalServerErrorException,
-    );
+    await expect(authController.logout(request as unknown as Request, response as unknown as Response)).rejects.toThrow(InternalServerErrorException);
   });
 
   it('should return an error when registration data is invalid', async () => {

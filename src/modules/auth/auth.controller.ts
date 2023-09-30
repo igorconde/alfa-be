@@ -43,9 +43,7 @@ export class AuthController {
   @ApiResponse({ status: 200, description: 'Logout realizado com sucesso.' })
   @ApiResponse({ status: 500, description: 'Erro interno ao realizar logout.' })
   async logout(@Req() request: Request, @Res({ passthrough: true }) response: Response): Promise<any> {
-    const logoutError = await new Promise<Error | undefined>((resolve) =>
-      request.logOut({ keepSessionInfo: false }, (error) => resolve(error)),
-    );
+    const logoutError = await new Promise<Error | undefined>((resolve) => request.logOut({ keepSessionInfo: false }, (error) => resolve(error)));
 
     if (logoutError) {
       throw new InternalServerErrorException('Não foi possível realizar o logout.');

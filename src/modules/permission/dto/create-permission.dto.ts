@@ -1,14 +1,7 @@
 import { IsIn, IsNotEmpty, IsString, MaxLength } from 'class-validator';
 import { MethodList } from '../../../core/config/permission-config';
 
-const methodListArray = [
-  MethodList.GET,
-  MethodList.POST,
-  MethodList.ANY,
-  MethodList.DELETE,
-  MethodList.OPTIONS,
-  MethodList.OPTIONS,
-];
+const methodListArray = [MethodList.GET, MethodList.POST, MethodList.ANY, MethodList.DELETE, MethodList.OPTIONS, MethodList.OPTIONS];
 
 export class CreatePermissionDto {
   @IsNotEmpty({ message: 'O campo "resource" é obrigatório.' })

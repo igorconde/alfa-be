@@ -5,17 +5,13 @@ import Redis from 'ioredis';
 import RedisStore from 'connect-redis';
 
 export async function setupRedis(app: INestApplication, configService: ConfigService) {
-
-  const redisClient = new Redis(
-    configService.get('redis.port'),
-    configService.get('redis.host'),
-  );
+  const redisClient = new Redis(configService.get('redis.port'), configService.get('redis.host'));
 
   redisClient.on('error', (err) => {
-    console.log('❌ Não foi possível estabelecer uma conexão com o Redis. ' + err)
+    console.log('❌ Não foi possível estabelecer uma conexão com o Redis. ' + err);
   });
   redisClient.on('connect', () => {
-    console.log('✅ Conectado ao Redis com sucesso.')
+    console.log('✅ Conectado ao Redis com sucesso.');
   });
   const redisStore = new RedisStore({ client: redisClient });
 

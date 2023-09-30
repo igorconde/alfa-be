@@ -45,12 +45,7 @@ export class AppService {
         name: 'Website SEO',
         date: '10 may 2021',
         avatarColor: 'success',
-        avatarGroup: [
-          '/images/avatars/1.png',
-          '/images/avatars/4.png',
-          '/images/avatars/3.png',
-          '/images/avatars/2.png',
-        ],
+        avatarGroup: ['/images/avatars/1.png', '/images/avatars/4.png', '/images/avatars/3.png', '/images/avatars/2.png'],
       },
       {
         id: 2,
@@ -68,12 +63,7 @@ export class AppService {
         date: '12 Aug 2021',
         name: 'Logo Designs',
         avatar: '/images/icons/project-icons/sketch-label.png',
-        avatarGroup: [
-          '/images/avatars/2.png',
-          '/images/avatars/1.png',
-          '/images/avatars/7.png',
-          '/images/avatars/8.png',
-        ],
+        avatarGroup: ['/images/avatars/2.png', '/images/avatars/1.png', '/images/avatars/7.png', '/images/avatars/8.png'],
       },
       {
         id: 4,
@@ -82,12 +72,7 @@ export class AppService {
         date: '19 Apr 2021',
         name: 'IOS App Design',
         avatar: '/images/icons/project-icons/sketch-label.png',
-        avatarGroup: [
-          '/images/avatars/5.png',
-          '/images/avatars/3.png',
-          '/images/avatars/6.png',
-          '/images/avatars/7.png',
-        ],
+        avatarGroup: ['/images/avatars/5.png', '/images/avatars/3.png', '/images/avatars/6.png', '/images/avatars/7.png'],
       },
       {
         id: 5,
@@ -141,12 +126,7 @@ export class AppService {
         date: '06 Oct 2021',
         name: 'Admin Template',
         avatar: '/images/icons/project-icons/vue-label.png',
-        avatarGroup: [
-          '/images/avatars/2.png',
-          '/images/avatars/3.png',
-          '/images/avatars/4.png',
-          '/images/avatars/5.png',
-        ],
+        avatarGroup: ['/images/avatars/2.png', '/images/avatars/3.png', '/images/avatars/4.png', '/images/avatars/5.png'],
       },
     ];
 

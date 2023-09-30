@@ -1,14 +1,8 @@
+import { ModulesPayloadInterface, PermissionConfiguration, PermissionPayload, RoutePayloadInterface, SubModulePayloadInterface } from '@config/permission-config';
+import { PermissionEntity } from '@modules/permission/entities/permission.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { PermissionEntity } from '@modules/permission/entities/permission.entity';
-import {
-  ModulesPayloadInterface,
-  PermissionConfiguration,
-  PermissionPayload,
-  RoutePayloadInterface,
-  SubModulePayloadInterface,
-} from '@config/permission-config';
 
 @Injectable()
 export class PermissionFactoryServiceService {
@@ -17,12 +11,7 @@ export class PermissionFactoryServiceService {
     private repoPermission: Repository<PermissionEntity>,
   ) {}
 
-  assignResourceAndConcatPermission(
-    modules: ModulesPayloadInterface | SubModulePayloadInterface,
-    permissionsList: RoutePayloadInterface[],
-    resource: string,
-    isDefault?: false,
-  ) {
+  assignResourceAndConcatPermission(modules: ModulesPayloadInterface | SubModulePayloadInterface, permissionsList: RoutePayloadInterface[], resource: string, isDefault?: false) {
     if (modules.permissions) {
       for (const permission of modules.permissions) {
         permissionsList = this.concatPermissions(permission, permissionsList, resource, isDefault);
@@ -31,12 +20,7 @@ export class PermissionFactoryServiceService {
     return permissionsList;
   }
 
-  concatPermissions(
-    permission: PermissionPayload,
-    permissionsList: RoutePayloadInterface[],
-    resource: string,
-    isDefault: boolean,
-  ) {
+  concatPermissions(permission: PermissionPayload, permissionsList: RoutePayloadInterface[], resource: string, isDefault: boolean) {
     const description = permission.name;
     for (const data of permission.route) {
       data.resource = data.resource || resource;
@@ -64,9 +48,6 @@ export class PermissionFactoryServiceService {
     }
 
     await this.repoPermission.save(permissionsList);
-    console.log(
-      '🚀 ~ file: permission-factory.service.ts:67 ~ PermissionFactoryServiceService ~ run ~ permissionsList:',
-      permissionsList,
-    );
+    console.log('🚀 ~ file: permission-factory.service.ts:67 ~ PermissionFactoryServiceService ~ run ~ permissionsList:', permissionsList);
   }
 }

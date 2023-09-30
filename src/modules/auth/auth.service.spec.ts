@@ -89,9 +89,7 @@ describe('AuthService', () => {
   describe('signIn', () => {
     it('should throw NotFoundException when user (Email) is not found', async () => {
       jest.spyOn(usuarioService, 'findBy').mockResolvedValue([]);
-      await expect(service.signIn('email@teste.com', 'password')).rejects.toThrow(
-        new NotFoundException(ERROR_USER_NOT_FOUND),
-      );
+      await expect(service.signIn('email@teste.com', 'password')).rejects.toThrow(new NotFoundException(ERROR_USER_NOT_FOUND));
 
       expect(usuarioService.findBy).toHaveBeenCalledWith({ email: 'email@teste.com' });
     });
@@ -101,9 +99,7 @@ describe('AuthService', () => {
       user.password = await bcrypt.hash('password', 10);
       jest.spyOn(usuarioService, 'findBy').mockResolvedValue([user]);
       jest.spyOn(cryptoUtils, 'compare').mockResolvedValue(false);
-      await expect(service.signIn('email@teste.com', 'wrong_password')).rejects.toThrow(
-        new ForbiddenException(ERROR_INVALID_CREDENTIALS),
-      );
+      await expect(service.signIn('email@teste.com', 'wrong_password')).rejects.toThrow(new ForbiddenException(ERROR_INVALID_CREDENTIALS));
 
       expect(usuarioService.findBy).toHaveBeenCalledWith({ email: 'email@teste.com' });
     });

@@ -1,17 +1,7 @@
-import {
-  ModulesPayloadInterface,
-  PermissionPayload,
-  RoutePayloadInterface,
-  SubModulePayloadInterface,
-} from 'src/core/config/permission-config';
+import { ModulesPayloadInterface, PermissionPayload, RoutePayloadInterface, SubModulePayloadInterface } from 'src/core/config/permission-config';
 
 export class LoadPermissionMisc {
-  assignResourceAndConcatPermission(
-    modules: ModulesPayloadInterface | SubModulePayloadInterface,
-    permissionsList: RoutePayloadInterface[],
-    resource: string,
-    isDefault?: false,
-  ) {
+  assignResourceAndConcatPermission(modules: ModulesPayloadInterface | SubModulePayloadInterface, permissionsList: RoutePayloadInterface[], resource: string, isDefault?: false) {
     if (modules.permissions) {
       for (const permission of modules.permissions) {
         permissionsList = this.concatPermissions(permission, permissionsList, resource, isDefault);
@@ -20,12 +10,7 @@ export class LoadPermissionMisc {
     return permissionsList;
   }
 
-  concatPermissions(
-    permission: PermissionPayload,
-    permissionsList: RoutePayloadInterface[],
-    resource: string,
-    isDefault: boolean,
-  ) {
+  concatPermissions(permission: PermissionPayload, permissionsList: RoutePayloadInterface[], resource: string, isDefault: boolean) {
     const description = permission.name;
     for (const data of permission.route) {
       data.resource = data.resource || resource;

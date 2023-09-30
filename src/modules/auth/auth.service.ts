@@ -1,14 +1,6 @@
 import { Usuario } from '@modules/usuario/entities/usuario.entity';
 import { UsuarioService } from '@modules/usuario/usuario.service';
-import {
-  BadRequestException,
-  ForbiddenException,
-  HttpException,
-  HttpStatus,
-  Injectable,
-  Logger,
-  NotFoundException,
-} from '@nestjs/common';
+import { BadRequestException, ForbiddenException, HttpException, HttpStatus, Injectable, Logger, NotFoundException } from '@nestjs/common';
 
 import * as bcrypt from 'bcrypt';
 import { RegisterDto } from './dto/register.dto';

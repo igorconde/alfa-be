@@ -26,12 +26,7 @@ export class DatabaseNamingStrategy extends DefaultNamingStrategy implements Nam
     return `PK_${this.getTableName(tableOrName)}_${this.joinColumns(columnNames)}`.slice(0, identifierLengthLimit);
   }
 
-  foreignKeyName(
-    referencingTableOrName: Table | string,
-    referencingColumnNames: string[],
-    referencedTablePath?: string,
-    referencedColumnNames?: string[],
-  ): string {
+  foreignKeyName(referencingTableOrName: Table | string, referencingColumnNames: string[], referencedTablePath?: string, referencedColumnNames?: string[]): string {
     const referencingTableName = this.getTableName(referencingTableOrName);
 
     const referencingReferencedGroup = referencingColumnNames.map((referencingColumn, index) => {
