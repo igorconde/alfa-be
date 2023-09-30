@@ -1,6 +1,13 @@
+#
+# 🧑‍💻 Development
+#
 FROM node:18.18-alpine3.18
 
+# add the missing shared libraries from alpine base image
 RUN apk add --no-cache bash tzdata 
+
+# Set to dev environment
+# ENV NODE_ENV development
 
 # Configurar o fuso horário
 ENV TZ=America/Sao_Paulo

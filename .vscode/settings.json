@@ -1,22 +1,74 @@
 {
-    "editor.tabSize": 2,
+    "eslint.enable": true,
+    "eslint.format.enable": true,
     "editor.codeActionsOnSave": {
-      "source.fixAll": true,
-      "source.organizeImports": false,
-    },
-    "[typescript]": {
-      "editor.codeActionsOnSave": {
-        "source.fixAll": true,
-        "source.organizeImports": false
-      },
-      "editor.formatOnSave": true,
+      "source.fixAll.eslint": true,
+      "source.organizeImports": true
     },
     "[javascript]": {
-      "editor.codeActionsOnSave": {
-        "source.fixAll": true,
-        "source.organizeImports": false
-      },
       "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": [
+        "source.addMissingImports",
+        "source.organizeImports",
+        "source.fixAll.stylelint",
+        "source.fixAll.eslint"
+      ],
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "editor.formatOnSave": true,
-  }
+    "[javascriptreact]": {
+      "editor.formatOnSave": true
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+      },
+      "editor.fontLigatures": true,
+  "typescript.validate.enable": true,
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "workbench.activityBar.visible": true,
+  "terminal.integrated.fontFamily": "monospace, PowerlineSymbols, 'MesloLGS NF'",
+  "jest.debugMode": true,
+  "explorer.compactFolders": false,
+  "explorer.confirmDelete": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "workbench.colorTheme": "One Dark Pro Monokai Darker",
+  "gitlens.gitCommands.skipConfirmations": [
+    "fetch:command",
+    "switch:command",
+    "stash-push:command"
+  ],
+  "workbench.editor.highlightModifiedTabs": true,
+  "files.trimFinalNewlines": true,
+  "editor.fontSize": 13,
+  "redhat.telemetry.enabled": false,
+  "git.suggestSmartCommit": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.renderLineHighlight": "gutter",
+  "material-icon-theme.folders.associations": {
+    "infra": "app",
+    "entities": "class",
+    "schemas": "class",
+    "typeorm": "database",
+    "repositories": "mappings",
+    "http": "container",
+    "migrations": "tools",
+    "module": "components",
+    "implementations": "core",
+    "dtos": "typescript",
+    "fakes": "mock",
+    "websockets": "pipe",
+    "protos": "pipe",
+    "grpc": "pipe"
+  },
+  "material-icon-theme.files.associations": {
+    "ormconfig.json": "database",
+    "tsconfig.json": "tune",
+    "*.proto": "3d"
+  },
+  "prettier.endOfLine": "auto",
+  
+  "git.confirmSync": false,
+  "explorer.fileNesting.enabled": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "prettier.printWidth": 200,
+}
