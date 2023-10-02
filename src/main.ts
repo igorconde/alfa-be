@@ -8,11 +8,13 @@ import * as passport from 'passport';
 import { AppModule } from './app.module';
 
 import { Logger, NestApplicationOptions, ValidationPipe } from '@nestjs/common';
+import { NestExpressApplication } from '@nestjs/platform-express';
 import { WinstonModule } from 'nest-winston';
 import { winstonOptions } from './app-logging';
 import { CustomValidationPipe } from './core/pipes/custom-validation.pipe';
 import { setupRedis } from './setup-redis';
 import { setupSwagger } from './setup-swagger';
+
 // import { setupAutoInstrumenting } from './core/utils/tracing.otlp';
 
 async function bootstrap() {
@@ -21,11 +23,18 @@ async function bootstrap() {
     logger: logger,
   };
   // setupAutoInstrumenting();
-  const app = await NestFactory.create(AppModule, nestAppOptions);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, nestAppOptions);
   const configService = app.get(ConfigService);
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
 
+  // gzpip compression
   app.use(compression());
+
+  // For parsing application/json
+  // For parsing application/x-www-form-urlencoded
+  app.useBodyParser('json', { limit: '50mb' });
+  app.useBodyParser('urlencoded', { limit: '50mb', extended: true });
+
   app.use(cookieParser());
 
   app.enableCors({
