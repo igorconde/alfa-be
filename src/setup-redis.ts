@@ -15,7 +15,6 @@ export async function setupRedis(app: INestApplication, configService: ConfigSer
   });
   const redisStore = new RedisStore({ client: redisClient });
 
-  console.log("🚀 ~ file: setup-redis.ts:19 ~ setupRedis ~ configService.get<number>('session.maxAge'):", configService.get('session.name'));
   app.use(
     session({
       store: redisStore,
