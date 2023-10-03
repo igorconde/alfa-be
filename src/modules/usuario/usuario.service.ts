@@ -23,7 +23,7 @@ export class UsuarioService {
       nullSort: 'last',
       defaultSortBy: [['id', 'ASC']],
       searchableColumns: ['email'],
-      select: ['id', 'email', 'username', 'criadoEm', 'atualizadoEm', 'desativadoEm'],
+      select: ['id', 'email', 'criadoEm', 'atualizadoEm', 'desativadoEm'],
       filterableColumns: {
         email: [FilterOperator.EQ, FilterSuffix.NOT, FilterOperator.ILIKE],
       },
