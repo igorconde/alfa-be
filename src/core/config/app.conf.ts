@@ -12,4 +12,5 @@ export default registerAs('app', () => ({
   fallbackLanguage: process.env.APP_FALLBACK_LANGUAGE || 'en',
   headerLanguage: process.env.APP_HEADER_LANGUAGE || 'x-custom-lang',
   timeout: process.env.REQUEST_TIMEOUT,
+  payloadLimitSize: process.env.REQUEST_PAYLOAD_LIMIT_SIZE,
 }));

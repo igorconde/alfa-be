@@ -33,8 +33,8 @@ async function bootstrap() {
 
   // For parsing application/json
   // For parsing application/x-www-form-urlencoded
-  app.useBodyParser('json', { limit: '50mb' });
-  app.useBodyParser('urlencoded', { limit: '50mb', extended: true });
+  app.useBodyParser('json', { limit: configService.get('app.payloadLimitSize') });
+  app.useBodyParser('urlencoded', { limit: configService.get('app.payloadLimitSize'), extended: true });
 
   app.use(cookieParser());
 
