@@ -1,8 +1,8 @@
-import * as session from 'express-session';
-import { ConfigService } from '@nestjs/config';
 import { INestApplication } from '@nestjs/common';
-import Redis from 'ioredis';
+import { ConfigService } from '@nestjs/config';
 import RedisStore from 'connect-redis';
+import * as session from 'express-session';
+import Redis from 'ioredis';
 
 export async function setupRedis(app: INestApplication, configService: ConfigService) {
   const redisClient = new Redis(configService.get('redis.port'), configService.get('redis.host'));
@@ -15,19 +15,20 @@ export async function setupRedis(app: INestApplication, configService: ConfigSer
   });
   const redisStore = new RedisStore({ client: redisClient });
 
+  console.log("🚀 ~ file: setup-redis.ts:19 ~ setupRedis ~ configService.get<number>('session.maxAge'):", configService.get('session.name'));
   app.use(
     session({
       store: redisStore,
-      secret: 'secret',
+      secret: configService.get('session.secret'),
       resave: false,
       rolling: true,
       saveUninitialized: false,
       cookie: {
-        secure: false,
-        sameSite: true,
-        maxAge: 1000 * 60 * 30, // 30 minutos em milissegundos
+        secure: Boolean(configService.get('session.secure')),
+        sameSite: Boolean(configService.get('session.sameSite')),
+        maxAge: configService.get('session.maxAge'),
       },
-      name: 'connect.sid',
+      name: configService.get('session.name'),
     }),
   );
 }

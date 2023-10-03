@@ -2,6 +2,7 @@ import appConf from '@config/app.conf';
 import databaseConf from '@config/database.conf';
 import mailConfig from '@config/mail.config';
 import redisConf from '@config/redis.conf';
+import sessionConfig from '@config/session.config';
 import { AuthModule } from '@modules/auth/auth.module';
 import { PermissionModule } from '@modules/permission/permission.module';
 import { RoleModule } from '@modules/role/role.module';
@@ -26,7 +27,7 @@ import { HealthCheckerModule } from './modules/health-checker/health-checker.mod
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [databaseConf, redisConf, appConf, mailConfig],
+      load: [databaseConf, redisConf, appConf, mailConfig, sessionConfig],
       envFilePath: `${process.cwd()}/.env.${process.env.NODE_ENV}`,
     }),
     PassportModule.register({ session: true }),
