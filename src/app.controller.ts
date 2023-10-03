@@ -1,4 +1,4 @@
-import { Controller, Get, Logger, Query, Request, Session } from '@nestjs/common';
+import { Controller, Get, HttpCode, HttpStatus, Logger, Query, Request, Session } from '@nestjs/common';
 import { Request as ExpressRequest, Router } from 'express';
 import { AppService } from './app.service';
 import { PublicRoute } from './core/decorators/public-route.decorator';
@@ -13,6 +13,14 @@ export class AppController {
   getHello(): any {
     this.logger.verbose(`XPTO`);
     return this.appService.getHello();
+  }
+
+  @PublicRoute()
+  @Get('delay')
+  @HttpCode(HttpStatus.OK)
+  async delayResponse(): Promise<string> {
+    await new Promise((resolve) => setTimeout(resolve, 10000));
+    return 'Response after 10 seconds';
   }
 
   @Get('/test')

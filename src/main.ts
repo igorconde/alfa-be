@@ -11,6 +11,7 @@ import { Logger, NestApplicationOptions, ValidationPipe } from '@nestjs/common';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { WinstonModule } from 'nest-winston';
 import { winstonOptions } from './app-logging';
+import { TimeoutInterceptor } from './core/interceptors/timeout.interceptor';
 import { CustomValidationPipe } from './core/pipes/custom-validation.pipe';
 import { setupRedis } from './setup-redis';
 import { setupSwagger } from './setup-swagger';
@@ -53,6 +54,8 @@ async function bootstrap() {
   setupSwagger(app, configService);
 
   app.useGlobalPipes(new CustomValidationPipe(), new ValidationPipe({ transform: true, whitelist: true, forbidNonWhitelisted: true }));
+
+  app.useGlobalInterceptors(new TimeoutInterceptor(configService));
 
   // Inicialização do Passport
   app.use(passport.initialize());

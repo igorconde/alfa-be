@@ -11,4 +11,5 @@ export default registerAs('app', () => ({
   apiVersion: process.env.API_VERSION,
   fallbackLanguage: process.env.APP_FALLBACK_LANGUAGE || 'en',
   headerLanguage: process.env.APP_HEADER_LANGUAGE || 'x-custom-lang',
+  timeout: process.env.REQUEST_TIMEOUT,
 }));
