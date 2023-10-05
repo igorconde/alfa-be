@@ -9,9 +9,10 @@ import { RoleModule } from '@modules/role/role.module';
 import { UsuarioModule } from '@modules/usuario/usuario.module';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { PassportModule } from '@nestjs/passport';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { AppController } from './app.controller';
@@ -41,6 +42,18 @@ import { HealthCheckerModule } from './modules/health-checker/health-checker.mod
         return dataSource;
       },
     }),
+    ThrottlerModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => {
+        return [
+          {
+            ttl: configService.get<number>('THROTTLE_TTL'),
+            limit: configService.get<number>('THROTTLE_LIMIT'),
+          },
+        ];
+      },
+    }),
     AuthModule,
     UsuarioModule,
     PermissionModule,
@@ -55,6 +68,10 @@ import { HealthCheckerModule } from './modules/health-checker/health-checker.mod
     {
       provide: APP_GUARD,
       useClass: PublicRoutesGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
     },
   ],
 })

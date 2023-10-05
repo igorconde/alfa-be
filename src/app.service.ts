@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { MailService } from './mail/mail.service';
 
 @Injectable()
@@ -17,21 +17,21 @@ export class AppService {
         salary: 40000,
       },
       {
-        name: 'Bob Johnson',
+        name: 'Bob ',
         position: 'Engineer',
         salary: 60000,
       },
     ];
 
-    try {
-      await this.mailService.userSignUp({
-        to: 'test@gmail.com',
-        data: { hash: 'string' },
-      });
-    } catch (err) {
-      console.log('🚀 ~ file: app.service.ts:32 ~ AppService ~ getHello ~ err:', err);
-      throw new BadRequestException(err.message);
-    }
+    // try {
+    //   await this.mailService.userSignUp({
+    //     to: 'test@gmail.com',
+    //     data: { hash: 'string' },
+    //   });
+    // } catch (err) {
+    //   console.log('🚀 ~ file: app.service.ts:32 ~ AppService ~ getHello ~ err:', err);
+    //   throw new BadRequestException(err.message);
+    // }
 
     return employees;
   }
