@@ -5,6 +5,7 @@
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "target": "es2017",
     "sourceMap": true,
@@ -16,6 +17,15 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@config/*": ["src/core/config/*"],
+      "@admin/*": ["src/modules/admin/*"],
+      "@apps/*": ["src/modules/apps/*"],
+      "@modules/*": ["src/modules/*"],
+      "@utils/*": ["src/core/utils/*"],
+      "@decorators/*": ["src/core/common/decorators/*"],
+      "@/*": ["src/*"]
+    }
   }
 }

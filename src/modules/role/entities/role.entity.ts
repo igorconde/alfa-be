@@ -1,0 +1,35 @@
+import { CustomBaseEntity } from '@/core/entity/custom-base.entity';
+import { PermissionEntity } from '@modules/permission/entities/permission.entity';
+import { Column, Entity, Index, JoinTable, ManyToMany, Unique, VirtualColumn } from 'typeorm';
+
+@Entity({
+  name: 'role',
+})
+@Unique('UQ_role_name', ['name'])
+export class RoleEntity extends CustomBaseEntity {
+  @Column('varchar', { length: 100 })
+  @Index({
+    unique: true,
+  })
+  name: string;
+
+  @Column('text')
+  description: string;
+
+  @VirtualColumn({ query: () => `SELECT COUNT(*) FROM "role"` })
+  totalEmployeesCount: number;
+
+  @ManyToMany(() => PermissionEntity, (permission) => permission.role)
+  @JoinTable({
+    name: 'role_permission',
+    joinColumn: {
+      name: 'roleId',
+      referencedColumnName: 'id',
+    },
+    inverseJoinColumn: {
+      name: 'permissionId',
+      referencedColumnName: 'id',
+    },
+  })
+  permission: PermissionEntity[];
+}

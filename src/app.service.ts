@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common';
+import { MailService } from './mail/mail.service';
 
 @Injectable()
 export class AppService {
-  getHello(): any {
+  constructor(private mailService: MailService) {}
+  async getHello(): Promise<any> {
     const employees = [
       {
         name: 'John Smith',
@@ -15,11 +17,22 @@ export class AppService {
         salary: 40000,
       },
       {
-        name: 'Bob Johnson',
+        name: 'Bob ',
         position: 'Engineer',
         salary: 60000,
       },
     ];
+
+    // try {
+    //   await this.mailService.userSignUp({
+    //     to: 'test@gmail.com',
+    //     data: { hash: 'string' },
+    //   });
+    // } catch (err) {
+    //   console.log('🚀 ~ file: app.service.ts:32 ~ AppService ~ getHello ~ err:', err);
+    //   throw new BadRequestException(err.message);
+    // }
+
     return employees;
   }
 
@@ -32,12 +45,7 @@ export class AppService {
         name: 'Website SEO',
         date: '10 may 2021',
         avatarColor: 'success',
-        avatarGroup: [
-          '/images/avatars/1.png',
-          '/images/avatars/4.png',
-          '/images/avatars/3.png',
-          '/images/avatars/2.png',
-        ],
+        avatarGroup: ['/images/avatars/1.png', '/images/avatars/4.png', '/images/avatars/3.png', '/images/avatars/2.png'],
       },
       {
         id: 2,
@@ -55,12 +63,7 @@ export class AppService {
         date: '12 Aug 2021',
         name: 'Logo Designs',
         avatar: '/images/icons/project-icons/sketch-label.png',
-        avatarGroup: [
-          '/images/avatars/2.png',
-          '/images/avatars/1.png',
-          '/images/avatars/7.png',
-          '/images/avatars/8.png',
-        ],
+        avatarGroup: ['/images/avatars/2.png', '/images/avatars/1.png', '/images/avatars/7.png', '/images/avatars/8.png'],
       },
       {
         id: 4,
@@ -69,12 +72,7 @@ export class AppService {
         date: '19 Apr 2021',
         name: 'IOS App Design',
         avatar: '/images/icons/project-icons/sketch-label.png',
-        avatarGroup: [
-          '/images/avatars/5.png',
-          '/images/avatars/3.png',
-          '/images/avatars/6.png',
-          '/images/avatars/7.png',
-        ],
+        avatarGroup: ['/images/avatars/5.png', '/images/avatars/3.png', '/images/avatars/6.png', '/images/avatars/7.png'],
       },
       {
         id: 5,
@@ -128,12 +126,7 @@ export class AppService {
         date: '06 Oct 2021',
         name: 'Admin Template',
         avatar: '/images/icons/project-icons/vue-label.png',
-        avatarGroup: [
-          '/images/avatars/2.png',
-          '/images/avatars/3.png',
-          '/images/avatars/4.png',
-          '/images/avatars/5.png',
-        ],
+        avatarGroup: ['/images/avatars/2.png', '/images/avatars/3.png', '/images/avatars/4.png', '/images/avatars/5.png'],
       },
     ];
 

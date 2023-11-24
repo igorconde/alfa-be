@@ -29,6 +29,14 @@ services:
     image: "redis:alpine"
     ports:
       - "6379:6380"
+
+  maildev:
+    build:
+      context: .
+      dockerfile: maildev.Dockerfile
+    ports:
+      - 1080:1080
+      - 587:587
  
   # otel-collector:
   #   image: otel/opentelemetry-collector
