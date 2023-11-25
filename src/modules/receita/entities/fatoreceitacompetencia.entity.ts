@@ -2,6 +2,7 @@ import { Calendario } from '@modules/administracao/entities/calendario.entity';
 import { Especialidadeunidade } from '@modules/administracao/entities/especialidadeunidade.entity';
 import { Regiao } from '@modules/administracao/entities/regiao.entity';
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Unidadefederativa } from '@modules/administracao/entities/unidadefederativa.entity';
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Tipoprevisaoreceita } from '@modules/atendimento/entities/tipoprevisaoreceita.entity';
 import { Cliente } from '@modules/cliente/entities/cliente.entity';
@@ -11,7 +12,6 @@ import { Produtolinha } from '@modules/portfolio/entities/produtolinha.entity';
 import { Produtonacional } from '@modules/portfolio/entities/produtonacional.entity';
 import { Produtoregional } from '@modules/portfolio/entities/produtoregional.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Unidadefederativa } from './Unidadefederativa';
 
 @Index('fatoreceitacompetencia_pkey', ['id'], { unique: true })
 @Index('fatoreceitacompetencia_fk_fatoreceitacompetencia_idatendimento', ['idatendimento'], {})

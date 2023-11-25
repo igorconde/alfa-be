@@ -32,7 +32,6 @@ import { Fatostatusatendimentohistoricoipea } from './Fatostatusatendimentohisto
 import { Fatostatusatendimentoia } from './Fatostatusatendimentoia';
 import { Fatostatusatendimentoie } from './Fatostatusatendimentoie';
 import { Fatostatusatendimentoipea } from './Fatostatusatendimentoipea';
-import { Ordemfaturamento } from './Ordemfaturamento';
 import { Pessoafisica } from './Pessoafisica';
 import { Pessoafisicaestrangeira } from './Pessoafisicaestrangeira';
 import { Pessoajuridica } from './Pessoajuridica';
@@ -41,6 +40,7 @@ import { Previsaoreceita } from './Previsaoreceita';
 import { Receitafaturamentofontepagadora } from './Receitafaturamentofontepagadora';
 import { Tipocnpj } from './Tipocnpj';
 import { Agenciareguladora } from './agencia-reguladora.entity';
+import { Ordemfaturamento } from './ordemfaturamento.entity';
 @modules/cliente/entities/cliente.entity';-abdi-digital.entity';
 @modules/cliente/entities/cliente.entity';-abdi.entity';
 

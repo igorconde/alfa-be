@@ -29,7 +29,6 @@ import { Fatoreceitacompetencia } from './Fatoreceitacompetencia';
 import { Historicotrocastatusdndr } from './Historicotrocastatusdndr';
 import { Indicadoratendimentoreferencial } from './Indicadoratendimentoreferencial';
 import { Indicadores } from './Indicadores';
-import { Ordemfaturamento } from './Ordemfaturamento';
 import { Pesquisasatisfacao } from './Pesquisasatisfacao';
 import { Previsaoapropriacaoproducao } from './Previsaoapropriacaoproducao';
 import { Previsaoproducao } from './Previsaoproducao';
@@ -44,6 +43,7 @@ import { Receitafaturamentobackup } from './Receitafaturamentobackup';
 import { Relatoriofinal } from './Relatoriofinal';
 import { Solicitacaostatus } from './Solicitacaostatus';
 import { Termoaceite } from './Termoaceite';
+import { Ordemfaturamento } from './ordemfaturamento.entity';
 
 @Index('atendimentobuscalivre', ['buscalivreatendimento'], {})
 @Index('atendimento_pkey', ['id'], { unique: true })

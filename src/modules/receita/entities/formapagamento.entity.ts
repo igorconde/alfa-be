@@ -1,5 +1,5 @@
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Ordemfaturamento } from './Ordemfaturamento';
+import { Ordemfaturamento } from './ordemfaturamento.entity';
 
 @Index('formapagamento_codigo_key', ['codigo'], { unique: true })
 @Index('formapagamento_pkey', ['id'], { unique: true })
