@@ -1,5 +1,5 @@
+import { Usuario } from '@modules/usuario/entities/usuario.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Usuario } from './Usuario';
 
 @Index('deparaloginsgtsi_pkey', ['id'], { unique: true })
 @Index('ix_deparaloginsgtsi_fk_deparaloginsgtsi_user_id_sgt', ['userIdSgt'], {})

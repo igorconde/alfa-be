@@ -1,6 +1,6 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Arquivocarga } from './Arquivocarga';
+import { Arquivocarga } from './arquivo-carga.entity';
 
 @Index('atendimentoscriticas_pkey', ['id'], { unique: true })
 @Index('ix_atendimentoscriticas_fk_atendimentoscriticas_idarquivocarga', ['idarquivocarga'], {})

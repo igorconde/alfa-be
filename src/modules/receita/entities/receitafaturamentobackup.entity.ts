@@ -1,7 +1,7 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Usuario } from '@modules/usuario/entities/usuario.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Enviofaturamentoatendimento } from './Enviofaturamentoatendimento';
-import { Usuario } from './Usuario';
 
 @Index('receitafaturamentobackup_pkey', ['id'], { unique: true })
 @Index('ireceitafaturamentobackupfkatendimento', ['idatendimento'], {})

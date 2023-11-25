@@ -1,10 +1,9 @@
+import { Calendario } from '@modules/administracao/entities/calendario.entity';
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Arquivocarga } from './Arquivocarga';
-import { Atendimento } from './Atendimento';
-import { Calendario } from './Calendario';
+import { Arquivocarga } from './arquivo-carga.entity';
 
-@Index('atendimentosi_pkey', ['id'], { unique: true })
 @Index('ix_atendimentosi_fk_atendimentosi_idatendimento', ['idatendimento'], {})
 @Index('ix_atendimentosi_fk_atendimentosi_idcalendario', ['idcalendario'], {})
 @Index('ix_atendimentosi_fk_atendimentosi_idunidade', ['idunidade'], {})

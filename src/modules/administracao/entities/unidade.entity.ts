@@ -1,4 +1,5 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Usuario } from '@modules/usuario/entities/usuario.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Arquivocarga } from './Arquivocarga';
 import { Arquivounigestcsv } from './Arquivounigestcsv';
@@ -67,7 +68,6 @@ import { Receita } from './Receita';
 import { Relatoriodn } from './Relatoriodn';
 import { Tipounidade } from './Tipounidade';
 import { Treinamento } from './Treinamento';
-import { Usuario } from './Usuario';
 import { Visita } from './Visita';
 
 @Index('unidadebuscalivre', ['buscalivre'], {})

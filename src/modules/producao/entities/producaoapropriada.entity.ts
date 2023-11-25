@@ -1,5 +1,6 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Usuario } from '@modules/usuario/entities/usuario.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Atendimentopraticabdigital } from './Atendimentopraticabdigital';
 import { Atendimentoproducaoapropriada } from './Atendimentoproducaoapropriada';
@@ -10,7 +11,6 @@ import { Encontroconsultoriacdigital } from './Encontroconsultoriacdigital';
 import { Encontroconsultoriaddigital } from './Encontroconsultoriaddigital';
 import { Receitaapropriada } from './Receitaapropriada';
 import { Receitaapropriadaproducaoapropriada } from './Receitaapropriadaproducaoapropriada';
-import { Usuario } from './Usuario';
 import { Visitaconsultoriac } from './Visitaconsultoriac';
 import { Visitaconsultoriad } from './Visitaconsultoriad';
 

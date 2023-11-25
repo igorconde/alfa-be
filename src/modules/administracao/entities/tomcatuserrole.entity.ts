@@ -1,5 +1,5 @@
+import { Usuario } from '@modules/usuario/entities/usuario.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Usuario } from './Usuario';
 
 @Index('tomcatuserrole_pkey', ['id'], { unique: true })
 @Index('itomcatuserrolefkusuario', ['idusuario'], {})

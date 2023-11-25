@@ -1,6 +1,6 @@
+import { Fatostatusatendimentosi } from '@modules/atendimento/entities/fatostatusatendimentosi.entity';
+import { Relatoriodn } from '@modules/common/entities/relatoriodn.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Fatostatusatendimentosi } from './Fatostatusatendimentosi';
-import { Relatoriodn } from './Relatoriodn';
 
 @Index('atendimentostatussi_pkey', ['id'], { unique: true })
 @Entity('atendimentostatussi', { schema: 'public' })

@@ -1,6 +1,6 @@
+import { Usuario } from '@modules/usuario/entities/usuario.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Dashboard } from './Dashboard';
-import { Usuario } from './Usuario';
 
 @Index('dashboardusuario_pkey', ['id'], { unique: true })
 @Index('idashboardusuariofkdashboard', ['iddashboard'], {})
