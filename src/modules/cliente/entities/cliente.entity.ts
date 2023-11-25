@@ -1,5 +1,6 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Portecliente } from '@modules/cliente/entities/porte-cliente.entity';
 import { Usuario } from '@modules/usuario/entities/usuario.entity';
 import { Clienteabdi, Clienteabdidigital } from 'import { Cliente } from ';
 import { Column, Entity, Index, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
@@ -36,7 +37,6 @@ import { Pessoafisica } from './Pessoafisica';
 import { Pessoafisicaestrangeira } from './Pessoafisicaestrangeira';
 import { Pessoajuridica } from './Pessoajuridica';
 import { Pessoajuridicaestrangeira } from './Pessoajuridicaestrangeira';
-import { Portecliente } from './Portecliente';
 import { Previsaoreceita } from './Previsaoreceita';
 import { Receitafaturamentofontepagadora } from './Receitafaturamentofontepagadora';
 import { Tipocnpj } from './Tipocnpj';

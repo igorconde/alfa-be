@@ -1,3 +1,4 @@
+import { Regiao } from '@modules/administracao/entities/regiao.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Apl } from './Apl';
 import { Fatofontepagadoraatendimentobp } from './Fatofontepagadoraatendimentobp';
@@ -21,7 +22,6 @@ import { Fatostatusatendimentoia } from './Fatostatusatendimentoia';
 import { Fatostatusatendimentoie } from './Fatostatusatendimentoie';
 import { Fatostatusatendimentoipea } from './Fatostatusatendimentoipea';
 import { Municipio } from './Municipio';
-import { Regiao } from './Regiao';
 
 @Index('unidadefederativa_pkey', ['id'], { unique: true })
 @Index('iunidadefederativafkregiao', ['idregiao'], {})

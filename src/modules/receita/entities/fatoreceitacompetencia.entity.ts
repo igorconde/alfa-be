@@ -1,16 +1,16 @@
 import { Calendario } from '@modules/administracao/entities/calendario.entity';
+import { Especialidadeunidade } from '@modules/administracao/entities/especialidadeunidade.entity';
+import { Regiao } from '@modules/administracao/entities/regiao.entity';
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Tipoprevisaoreceita } from '@modules/atendimento/entities/tipoprevisaoreceita.entity';
 import { Cliente } from '@modules/cliente/entities/cliente.entity';
+import { Portecliente } from '@modules/cliente/entities/porte-cliente.entity';
 import { Produtocategoria } from '@modules/portfolio/entities/produtocategoria.entity';
 import { Produtolinha } from '@modules/portfolio/entities/produtolinha.entity';
 import { Produtonacional } from '@modules/portfolio/entities/produtonacional.entity';
 import { Produtoregional } from '@modules/portfolio/entities/produtoregional.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Especialidadeunidade } from './Especialidadeunidade';
-import { Portecliente } from './Portecliente';
-import { Regiao } from './Regiao';
-import { Tipoprevisaoreceita } from './Tipoprevisaoreceita';
 import { Unidadefederativa } from './Unidadefederativa';
 
 @Index('fatoreceitacompetencia_pkey', ['id'], { unique: true })

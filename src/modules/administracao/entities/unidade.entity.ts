@@ -1,3 +1,4 @@
+import { Especialidadeunidade } from '@modules/administracao/entities/especialidadeunidade.entity';
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Produtoregional } from '@modules/portfolio/entities/produtoregional.entity';
@@ -15,7 +16,6 @@ import { Controlesequencia } from './Controlesequencia';
 import { Controleusuarios } from './Controleusuarios';
 import { Dashboardisi } from './Dashboardisi';
 import { Despesa } from './Despesa';
-import { Especialidadeunidade } from './Especialidadeunidade';
 import { Evento } from './Evento';
 import { Fatoatendimento } from './Fatoatendimento';
 import { Fatodespesa } from './Fatodespesa';

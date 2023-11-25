@@ -1,12 +1,12 @@
 import { Calendario } from '@modules/administracao/entities/calendario.entity';
+import { Especialidadeunidade } from '@modules/administracao/entities/especialidadeunidade.entity';
+import { Regiao } from '@modules/administracao/entities/regiao.entity';
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Produtocategoria } from '@modules/portfolio/entities/produtocategoria.entity';
 import { Produtolinha } from '@modules/portfolio/entities/produtolinha.entity';
 import { Produtonacional } from '@modules/portfolio/entities/produtonacional.entity';
 import { Produtoregional } from '@modules/portfolio/entities/produtoregional.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Especialidadeunidade } from './Especialidadeunidade';
-import { Regiao } from './Regiao';
 
 @Index('fatoresultado_pkey', ['id'], { unique: true })
 @Index('ifatoresultadofkcalendario', ['idcalendario'], {})
