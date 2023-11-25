@@ -1,5 +1,5 @@
+import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Unidade } from './Unidade';
 
 @Index('arquivounigestcsv_pkey', ['id'], { unique: true })
 @Index('ix_arquivounigestcsv_fk_arquivounigestcsv_idunidade', ['idunidade'], {})

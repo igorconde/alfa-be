@@ -1,3 +1,4 @@
+import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Apl } from './Apl';
 import { Calendario } from './Calendario';
@@ -5,7 +6,6 @@ import { Cliente } from './Cliente';
 import { Setor } from './Setor';
 import { Solicitacaostatus } from './Solicitacaostatus';
 import { Unidadefederativa } from './Unidadefederativa';
-import { Unidade } from './Unidade';
 
 @Index('fatofontepagadoraatendimentoie_pkey', ['id'], { unique: true })
 @Entity('fatofontepagadoraatendimentoie', { schema: 'public' })

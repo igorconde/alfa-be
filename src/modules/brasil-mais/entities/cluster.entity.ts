@@ -1,8 +1,8 @@
+import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Configuracaobrasilmais } from './Configuracaobrasilmais';
-import { Unidade } from './Unidade';
 import { Clusterbairro } from './Clusterbairro';
 import { Clusterclienteabdi } from './Clusterclienteabdi';
+import { Configuracaobrasilmais } from './Configuracaobrasilmais';
 
 @Index('cluster_pkey', ['id'], { unique: true })
 @Index('ix_cluster_fk_cluster_idconfiguracaobrasilmais', ['idconfiguracaobrasilmais'], {})

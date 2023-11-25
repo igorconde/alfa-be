@@ -1,5 +1,5 @@
+import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Unidade } from './Unidade';
 
 @Index('controlesequencia_pkey', ['id'], { unique: true })
 @Index('icontrolesequenciafkunidade', ['idunidade'], {})

@@ -1,8 +1,8 @@
+import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Atendimentostatus } from './Atendimentostatus';
 import { Atendimentostatussi } from './Atendimentostatussi';
 import { Produtolinha } from './Produtolinha';
-import { Unidade } from './Unidade';
 
 @Index('relatoriodn_pkey', ['id'], { unique: true })
 @Index('ix_relatoriodn_fk_relatoriodn_idatendimentostatus', ['idatendimentostatus'], {})

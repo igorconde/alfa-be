@@ -1,3 +1,4 @@
+import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Fatodespesa } from './Fatodespesa';
 import { Fatoproducaoapropriada } from './Fatoproducaoapropriada';
@@ -6,7 +7,6 @@ import { Fatoreceitaapropriada } from './Fatoreceitaapropriada';
 import { Fatoreceitacompetencia } from './Fatoreceitacompetencia';
 import { Fatoresultado } from './Fatoresultado';
 import { Fatoresultadocompetencia } from './Fatoresultadocompetencia';
-import { Unidade } from './Unidade';
 
 @Index('especialidadeunidade_pkey', ['id'], { unique: true })
 @Entity('especialidadeunidade', { schema: 'public' })

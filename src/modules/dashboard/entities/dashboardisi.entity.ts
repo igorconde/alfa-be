@@ -1,8 +1,8 @@
+import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Rampup } from './Rampup';
 import { Stable } from './Stable';
 import { Strategic } from './Strategic';
-import { Unidade } from './Unidade';
 
 @Index('dashboardisi_pkey', ['id'], { unique: true })
 @Index('ix_dashboardisi_fk_dashboardisi_idrampup', ['idrampup'], {})

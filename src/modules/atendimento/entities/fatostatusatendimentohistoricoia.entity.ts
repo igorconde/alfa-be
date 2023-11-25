@@ -1,9 +1,9 @@
+import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Atendimentostatus } from './Atendimentostatus';
 import { Calendario } from './Calendario';
 import { Cliente } from './Cliente';
 import { Unidadefederativa } from './Unidadefederativa';
-import { Unidade } from './Unidade';
 
 @Index('fatostatusatendimentohistoricoia_pkey', ['id'], { unique: true })
 @Index('ftsttstndmnthstrcoiafkftsttstndmnthstoricoiaidatendimentostatus', ['idatendimentostatus'], {})

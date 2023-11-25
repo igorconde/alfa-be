@@ -1,3 +1,4 @@
+import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Calendario } from './Calendario';
 import { Especialidadeunidade } from './Especialidadeunidade';
@@ -6,7 +7,6 @@ import { Produtolinha } from './Produtolinha';
 import { Produtonacional } from './Produtonacional';
 import { Produtoregional } from './Produtoregional';
 import { Regiao } from './Regiao';
-import { Unidade } from './Unidade';
 
 @Index('fatoresultado_pkey', ['id'], { unique: true })
 @Index('ifatoresultadofkcalendario', ['idcalendario'], {})

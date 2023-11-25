@@ -1,3 +1,4 @@
+import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Atendimento } from './Atendimento';
 import { Colaboradorprodutoregional } from './Colaboradorprodutoregional';
@@ -14,7 +15,6 @@ import { Fatostatusatendimento } from './Fatostatusatendimento';
 import { Metafinanceira } from './Metafinanceira';
 import { Producao } from './Producao';
 import { Produtonacional } from './Produtonacional';
-import { Unidade } from './Unidade';
 import { Receita } from './Receita';
 
 @Index('produtoregional_pkey', ['id'], { unique: true })

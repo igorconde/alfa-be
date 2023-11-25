@@ -1,6 +1,6 @@
+import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Grupotecnologico } from './Grupotecnologico';
-import { Unidade } from './Unidade';
 
 @Index('grupotecnologicounidade_pkey', ['id'], { unique: true })
 @Index('grptecnologicounidadefkgrpotecnologicounidadeidgrupotecnologico', ['idgrupotecnologico'], {})

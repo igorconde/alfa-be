@@ -1,3 +1,4 @@
+import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Atendimento } from './Atendimento';
 import { Clusterclientementoriadigital } from './Clusterclientementoriadigital';
@@ -37,7 +38,6 @@ import { Portecliente } from './Portecliente';
 import { Previsaoreceita } from './Previsaoreceita';
 import { Receitafaturamentofontepagadora } from './Receitafaturamentofontepagadora';
 import { Tipocnpj } from './Tipocnpj';
-import { Unidade } from './Unidade';
 import { Usuario } from './Usuario';
 import { Agenciareguladora } from './agencia-reguladora.entity';
 import { Clienteabdidigital } from './cliente-abdi-digital.entity';

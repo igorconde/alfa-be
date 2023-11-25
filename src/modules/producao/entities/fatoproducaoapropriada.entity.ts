@@ -1,3 +1,4 @@
+import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Atendimento } from './Atendimento';
 import { Calendario } from './Calendario';
@@ -11,7 +12,6 @@ import { Produtonacional } from './Produtonacional';
 import { Produtoregional } from './Produtoregional';
 import { Regiao } from './Regiao';
 import { Unidadefederativa } from './Unidadefederativa';
-import { Unidade } from './Unidade';
 
 @Index('fatoproducaoapropriada_pkey', ['id'], { unique: true })
 @Index('ifatoproducaoapropriadafkatendimento', ['idatendimento'], {})

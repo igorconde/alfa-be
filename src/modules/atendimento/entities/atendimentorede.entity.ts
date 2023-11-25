@@ -1,7 +1,7 @@
+import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Atendimento } from './Atendimento';
 import { Statusnotificacao } from './Statusnotificacao';
-import { Unidade } from './Unidade';
 
 @Index('atendimentorede_pkey', ['id'], { unique: true })
 @Index('ix_atendimentorede_fk_atendimentorede_idatendimentoexecutor', ['idatendimentoexecutor'], {})

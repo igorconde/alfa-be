@@ -1,9 +1,9 @@
+import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Configuracaograficodashboard } from './Configuracaograficodashboard';
 import { Grupotela } from './Grupotela';
 import { Grupotelatemp } from './Grupotelatemp';
 import { Parametro } from './Parametro';
-import { Unidade } from './Unidade';
 
 @Index('tipounidade_pkey', ['id'], { unique: true })
 @Entity('tipounidade', { schema: 'public' })

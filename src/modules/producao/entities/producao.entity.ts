@@ -1,8 +1,8 @@
+import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Produtocategoria } from './Produtocategoria';
 import { Produtolinha } from './Produtolinha';
 import { Produtoregional } from './Produtoregional';
-import { Unidade } from './Unidade';
 
 @Index('producao_pkey', ['id'], { unique: true })
 @Index('iproducaofkprodutocategoria', ['idprodutocategoria'], {})

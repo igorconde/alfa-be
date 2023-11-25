@@ -1,16 +1,16 @@
+import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Atendimento } from './Atendimento';
 import { Atendimentopraticabdigital } from './Atendimentopraticabdigital';
 import { Atendimentoproducaoapropriada } from './Atendimentoproducaoapropriada';
+import { Colaborador } from './Colaborador';
 import { Encontroalinhamentobdigital } from './Encontroalinhamentobdigital';
 import { Encontroconsultoriabdigital } from './Encontroconsultoriabdigital';
 import { Encontroconsultoriacdigital } from './Encontroconsultoriacdigital';
 import { Encontroconsultoriaddigital } from './Encontroconsultoriaddigital';
-import { Atendimento } from './Atendimento';
-import { Colaborador } from './Colaborador';
 import { Receitaapropriada } from './Receitaapropriada';
-import { Unidade } from './Unidade';
-import { Usuario } from './Usuario';
 import { Receitaapropriadaproducaoapropriada } from './Receitaapropriadaproducaoapropriada';
+import { Usuario } from './Usuario';
 import { Visitaconsultoriac } from './Visitaconsultoriac';
 import { Visitaconsultoriad } from './Visitaconsultoriad';
 

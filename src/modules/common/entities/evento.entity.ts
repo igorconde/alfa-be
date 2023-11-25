@@ -1,5 +1,5 @@
+import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Unidade } from './Unidade';
 import { Eventocolaborador } from './Eventocolaborador';
 
 @Index('evento_pkey', ['id'], { unique: true })

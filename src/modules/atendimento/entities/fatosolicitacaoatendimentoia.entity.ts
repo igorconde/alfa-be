@@ -1,9 +1,9 @@
+import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Calendario } from './Calendario';
 import { Cliente } from './Cliente';
 import { Solicitacaostatus } from './Solicitacaostatus';
 import { Unidadefederativa } from './Unidadefederativa';
-import { Unidade } from './Unidade';
 
 @Index('fatosolicitacaoatendimentoia_pkey', ['id'], { unique: true })
 @Index('ftslcitacaoatendimentoiafkftslicitacaoatendimentoiaidcalendario', ['idcalendario'], {})
