@@ -1,6 +1,5 @@
-import { Cliente } from 'import { Cliente } from ';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-@modules/cliente/entities/cliente.entity';.entity';
+import { Cliente } from './cliente.entity';
 
 @Index('tipocnpj_pkey', ['id'], { unique: true })
 @Entity('tipocnpj', { schema: 'public' })

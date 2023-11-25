@@ -1,7 +1,7 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Temaa3consultoriacdigital } from './Temaa3consultoriacdigital';
-import { Anexoacompanhamentoa3consultoriacdigital } from './Anexoacompanhamentoa3consultoriacdigital';
-import { Medidasacompanhamentoa3consultoriacdigital } from './Medidasacompanhamentoa3consultoriacdigital';
+import { Anexoacompanhamentoa3consultoriacdigital } from './anexoacompanhamentoa3consultoriacdigital.entity';
+import { Medidasacompanhamentoa3consultoriacdigital } from './medidasacompanhamentoa3consultoriacdigital.entity';
+import { Temaa3consultoriacdigital } from './temaa3consultoriacdigital.entity';
 
 @Index('acompanhamentoa3consultoriacdigital_pkey', ['id'], { unique: true })
 @Index('cmpnhmnt3cnsltoriacdigitalfkcmpnhmnt3cnsultoriacdigitalidtemaa3', ['idtemaa3'], {})

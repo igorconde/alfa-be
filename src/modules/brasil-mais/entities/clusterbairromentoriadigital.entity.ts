@@ -1,5 +1,5 @@
+import { Bairro } from '@modules/administracao/entities/bairro.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Bairro } from './Bairro';
 import { Clustermentoriadigital } from './Clustermentoriadigital';
 
 @Index('clusterbairromentoriadigital_pkey', ['id'], { unique: true })

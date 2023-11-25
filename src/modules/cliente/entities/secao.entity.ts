@@ -1,5 +1,5 @@
+import { Setor } from '@modules/atendimento/entities/setor.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Setor } from './Setor';
 
 @Index('secao_pkey', ['id'], { unique: true })
 @Entity('secao', { schema: 'public' })

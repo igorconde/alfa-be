@@ -2,10 +2,8 @@ import { Fatoproducaoapropriada } from '@modules/producao/entities/fatoproducaoa
 import { Fatoproducaoapropriadametrologia } from '@modules/producao/entities/fatoproducaoapropriadametrologia.entity';
 import { Fatoreceitaapropriada } from '@modules/receita/entities/fatoreceitaapropriada.entity';
 import { Fatoreceitacompetencia } from '@modules/receita/entities/fatoreceitacompetencia.entity';
-import { Cliente, Clientebackup } from 'import { Cliente } from ';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-@modules/cliente/entities/cliente.entity';backup';
-@modules/cliente/entities/cliente.entity';.entity';
+import { Cliente } from './cliente.entity';
 
 @Index('portecliente_pkey', ['id'], { unique: true })
 @Entity('portecliente', { schema: 'public' })
@@ -37,9 +35,6 @@ export class Portecliente {
 
   @OneToMany(() => Cliente, (cliente) => cliente.idportecliente)
   clientes: Cliente[];
-
-  @OneToMany(() => Clientebackup, (clientebackup) => clientebackup.idportecliente2)
-  clientebackups: Clientebackup[];
 
   @OneToMany(() => Fatoproducaoapropriada, (fatoproducaoapropriada) => fatoproducaoapropriada.idportecliente2)
   fatoproducaoapropriadas: Fatoproducaoapropriada[];

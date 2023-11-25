@@ -1,9 +1,8 @@
-import { Cliente } from 'import { Cliente } from ';
+import { Bairro } from '@modules/administracao/entities/bairro.entity';
+import { Clusterclienteabdi } from '@modules/brasil-mais/entities/clusterclienteabdi.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Bairro } from './Bairro';
-import { Clusterclienteabdi } from './Clusterclienteabdi';
-import { Contatoabdi } from './Contatoabdi';
-@modules/cliente/entities/cliente.entity';.entity';
+import { Cliente } from './cliente.entity';
+import { Contatoabdi } from './contato-abdi.entity';
 
 @Index('clienteabdi_pkey', ['id'], { unique: true })
 @Index('ix_clienteabdi_fk_clienteabdi_idbairro', ['idbairro'], {})

@@ -1,6 +1,5 @@
-import { Clienteabdi } from 'import { Cliente } from ';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-@modules/cliente/entities/cliente.entity';-abdi.entity';
+import { Clienteabdi } from './cliente-abdi.entity';
 
 @Index('contatoabdi_pkey', ['id'], { unique: true })
 @Index('ix_contatoabdi_fk_contatoabdi_idclienteabdi', ['idclienteabdi'], {})

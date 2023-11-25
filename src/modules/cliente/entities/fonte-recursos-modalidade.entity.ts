@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { FonteRecursosOrigem } from './FonteRecursosOrigem';
+import { FonteRecursosOrigem } from './fonte-recursos-origem.entity';
 
 @Index('fonte_recursos_modalidade_pkey', ['id'], { unique: true })
 @Index('fntrcrsosmodalidadefkfntrecursosmodalidadeidfonterecursosorigem', ['idFonterecursosorigem'], {})

@@ -1,7 +1,6 @@
-import { Cliente } from 'import { Cliente } from ';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Agencianacional } from './agencia-nacional.entity';
-@modules/cliente/entities/cliente.entity';.entity';
+import { Cliente } from './cliente.entity';
 
 @Index('agenciareguladora_pkey', ['id'], { unique: true })
 @Index('ix_agenciareguladora_fk_agenciareguladora_idagencianacional', ['idagencianacional'], {})

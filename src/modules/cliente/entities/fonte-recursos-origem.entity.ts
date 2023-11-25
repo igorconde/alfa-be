@@ -1,5 +1,5 @@
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { FonteRecursosModalidade } from './FonteRecursosModalidade';
+import { FonteRecursosModalidade } from './fonte-recursos-modalidade.entity';
 
 @Index('fonte_recursos_origem_pkey', ['id'], { unique: true })
 @Entity('fonte_recursos_origem', { schema: 'public' })

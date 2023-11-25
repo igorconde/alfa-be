@@ -1,7 +1,7 @@
+import { Bairro } from '@modules/administracao/entities/bairro.entity';
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Unidadefederativa } from '@modules/administracao/entities/unidadefederativa.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Bairro } from './Bairro';
 import { Endereco } from './Endereco';
 import { Enderecobackup } from './Enderecobackup';
 

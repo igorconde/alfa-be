@@ -1,48 +1,45 @@
+import { Endereco } from '@modules/administracao/entities/endereco.entity';
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Fatoatendimento } from '@modules/atendimento/entities/fatoatendimento.entity';
+import { Fatofontepagadoraatendimentobp } from '@modules/atendimento/entities/fatofontepagadoraatendimentobp.entity';
+import { Fatofontepagadoraatendimentoia } from '@modules/atendimento/entities/fatofontepagadoraatendimentoia.entity';
+import { Fatofontepagadoraatendimentoie } from '@modules/atendimento/entities/fatofontepagadoraatendimentoie.entity';
+import { Fatofontepagadoraatendimentoipea } from '@modules/atendimento/entities/fatofontepagadoraatendimentoipea.entity';
+import { Fatosolicitacaoatendimentobp } from '@modules/atendimento/entities/fatosolicitacaoatendimentobp.entity';
+import { Fatosolicitacaoatendimentoia } from '@modules/atendimento/entities/fatosolicitacaoatendimentoia.entity';
+import { Fatosolicitacaoatendimentoie } from '@modules/atendimento/entities/fatosolicitacaoatendimentoie.entity';
+import { Fatosolicitacaoatendimentoipea } from '@modules/atendimento/entities/fatosolicitacaoatendimentoipea.entity';
 import { Fatostatusatendimento } from '@modules/atendimento/entities/fatostatusatendimento.entity';
+import { Fatostatusatendimentobp } from '@modules/atendimento/entities/fatostatusatendimentobp.entity';
+import { Fatostatusatendimentohistoricobp } from '@modules/atendimento/entities/fatostatusatendimentohistoricobp.entity';
+import { Fatostatusatendimentohistoricoia } from '@modules/atendimento/entities/fatostatusatendimentohistoricoia.entity';
+import { Fatostatusatendimentohistoricoie } from '@modules/atendimento/entities/fatostatusatendimentohistoricoie.entity';
+import { Fatostatusatendimentohistoricoipea } from '@modules/atendimento/entities/fatostatusatendimentohistoricoipea.entity';
+import { Fatostatusatendimentoia } from '@modules/atendimento/entities/fatostatusatendimentoia.entity';
+import { Fatostatusatendimentoie } from '@modules/atendimento/entities/fatostatusatendimentoie.entity';
+import { Fatostatusatendimentoipea } from '@modules/atendimento/entities/fatostatusatendimentoipea.entity';
+import { Previsaoreceita } from '@modules/atendimento/entities/previsaoreceita.entity';
+import { Clusterclientementoriadigital } from '@modules/brasil-mais/entities/clusterclientementoriadigital.entity';
 import { Portecliente } from '@modules/cliente/entities/porte-cliente.entity';
+import { Pessoafisica } from '@modules/common/entities/pessoafisica.entity';
+import { Pessoafisicaestrangeira } from '@modules/common/entities/pessoafisicaestrangeira.entity';
+import { Pessoajuridica } from '@modules/common/entities/pessoajuridica.entity';
+import { Pessoajuridicaestrangeira } from '@modules/common/entities/pessoajuridicaestrangeira.entity';
 import { Fatoproducaoapropriada } from '@modules/producao/entities/fatoproducaoapropriada.entity';
 import { Fatoproducaoapropriadametrologia } from '@modules/producao/entities/fatoproducaoapropriadametrologia.entity';
 import { Fatoreceitaapropriada } from '@modules/receita/entities/fatoreceitaapropriada.entity';
 import { Fatoreceitacompetencia } from '@modules/receita/entities/fatoreceitacompetencia.entity';
+import { Ordemfaturamento } from '@modules/receita/entities/ordemfaturamento.entity';
+import { Receitafaturamentofontepagadora } from '@modules/receita/entities/receitafaturamentofontepagadora.entity';
 import { Usuario } from '@modules/usuario/entities/usuario.entity';
-import { Clienteabdi, Clienteabdidigital } from 'import { Cliente } from ';
 import { Column, Entity, Index, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Clusterclientementoriadigital } from './Clusterclientementoriadigital';
-import { Cnaesecundariocliente } from './Cnaesecundariocliente';
-import { Contato } from './Contato';
-import { Contatobackup } from './Contatobackup';
-import { Endereco } from './Endereco';
-import { Enderecobackup } from './Enderecobackup';
-import { Fatofontepagadoraatendimentobp } from './Fatofontepagadoraatendimentobp';
-import { Fatofontepagadoraatendimentoia } from './Fatofontepagadoraatendimentoia';
-import { Fatofontepagadoraatendimentoie } from './Fatofontepagadoraatendimentoie';
-import { Fatofontepagadoraatendimentoipea } from './Fatofontepagadoraatendimentoipea';
-import { Fatosolicitacaoatendimentobp } from './Fatosolicitacaoatendimentobp';
-import { Fatosolicitacaoatendimentoia } from './Fatosolicitacaoatendimentoia';
-import { Fatosolicitacaoatendimentoie } from './Fatosolicitacaoatendimentoie';
-import { Fatosolicitacaoatendimentoipea } from './Fatosolicitacaoatendimentoipea';
-import { Fatostatusatendimentobp } from './Fatostatusatendimentobp';
-import { Fatostatusatendimentohistoricobp } from './Fatostatusatendimentohistoricobp';
-import { Fatostatusatendimentohistoricoia } from './Fatostatusatendimentohistoricoia';
-import { Fatostatusatendimentohistoricoie } from './Fatostatusatendimentohistoricoie';
-import { Fatostatusatendimentohistoricoipea } from './Fatostatusatendimentohistoricoipea';
-import { Fatostatusatendimentoia } from './Fatostatusatendimentoia';
-import { Fatostatusatendimentoie } from './Fatostatusatendimentoie';
-import { Fatostatusatendimentoipea } from './Fatostatusatendimentoipea';
-import { Pessoafisica } from './Pessoafisica';
-import { Pessoafisicaestrangeira } from './Pessoafisicaestrangeira';
-import { Pessoajuridica } from './Pessoajuridica';
-import { Pessoajuridicaestrangeira } from './Pessoajuridicaestrangeira';
-import { Previsaoreceita } from './Previsaoreceita';
-import { Receitafaturamentofontepagadora } from './Receitafaturamentofontepagadora';
-import { Tipocnpj } from './Tipocnpj';
 import { Agenciareguladora } from './agencia-reguladora.entity';
-import { Ordemfaturamento } from './ordemfaturamento.entity';
-@modules/cliente/entities/cliente.entity';-abdi-digital.entity';
-@modules/cliente/entities/cliente.entity';-abdi.entity';
+import { Clienteabdidigital } from './cliente-abdi-digital.entity';
+import { Clienteabdi } from './cliente-abdi.entity';
+import { Cnaesecundariocliente } from './cnae-secundario-cliente.entity';
+import { Contato } from './contato.entity';
+import { Tipocnpj } from './tipo-cnpj.entity';
 
 @Index('iclienteu1', ['cpfcnpj'], {})
 @Index('cliente_cpfcnpj', ['cpfcnpj'], { unique: true })
@@ -218,14 +215,8 @@ export class Cliente {
   @OneToMany(() => Contato, (contato) => contato.idcliente2)
   contatoes: Contato[];
 
-  @OneToMany(() => Contatobackup, (contatobackup) => contatobackup.idcliente2)
-  contatobackups: Contatobackup[];
-
   @OneToMany(() => Endereco, (endereco) => endereco.idcliente2)
   enderecos: Endereco[];
-
-  @OneToMany(() => Enderecobackup, (enderecobackup) => enderecobackup.idcliente2)
-  enderecobackups: Enderecobackup[];
 
   @OneToMany(() => Fatoatendimento, (fatoatendimento) => fatoatendimento.idcliente2)
   fatoatendimentos: Fatoatendimento[];
