@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Kpidicionario } from './Kpidicionario';
+import { Kpidicionario } from './kpidicionario.entity';
 
 @Index('kpi_pkey', ['id'], { unique: true })
 @Entity('kpi', { schema: 'public' })

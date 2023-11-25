@@ -1,8 +1,8 @@
+import { Enviofaturamentoatendimento } from '@modules/atendimento/entities/enviofaturamentoatendimento.entity';
 import { Receitaapropriada } from '@modules/receita/entities/receitaapropriada.entity';
 import { Usuario } from '@modules/usuario/entities/usuario.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Emailfaturamento } from './Emailfaturamento';
-import { Enviofaturamentoatendimento } from './Enviofaturamentoatendimento';
+import { Emailfaturamento } from './emailfaturamento.entity';
 
 @Index('enviofaturamento_pkey', ['id'], { unique: true })
 @Index('ienviofaturamentofkusuario', ['idusuario'], {})

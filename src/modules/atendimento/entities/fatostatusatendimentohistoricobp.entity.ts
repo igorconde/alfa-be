@@ -1,10 +1,10 @@
 import { Calendario } from '@modules/administracao/entities/calendario.entity';
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Unidadefederativa } from '@modules/administracao/entities/unidadefederativa.entity';
+import { Atendimentostatus } from '@modules/atendimento/entities/atendimentostatus.entity';
 import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Apl } from './Apl';
-import { Atendimentostatus } from './Atendimentostatus';
 import { Setor } from './Setor';
 
 @Index('fatostatusatendimentohistoricobp_pkey', ['id'], { unique: true })

@@ -1,5 +1,5 @@
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Tabelaco } from './Tabelaco';
+import { Tabelaco } from './tabelaco.entity';
 
 @Index('statustabelaco_pkey', ['id'], { unique: true })
 @Entity('statustabelaco', { schema: 'public' })

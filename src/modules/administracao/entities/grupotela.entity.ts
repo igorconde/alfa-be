@@ -1,6 +1,6 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Tipounidade } from './Tipounidade';
-import { Tela } from './Tela';
+import { Tela } from './tela.entity';
 
 @Index('grupotela_pkey', ['id'], { unique: true })
 @Index('igrupotelafktipounidade', ['idtipounidade'], {})

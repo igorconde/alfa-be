@@ -1,5 +1,5 @@
+import { Responsavelescritorio } from '@modules/brasil-mais/entities/responsavelescritorio.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Responsavelescritorio } from './Responsavelescritorio';
 
 @Index('tiporesponsavelescritorio_pkey', ['id'], { unique: true })
 @Entity('tiporesponsavelescritorio', { schema: 'public' })

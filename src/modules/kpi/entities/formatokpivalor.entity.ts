@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Kpidicionario } from './Kpidicionario';
+import { Kpidicionario } from './kpidicionario.entity';
 
 @Entity('formatokpivalor', { schema: 'public' })
 export class Formatokpivalor {

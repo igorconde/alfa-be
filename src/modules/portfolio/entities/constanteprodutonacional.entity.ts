@@ -1,5 +1,5 @@
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Constanteindicador } from './Constanteindicador';
+import { Constanteindicador } from './constanteindicador.entity';
 
 @Index('constanteprodutonacional_pkey', ['id'], { unique: true })
 @Entity('constanteprodutonacional', { schema: 'public' })

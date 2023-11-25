@@ -1,6 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Atributoclasse } from './Atributoclasse';
-import { Graficodashboard } from './Graficodashboard';
+import { Graficodashboard } from './graficodashboard.entity';
 
 @Index('eixolinhagraficodashboard_pkey', ['id'], { unique: true })
 @Index('ieixolinhagraficodashboardfkatributo', ['idatributo'], {})
@@ -31,10 +30,6 @@ export class Eixolinhagraficodashboard {
 
   @Column('integer', { name: 'audituser', nullable: true })
   audituser: number | null;
-
-  @ManyToOne(() => Atributoclasse, (atributoclasse) => atributoclasse.eixolinhagraficodashboards)
-  @JoinColumn([{ name: 'idatributo', referencedColumnName: 'id' }])
-  idatributo2: Atributoclasse;
 
   @ManyToOne(() => Graficodashboard, (graficodashboard) => graficodashboard.eixolinhagraficodashboards)
   @JoinColumn([{ name: 'idgraficodashboard', referencedColumnName: 'id' }])

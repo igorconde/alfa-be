@@ -1,6 +1,5 @@
+import { Configuracaograficodashboard } from '@modules/brasil-mais/entities/configuracaograficodashboard.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Atributoclasse } from './Atributoclasse';
-import { Configuracaograficodashboard } from './Configuracaograficodashboard';
 
 @Index('eixoconfiguracaolinhagraficodashboard_pkey', ['id'], { unique: true })
 @Index('ieixoconfiguracaolinhagraficodashboardfkatributo', ['idatributo'], {})
@@ -31,10 +30,6 @@ export class Eixoconfiguracaolinhagraficodashboard {
 
   @Column('integer', { name: 'audituser', nullable: true })
   audituser: number | null;
-
-  @ManyToOne(() => Atributoclasse, (atributoclasse) => atributoclasse.eixoconfiguracaolinhagraficodashboards)
-  @JoinColumn([{ name: 'idatributo', referencedColumnName: 'id' }])
-  idatributo2: Atributoclasse;
 
   @ManyToOne(() => Configuracaograficodashboard, (configuracaograficodashboard) => configuracaograficodashboard.eixoconfiguracaolinhagraficodashboards)
   @JoinColumn([{ name: 'idconfiguracaograficodashboard', referencedColumnName: 'id' }])

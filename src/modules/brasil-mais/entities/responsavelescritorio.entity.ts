@@ -1,5 +1,6 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Tabelaco } from './Tabelaco';
+import { Tabelaco } from './tabelaco.entity';
+
 import { Tiporesponsavelescritorio } from './Tiporesponsavelescritorio';
 
 @Index('responsavelescritorio_pkey', ['id'], { unique: true })

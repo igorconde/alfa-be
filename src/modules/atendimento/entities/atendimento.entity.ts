@@ -1,5 +1,7 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Atendimentofase } from '@modules/atendimento/entities/atendimentofase.entity';
 import { Entrega } from '@modules/atendimento/entities/entrega.entity';
+import { Enviofaturamentoatendimento } from '@modules/atendimento/entities/enviofaturamentoatendimento.entity';
 import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Atendimentoproducaoapropriada } from '@modules/common/entities/atendimentoproducaoapropriada.entity';
 import { Produtolinha } from '@modules/portfolio/entities/produtolinha.entity';
@@ -17,17 +19,16 @@ import { Apl } from './Apl';
 import { Areapesquisa } from './Areapesquisa';
 import { AtendimentoPdi } from './AtendimentoPdi';
 import { AtendimentoSubetapa } from './AtendimentoSubetapa';
-import { Atendimentofase } from './Atendimentofase';
+
+import { Atendimentostatus } from '@modules/atendimento/entities/atendimentostatus.entity';
 import { Atendimentojustificativa } from './Atendimentojustificativa';
 import { Atendimentopesquisa } from './Atendimentopesquisa';
 import { Atendimentorede } from './Atendimentorede';
 import { Atendimentoscriticas } from './Atendimentoscriticas';
 import { Atendimentosi } from './Atendimentosi';
-import { Atendimentostatus } from './Atendimentostatus';
 import { Atendimentoturma } from './Atendimentoturma';
 import { Atendimentoturmadigital } from './Atendimentoturmadigital';
 import { Contrato } from './Contrato';
-import { Enviofaturamentoatendimento } from './Enviofaturamentoatendimento';
 import { Historicotrocastatusdndr } from './Historicotrocastatusdndr';
 import { Indicadoratendimentoreferencial } from './Indicadoratendimentoreferencial';
 import { Indicadores } from './Indicadores';

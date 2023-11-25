@@ -1,5 +1,4 @@
-import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Atributoclasse } from './Atributoclasse';
+import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 @Index('valoratributoclasse_pkey', ['id'], { unique: true })
 @Index('ivaloratributoclassefkatributoclasse', ['idatributoclasse'], {})
@@ -28,8 +27,4 @@ export class Valoratributoclasse {
 
   @Column('integer', { name: 'audituser', nullable: true })
   audituser: number | null;
-
-  @ManyToOne(() => Atributoclasse, (atributoclasse) => atributoclasse.valoratributoclasses)
-  @JoinColumn([{ name: 'idatributoclasse', referencedColumnName: 'id' }])
-  idatributoclasse2: Atributoclasse;
 }

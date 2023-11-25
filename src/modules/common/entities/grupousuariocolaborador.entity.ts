@@ -1,6 +1,6 @@
 import { Colaborador } from '@modules/usuario/entities/colaborador.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Grupousuario } from './Grupousuario';
+import { Grupousuario } from './grupousuario.entity';
 
 @Index('grupousuariocolaborador_pkey', ['id'], { unique: true })
 @Index('igrupousuariocolaboradorfkcolaborador', ['idcolaborador'], {})

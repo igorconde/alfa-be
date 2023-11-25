@@ -1,6 +1,6 @@
+import { Perfilusuario } from '@modules/usuario/entities/perfil-usuario.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Perfilusuario } from './Perfilusuario';
-import { Tela } from './Tela';
+import { Tela } from './tela.entity';
 
 @Index('telapermitida_pkey', ['id'], { unique: true })
 @Index('itelapermitidafkperfilusuario', ['idperfilusuario'], {})

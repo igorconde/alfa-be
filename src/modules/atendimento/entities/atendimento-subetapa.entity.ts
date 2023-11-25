@@ -1,7 +1,7 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Atendimentostatus } from '@modules/atendimento/entities/atendimentostatus.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { AtendimentoEtapa } from './AtendimentoEtapa';
-import { Atendimentostatus } from './Atendimentostatus';
 
 @Index('atendimento_subetapa_pkey', ['id'], { unique: true })
 @Index('atendimentosubetapafk_atendimento_subetapa_id_atendimento_etapa', ['idAtendimentoEtapa'], {})

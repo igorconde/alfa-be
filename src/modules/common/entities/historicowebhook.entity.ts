@@ -1,6 +1,4 @@
-import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Acao } from './Acao';
-import { Classe } from './Classe';
+import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 @Index('historicowebhook_pkey', ['id'], { unique: true })
 @Index('ix_historicowebhook_fk_historicowebhook_idacao', ['idacao'], {})
@@ -40,12 +38,4 @@ export class Historicowebhook {
 
   @Column('integer', { name: 'idclasse', nullable: true })
   idclasse: number | null;
-
-  @ManyToOne(() => Acao, (acao) => acao.historicowebhooks)
-  @JoinColumn([{ name: 'idacao', referencedColumnName: 'id' }])
-  idacao2: Acao;
-
-  @ManyToOne(() => Classe, (classe) => classe.historicowebhooks)
-  @JoinColumn([{ name: 'idclasse', referencedColumnName: 'id' }])
-  idclasse2: Classe;
 }

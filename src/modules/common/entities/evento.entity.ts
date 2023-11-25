@@ -1,6 +1,6 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Eventocolaborador } from '@modules/usuario/entities/evento-colaborador.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Eventocolaborador } from './Eventocolaborador';
 
 @Index('evento_pkey', ['id'], { unique: true })
 @Index('ix_evento_fk_evento_idunidade', ['idunidade'], {})

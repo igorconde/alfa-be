@@ -1,6 +1,6 @@
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Dashboardusuario } from './Dashboardusuario';
-import { Graficodashboard } from './Graficodashboard';
+import { Dashboardusuario } from './dashboardusuario.entity';
+import { Graficodashboard } from './graficodashboard.entity';
 
 @Index('dashboard_pkey', ['id'], { unique: true })
 @Entity('dashboard', { schema: 'public' })

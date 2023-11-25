@@ -1,7 +1,7 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Enviofaturamentoatendimento } from '@modules/atendimento/entities/enviofaturamentoatendimento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Anexoproposta } from './Anexoproposta';
-import { Enviofaturamentoatendimento } from './Enviofaturamentoatendimento';
 import { Propostaatendimento } from './Propostaatendimento';
 
 @Index('proposta_pkey', ['id'], { unique: true })

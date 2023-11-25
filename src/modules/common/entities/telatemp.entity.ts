@@ -1,6 +1,6 @@
+import { Grupotelatemp } from '@modules/administracao/entities/grupotelatemp.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Telapermitidatemp } from './Telapermitidatemp';
-import { Grupotelatemp } from './Grupotelatemp';
+import { Telapermitidatemp } from './telapermitidatemp.entity';
 
 @Index('telatempbuscalivre', ['buscalivretela'], {})
 @Index('telatemp_pkey', ['id'], { unique: true })

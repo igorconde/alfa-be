@@ -1,8 +1,8 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Kpi } from './Kpi';
-import { Kpifator } from './Kpifator';
-import { Formatokpivalor } from './Formatokpivalor';
-import { Kpitipo } from './Kpitipo';
+import { Formatokpivalor } from './formatokpivalor.entity';
+import { Kpi } from './kpi.entity';
+import { Kpifator } from './kpifator.entity';
+import { Kpitipo } from './kpitipo.entity';
 
 @Index('UQ_3d24b1440376a50e13e42120f93', ['kpiordemidentificador'], {
   unique: true,

@@ -1,5 +1,5 @@
+import { Atendimentotabelaco } from '@modules/brasil-mais/entities/atendimentotabelaco.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Atendimentotabelaco } from './Atendimentotabelaco';
 
 @Index('parceirofomentotabelaco_pkey', ['id'], { unique: true })
 @Index('prcrfomentotabelacofkprcirofomentotabelacoidatendimentotabelaco', ['idatendimentotabelaco'], {})

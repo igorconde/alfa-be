@@ -1,5 +1,5 @@
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Grupotecnologicounidade } from './Grupotecnologicounidade';
+import { Grupotecnologicounidade } from './grupotecnologicounidade.entity';
 
 @Index('buscalivregrupotecnologico', ['buscalivregrupotecnologico'], {})
 @Index('grupotecnologico_pkey', ['id'], { unique: true })

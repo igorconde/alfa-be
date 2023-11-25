@@ -1,6 +1,6 @@
 import { Calendario } from '@modules/administracao/entities/calendario.entity';
+import { Atendimentostatussi } from '@modules/solucao-integradora/entities/atendimento-status-si.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Atendimentostatussi } from './Atendimentostatussi';
 
 @Index('fatostatusatendimentosi_pkey', ['id'], { unique: true })
 @Index('ftsttsatendimentosifkftstatusatendimentosiidatendimentostatussi', ['idatendimentostatussi'], {})

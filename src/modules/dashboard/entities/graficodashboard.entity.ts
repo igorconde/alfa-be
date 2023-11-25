@@ -1,9 +1,8 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Eixocolunagraficodashboard } from './Eixocolunagraficodashboard';
-import { Eixolinhagraficodashboard } from './Eixolinhagraficodashboard';
-import { Dashboard } from './Dashboard';
-import { Classe } from './Classe';
-import { Parametrograficodashboard } from './Parametrograficodashboard';
+import { Dashboard } from './dashboard.entity';
+import { Eixocolunagraficodashboard } from './eixocolunagraficodashboard.entity';
+import { Eixolinhagraficodashboard } from './eixolinhagraficodashboard.entity';
+import { Parametrograficodashboard } from './parametrograficodashboard.entity';
 
 @Index('graficodashboard_pkey', ['id'], { unique: true })
 @Index('igraficodashboardfkdashboard', ['iddashboard'], {})
@@ -62,10 +61,6 @@ export class Graficodashboard {
   @ManyToOne(() => Dashboard, (dashboard) => dashboard.graficodashboards)
   @JoinColumn([{ name: 'iddashboard', referencedColumnName: 'id' }])
   iddashboard2: Dashboard;
-
-  @ManyToOne(() => Classe, (classe) => classe.graficodashboards)
-  @JoinColumn([{ name: 'idfato', referencedColumnName: 'id' }])
-  idfato2: Classe;
 
   @OneToMany(() => Parametrograficodashboard, (parametrograficodashboard) => parametrograficodashboard.idgraficodashboard2)
   parametrograficodashboards: Parametrograficodashboard[];

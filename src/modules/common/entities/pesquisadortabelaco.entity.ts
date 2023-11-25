@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Tabelaco } from './Tabelaco';
+import { Tabelaco } from './tabelaco.entity';
 
 @Index('pesquisadortabelaco_pkey', ['id'], { unique: true })
 @Index('ix_pesquisadortabelaco_fk_pesquisadortabelaco_idtabelaco', ['idtabelaco'], {})

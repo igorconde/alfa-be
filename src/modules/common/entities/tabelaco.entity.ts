@@ -1,9 +1,9 @@
+import { Atendimentotabelaco } from '@modules/brasil-mais/entities/atendimentotabelaco.entity';
+import { Responsavelescritorio } from '@modules/brasil-mais/entities/responsavelescritorio.entity';
+import { Colaboradortabelaco } from '@modules/usuario/entities/colaborador-tabelaco.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Atendimentotabelaco } from './Atendimentotabelaco';
-import { Colaboradortabelaco } from './Colaboradortabelaco';
-import { Pesquisadortabelaco } from './Pesquisadortabelaco';
-import { Responsavelescritorio } from './Responsavelescritorio';
-import { Statustabelaco } from './Statustabelaco';
+import { Pesquisadortabelaco } from './pesquisadortabelaco.entity';
+import { Statustabelaco } from './statustabelaco.entity';
 
 @Index('tabelaco_pkey', ['id'], { unique: true })
 @Index('ix_tabelaco_fk_tabelaco_idstatustabelaco', ['idstatustabelaco'], {})

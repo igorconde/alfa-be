@@ -1,5 +1,5 @@
+import { Dashboardisi } from '@modules/dashboard/entities/dashboardisi.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Dashboardisi } from './Dashboardisi';
 
 @Index('stable_pkey', ['id'], { unique: true })
 @Entity('stable', { schema: 'public' })

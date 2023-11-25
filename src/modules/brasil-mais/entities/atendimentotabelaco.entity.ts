@@ -1,5 +1,6 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Tabelaco } from './Tabelaco';
+import { Tabelaco } from './tabelaco.entity';
+
 import { Parceirobolsatabelaco } from './Parceirobolsatabelaco';
 import { Parceiroempresatabelaco } from './Parceiroempresatabelaco';
 import { Parceirofomentotabelaco } from './Parceirofomentotabelaco';

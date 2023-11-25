@@ -1,6 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Atributoclasse } from './Atributoclasse';
-import { Graficodashboard } from './Graficodashboard';
+import { Graficodashboard } from './graficodashboard.entity';
 
 @Index('parametrograficodashboard_pkey', ['id'], { unique: true })
 @Index('iparametrograficodashboardfkatributo', ['idatributo'], {})
@@ -47,10 +46,6 @@ export class Parametrograficodashboard {
 
   @Column('integer', { name: 'audituser', nullable: true })
   audituser: number | null;
-
-  @ManyToOne(() => Atributoclasse, (atributoclasse) => atributoclasse.parametrograficodashboards)
-  @JoinColumn([{ name: 'idatributo', referencedColumnName: 'id' }])
-  idatributo2: Atributoclasse;
 
   @ManyToOne(() => Graficodashboard, (graficodashboard) => graficodashboard.parametrograficodashboards)
   @JoinColumn([{ name: 'idgraficodashboard', referencedColumnName: 'id' }])
