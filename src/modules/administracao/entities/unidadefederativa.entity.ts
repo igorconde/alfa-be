@@ -1,14 +1,14 @@
 import { Regiao } from '@modules/administracao/entities/regiao.entity';
+import { Fatoresultadocompetencia } from '@modules/metas/entities/fatoresultadocompetencia.entity';
+import { Fatoproducaoapropriada } from '@modules/producao/entities/fatoproducaoapropriada.entity';
+import { Fatoproducaoapropriadametrologia } from '@modules/producao/entities/fatoproducaoapropriadametrologia.entity';
+import { Fatoreceitacompetencia } from '@modules/receita/entities/fatoreceitacompetencia.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Apl } from './Apl';
 import { Fatofontepagadoraatendimentobp } from './Fatofontepagadoraatendimentobp';
 import { Fatofontepagadoraatendimentoia } from './Fatofontepagadoraatendimentoia';
 import { Fatofontepagadoraatendimentoie } from './Fatofontepagadoraatendimentoie';
 import { Fatofontepagadoraatendimentoipea } from './Fatofontepagadoraatendimentoipea';
-import { Fatoproducaoapropriada } from './Fatoproducaoapropriada';
-import { Fatoproducaoapropriadametrologia } from './Fatoproducaoapropriadametrologia';
-import { Fatoreceitacompetencia } from './Fatoreceitacompetencia';
-import { Fatoresultadocompetencia } from './Fatoresultadocompetencia';
 import { Fatosolicitacaoatendimentobp } from './Fatosolicitacaoatendimentobp';
 import { Fatosolicitacaoatendimentoia } from './Fatosolicitacaoatendimentoia';
 import { Fatosolicitacaoatendimentoie } from './Fatosolicitacaoatendimentoie';

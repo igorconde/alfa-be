@@ -1,9 +1,9 @@
+import { Fatoproducaoapropriada } from '@modules/producao/entities/fatoproducaoapropriada.entity';
+import { Fatoproducaoapropriadametrologia } from '@modules/producao/entities/fatoproducaoapropriadametrologia.entity';
+import { Fatoreceitaapropriada } from '@modules/receita/entities/fatoreceitaapropriada.entity';
+import { Fatoreceitacompetencia } from '@modules/receita/entities/fatoreceitacompetencia.entity';
 import { Cliente, Clientebackup } from 'import { Cliente } from ';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Fatoproducaoapropriada } from './Fatoproducaoapropriada';
-import { Fatoproducaoapropriadametrologia } from './Fatoproducaoapropriadametrologia';
-import { Fatoreceitaapropriada } from './Fatoreceitaapropriada';
-import { Fatoreceitacompetencia } from './Fatoreceitacompetencia';
 @modules/cliente/entities/cliente.entity';backup';
 @modules/cliente/entities/cliente.entity';.entity';
 

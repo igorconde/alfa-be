@@ -1,21 +1,22 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Fatoatendimento } from '@modules/atendimento/entities/fatoatendimento.entity';
+import { Fatostatusatendimento } from '@modules/atendimento/entities/fatostatusatendimento.entity';
+import { Despesa } from '@modules/common/entities/despesa.entity';
+import { Fatodespesa } from '@modules/common/entities/fatodespesa.entity';
+import { Fatoresultado } from '@modules/metas/entities/fatoresultado.entity';
+import { Fatoresultadocompetencia } from '@modules/metas/entities/fatoresultadocompetencia.entity';
+import { Metafinanceira } from '@modules/metas/entities/metafinanceira.entity';
 import { Produtocategoria } from '@modules/portfolio/entities/produtocategoria.entity';
+import { Fatoproducaoapropriada } from '@modules/producao/entities/fatoproducaoapropriada.entity';
+import { Fatoproducaoapropriadametrologia } from '@modules/producao/entities/fatoproducaoapropriadametrologia.entity';
+import { Producao } from '@modules/producao/entities/producao.entity';
+import { Fatoreceitaapropriada } from '@modules/receita/entities/fatoreceitaapropriada.entity';
+import { Fatoreceitacompetencia } from '@modules/receita/entities/fatoreceitacompetencia.entity';
+import { Receita } from '@modules/receita/entities/receita.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Despesa } from './Despesa';
-import { Fatoatendimento } from './Fatoatendimento';
-import { Fatodespesa } from './Fatodespesa';
-import { Fatoproducaoapropriada } from './Fatoproducaoapropriada';
-import { Fatoproducaoapropriadametrologia } from './Fatoproducaoapropriadametrologia';
-import { Fatoreceitaapropriada } from './Fatoreceitaapropriada';
-import { Fatoreceitacompetencia } from './Fatoreceitacompetencia';
-import { Fatoresultado } from './Fatoresultado';
-import { Fatoresultadocompetencia } from './Fatoresultadocompetencia';
-import { Fatostatusatendimento } from './Fatostatusatendimento';
-import { Metafinanceira } from './Metafinanceira';
-import { Producao } from './Producao';
-import { Receita } from './Receita';
 import { Relatoriodn } from './Relatoriodn';
 import { Usuarioprodutolinha } from './Usuarioprodutolinha';
+';
 
 @Index('produtolinha_pkey', ['id'], { unique: true })
 @Entity('produtolinha', { schema: 'public' })

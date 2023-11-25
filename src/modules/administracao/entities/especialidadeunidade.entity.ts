@@ -1,12 +1,12 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Fatodespesa } from '@modules/common/entities/fatodespesa.entity';
+import { Fatoresultado } from '@modules/metas/entities/fatoresultado.entity';
+import { Fatoresultadocompetencia } from '@modules/metas/entities/fatoresultadocompetencia.entity';
+import { Fatoproducaoapropriada } from '@modules/producao/entities/fatoproducaoapropriada.entity';
+import { Fatoproducaoapropriadametrologia } from '@modules/producao/entities/fatoproducaoapropriadametrologia.entity';
+import { Fatoreceitaapropriada } from '@modules/receita/entities/fatoreceitaapropriada.entity';
+import { Fatoreceitacompetencia } from '@modules/receita/entities/fatoreceitacompetencia.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Fatodespesa } from './Fatodespesa';
-import { Fatoproducaoapropriada } from './Fatoproducaoapropriada';
-import { Fatoproducaoapropriadametrologia } from './Fatoproducaoapropriadametrologia';
-import { Fatoreceitaapropriada } from './Fatoreceitaapropriada';
-import { Fatoreceitacompetencia } from './Fatoreceitacompetencia';
-import { Fatoresultado } from './Fatoresultado';
-import { Fatoresultadocompetencia } from './Fatoresultadocompetencia';
 
 @Index('especialidadeunidade_pkey', ['id'], { unique: true })
 @Entity('especialidadeunidade', { schema: 'public' })

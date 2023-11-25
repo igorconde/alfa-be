@@ -1,17 +1,17 @@
+import { Fatoatendimento } from '@modules/atendimento/entities/fatoatendimento.entity';
+import { Fatostatusatendimento } from '@modules/atendimento/entities/fatostatusatendimento.entity';
+import { Fatodespesa } from '@modules/common/entities/fatodespesa.entity';
+import { Fatoresultado } from '@modules/metas/entities/fatoresultado.entity';
+import { Fatoresultadocompetencia } from '@modules/metas/entities/fatoresultadocompetencia.entity';
 import { Produtocategoria } from '@modules/portfolio/entities/produtocategoria.entity';
 import { Produtoregional } from '@modules/portfolio/entities/produtoregional.entity';
+import { Fatoproducaoapropriada } from '@modules/producao/entities/fatoproducaoapropriada.entity';
+import { Fatoproducaoapropriadametrologia } from '@modules/producao/entities/fatoproducaoapropriadametrologia.entity';
+import { Fatoreceitaapropriada } from '@modules/receita/entities/fatoreceitaapropriada.entity';
+import { Fatoreceitacompetencia } from '@modules/receita/entities/fatoreceitacompetencia.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Constanteindicador } from './Constanteindicador';
 import { Fase } from './Fase';
-import { Fatoatendimento } from './Fatoatendimento';
-import { Fatodespesa } from './Fatodespesa';
-import { Fatoproducaoapropriada } from './Fatoproducaoapropriada';
-import { Fatoproducaoapropriadametrologia } from './Fatoproducaoapropriadametrologia';
-import { Fatoreceitaapropriada } from './Fatoreceitaapropriada';
-import { Fatoreceitacompetencia } from './Fatoreceitacompetencia';
-import { Fatoresultado } from './Fatoresultado';
-import { Fatoresultadocompetencia } from './Fatoresultadocompetencia';
-import { Fatostatusatendimento } from './Fatostatusatendimento';
 import { Visita } from './Visita';
 
 @Index('produtonacional_pkey', ['id'], { unique: true })

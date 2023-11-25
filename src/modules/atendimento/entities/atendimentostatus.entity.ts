@@ -1,8 +1,8 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Fatoatendimento } from '@modules/atendimento/entities/fatoatendimento.entity';
+import { Fatostatusatendimento } from '@modules/atendimento/entities/fatostatusatendimento.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { AtendimentoSubetapa } from './AtendimentoSubetapa';
-import { Fatoatendimento } from './Fatoatendimento';
-import { Fatostatusatendimento } from './Fatostatusatendimento';
 import { Fatostatusatendimentobp } from './Fatostatusatendimentobp';
 import { Fatostatusatendimentohistoricobp } from './Fatostatusatendimentohistoricobp';
 import { Fatostatusatendimentohistoricoia } from './Fatostatusatendimentohistoricoia';
