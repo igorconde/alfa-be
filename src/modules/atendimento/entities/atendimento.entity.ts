@@ -1,4 +1,5 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Produtoregional } from '@modules/portfolio/entities/produtoregional.entity';
 import { Column, Entity, Index, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Anexoatendimentoreferencial } from './Anexoatendimentoreferencial';
 import { Anexoindicadorprodutividade } from './Anexoindicadorprodutividade';
@@ -36,7 +37,6 @@ import { Previsaoproducaoemrede } from './Previsaoproducaoemrede';
 import { Previsaoreceita } from './Previsaoreceita';
 import { Producaoapropriada } from './Producaoapropriada';
 import { Produtolinha } from './Produtolinha';
-import { Produtoregional } from './Produtoregional';
 import { Propostaatendimento } from './Propostaatendimento';
 import { Receitaapropriada } from './Receitaapropriada';
 import { Receitafaturamento } from './Receitafaturamento';

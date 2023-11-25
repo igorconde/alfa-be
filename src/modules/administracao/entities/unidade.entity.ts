@@ -1,4 +1,5 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Produtoregional } from '@modules/portfolio/entities/produtoregional.entity';
 import { Usuario } from '@modules/usuario/entities/usuario.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Arquivocarga } from './Arquivocarga';
@@ -59,7 +60,6 @@ import { Previsaoproducaocompartilhada } from './Previsaoproducaocompartilhada';
 import { Previsaoproducaoemrede } from './Previsaoproducaoemrede';
 import { Producao } from './Producao';
 import { Producaoapropriada } from './Producaoapropriada';
-import { Produtoregional } from './Produtoregional';
 import { Proposta } from './Proposta';
 import { Publicacao } from './Publicacao';
 import { Rateioreceitaapropriada } from './Rateioreceitaapropriada';

@@ -1,3 +1,4 @@
+import { Produtoregional } from '@modules/portfolio/entities/produtoregional.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Constanteindicador } from './Constanteindicador';
 import { Fase } from './Fase';
@@ -11,7 +12,6 @@ import { Fatoresultado } from './Fatoresultado';
 import { Fatoresultadocompetencia } from './Fatoresultadocompetencia';
 import { Fatostatusatendimento } from './Fatostatusatendimento';
 import { Produtocategoria } from './Produtocategoria';
-import { Produtoregional } from './Produtoregional';
 import { Visita } from './Visita';
 
 @Index('produtonacional_pkey', ['id'], { unique: true })
