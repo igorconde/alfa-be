@@ -1,6 +1,6 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Fase } from '@modules/common/entities/fase.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Fase } from './Fase';
 
 @Index('atendimentofase_pkey', ['id'], { unique: true })
 @Index('ix_atendimentofase_fk_atendimentofase_idatendimento', ['idatendimento'], {})

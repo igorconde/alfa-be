@@ -1,6 +1,7 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Fatoatendimento } from '@modules/atendimento/entities/fatoatendimento.entity';
 import { Fatostatusatendimento } from '@modules/atendimento/entities/fatostatusatendimento.entity';
+import { Relatoriodn } from '@modules/common/entities/relatoriodn.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { AtendimentoSubetapa } from './AtendimentoSubetapa';
 import { Fatostatusatendimentobp } from './Fatostatusatendimentobp';
@@ -11,7 +12,6 @@ import { Fatostatusatendimentohistoricoipea } from './Fatostatusatendimentohisto
 import { Fatostatusatendimentoia } from './Fatostatusatendimentoia';
 import { Fatostatusatendimentoie } from './Fatostatusatendimentoie';
 import { Fatostatusatendimentoipea } from './Fatostatusatendimentoipea';
-import { Relatoriodn } from './Relatoriodn';
 
 @Index('atendimentostatus_pkey', ['id'], { unique: true })
 @Entity('atendimentostatus', { schema: 'public' })

@@ -1,6 +1,6 @@
+import { Visita } from '@modules/brasil-mais/entities/visita.entity';
 import { Colaborador } from '@modules/usuario/entities/colaborador.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Visita } from './Visita';
 
 @Index('visitacolaborador_pkey', ['id'], { unique: true })
 @Index('ix_visitacolaborador_fk_visitacolaborador_idcolaborador', ['idcolaborador'], {})

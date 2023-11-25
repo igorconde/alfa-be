@@ -3,6 +3,7 @@ import { Fatoatendimento } from '@modules/atendimento/entities/fatoatendimento.e
 import { Fatostatusatendimento } from '@modules/atendimento/entities/fatostatusatendimento.entity';
 import { Despesa } from '@modules/common/entities/despesa.entity';
 import { Fatodespesa } from '@modules/common/entities/fatodespesa.entity';
+import { Relatoriodn } from '@modules/common/entities/relatoriodn.entity';
 import { Fatoresultado } from '@modules/metas/entities/fatoresultado.entity';
 import { Fatoresultadocompetencia } from '@modules/metas/entities/fatoresultadocompetencia.entity';
 import { Metafinanceira } from '@modules/metas/entities/metafinanceira.entity';
@@ -13,10 +14,8 @@ import { Producao } from '@modules/producao/entities/producao.entity';
 import { Fatoreceitaapropriada } from '@modules/receita/entities/fatoreceitaapropriada.entity';
 import { Fatoreceitacompetencia } from '@modules/receita/entities/fatoreceitacompetencia.entity';
 import { Receita } from '@modules/receita/entities/receita.entity';
+import { Usuarioprodutolinha } from '@modules/usuario/entities/usuario-produto-linha.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Relatoriodn } from './Relatoriodn';
-import { Usuarioprodutolinha } from './Usuarioprodutolinha';
-';
 
 @Index('produtolinha_pkey', ['id'], { unique: true })
 @Entity('produtolinha', { schema: 'public' })

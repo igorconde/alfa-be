@@ -14,9 +14,8 @@ import { Producao } from '@modules/producao/entities/producao.entity';
 import { Fatoreceitaapropriada } from '@modules/receita/entities/fatoreceitaapropriada.entity';
 import { Fatoreceitacompetencia } from '@modules/receita/entities/fatoreceitacompetencia.entity';
 import { Receita } from '@modules/receita/entities/receita.entity';
+import { Colaboradorprodutoregional } from '@modules/usuario/entities/colaborador-produto-regional.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Colaboradorprodutoregional } from './Colaboradorprodutoregional';
-';
 
 @Index('produtoregional_pkey', ['id'], { unique: true })
 @Index('iprodutoregionalfkprodutonacional', ['idprodutonacional'], {})

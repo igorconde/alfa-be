@@ -1,5 +1,7 @@
 import { Fatoatendimento } from '@modules/atendimento/entities/fatoatendimento.entity';
 import { Fatostatusatendimento } from '@modules/atendimento/entities/fatostatusatendimento.entity';
+import { Visita } from '@modules/brasil-mais/entities/visita.entity';
+import { Fase } from '@modules/common/entities/fase.entity';
 import { Fatodespesa } from '@modules/common/entities/fatodespesa.entity';
 import { Fatoresultado } from '@modules/metas/entities/fatoresultado.entity';
 import { Fatoresultadocompetencia } from '@modules/metas/entities/fatoresultadocompetencia.entity';
@@ -10,9 +12,7 @@ import { Fatoproducaoapropriadametrologia } from '@modules/producao/entities/fat
 import { Fatoreceitaapropriada } from '@modules/receita/entities/fatoreceitaapropriada.entity';
 import { Fatoreceitacompetencia } from '@modules/receita/entities/fatoreceitacompetencia.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Constanteindicador } from './Constanteindicador';
-import { Fase } from './Fase';
-import { Visita } from './Visita';
+import { Constanteindicador } from './constanteindicador.entity';
 
 @Index('produtonacional_pkey', ['id'], { unique: true })
 @Index('iprodutonacionalfkprodutocategoria', ['idprodutocategoria'], {})
