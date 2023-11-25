@@ -2,11 +2,11 @@ import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeor
 import { Etapaa } from './Etapaa';
 import { Etapaconsultoriac } from './Etapaconsultoriac';
 import { Etapapraticad } from './Etapapraticad';
-import { Etapateorica } from './Etapateorica';
 import { Atendimentoturma } from './atendimentoturma.entity';
 import { Etapaconsultoriad } from './etapaconsultoriad.entity';
 import { Etapapraticab } from './etapapraticab.entity';
 import { Etapapraticac } from './etapapraticac.entity';
+import { Etapateorica } from './etapateorica.entity';
 
 @Index('turmabuscalivre', ['buscalivreturma'], {})
 @Index('turma_pkey', ['id'], { unique: true })

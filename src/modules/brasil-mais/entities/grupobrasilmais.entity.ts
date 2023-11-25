@@ -1,6 +1,6 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Configuracaobrasilmais } from './Configuracaobrasilmais';
 import { Grupounidade } from './Grupounidade';
+import { Configuracaobrasilmais } from './configuracaobrasilmais.entity';
 
 @Index('grupobrasilmais_pkey', ['id'], { unique: true })
 @Index('ix_grupobrasilmais_fk_grupobrasilmais_idconfiguracaobrasilmais', ['idconfiguracaobrasilmais'], {})

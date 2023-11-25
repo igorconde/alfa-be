@@ -1,6 +1,6 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Anexoencontroteoricadigital } from './Anexoencontroteoricadigital';
-import { Etapateoricadigital } from './Etapateoricadigital';
+import { Etapateoricadigital } from './etapateoricadigital.entity';
 
 @Index('encontroteoricadigital_pkey', ['id'], { unique: true })
 @Index('encontroteoricadigital_fk_encontroteoricadigital_idetapateorica', ['idetapateorica'], {})

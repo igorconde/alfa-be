@@ -1,6 +1,6 @@
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Cluster } from './Cluster';
 import { Grupobrasilmais } from './Grupobrasilmais';
+import { Cluster } from './cluster.entity';
 
 @Index('configuracaobrasilmais_pkey', ['id'], { unique: true })
 @Entity('configuracaobrasilmais', { schema: 'public' })

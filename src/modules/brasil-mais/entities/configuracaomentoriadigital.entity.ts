@@ -1,6 +1,6 @@
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Clustermentoriadigital } from './Clustermentoriadigital';
 import { Grupomentoriadigital } from './Grupomentoriadigital';
+import { Clustermentoriadigital } from './clustermentoriadigital.entity';
 
 @Index('configuracaomentoriadigital_pkey', ['id'], { unique: true })
 @Entity('configuracaomentoriadigital', { schema: 'public' })

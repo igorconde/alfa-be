@@ -1,6 +1,6 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Clusterclientementoriadigital } from './Clusterclientementoriadigital';
 import { Atendimentoconsultoriad } from './atendimentoconsultoriad.entity';
+import { Clusterclientementoriadigital } from './clusterclientementoriadigital.entity';
 
 @Index('tecnologiasdigitaisd_pkey', ['id'], { unique: true })
 @Index('tcnlogiasdigitaisdfktcnologiasdigitaisdidatendimentoconsultoria', ['idatendimentoconsultoria'], {})

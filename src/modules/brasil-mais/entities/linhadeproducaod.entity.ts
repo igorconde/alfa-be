@@ -1,8 +1,8 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Anexolinhaproducaod } from './Anexolinhaproducaod';
-import { Atendimentopraticad } from './Atendimentopraticad';
 import { Tipoarranjofisicod } from './Tipoarranjofisicod';
 import { Tiposistemaprodutivod } from './Tiposistemaprodutivod';
+import { Atendimentopraticad } from './atendimentopraticad.entity';
 
 @Index('linhadeproducaod_pkey', ['id'], { unique: true })
 @Index('ix_linhadeproducaod_fk_linhadeproducaod_idatendimentopratica', ['idatendimentopratica'], {})

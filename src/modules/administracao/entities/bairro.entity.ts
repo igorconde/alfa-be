@@ -1,8 +1,8 @@
 import { Clienteabdi, Clienteabdidigital } from 'import { Cliente } from ';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Clusterbairro } from './Clusterbairro';
-import { Clusterbairromentoriadigital } from './Clusterbairromentoriadigital';
 import { Municipio } from './Municipio';
+import { Clusterbairro } from './clusterbairro.entity';
+import { Clusterbairromentoriadigital } from './clusterbairromentoriadigital.entity';
 @modules/cliente/entities/cliente.entity';abdi';
 @modules/cliente/entities/cliente.entity';abdidigital';
 

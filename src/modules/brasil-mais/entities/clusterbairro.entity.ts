@@ -1,6 +1,6 @@
 import { Bairro } from '@modules/administracao/entities/bairro.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Cluster } from './Cluster';
+import { Cluster } from './cluster.entity';
 
 @Index('clusterbairro_pkey', ['id'], { unique: true })
 @Index('ix_clusterbairro_fk_clusterbairro_idbairro', ['idbairro'], {})

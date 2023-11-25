@@ -1,8 +1,9 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Clusterclienteabdi } from '@modules/brasil-mais/entities/clusterclienteabdi.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Clusterbairro } from './Clusterbairro';
-import { Configuracaobrasilmais } from './Configuracaobrasilmais';
+
+import { Clusterbairro } from './clusterbairro.entity';
+import { Configuracaobrasilmais } from './configuracaobrasilmais.entity';
 
 @Index('cluster_pkey', ['id'], { unique: true })
 @Index('ix_cluster_fk_cluster_idconfiguracaobrasilmais', ['idconfiguracaobrasilmais'], {})

@@ -1,8 +1,8 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Clusterbairromentoriadigital } from './Clusterbairromentoriadigital';
-import { Clusterclientementoriadigital } from './Clusterclientementoriadigital';
-import { Configuracaomentoriadigital } from './Configuracaomentoriadigital';
+import { Clusterbairromentoriadigital } from './clusterbairromentoriadigital.entity';
+import { Clusterclientementoriadigital } from './clusterclientementoriadigital.entity';
+import { Configuracaomentoriadigital } from './configuracaomentoriadigital.entity';
 
 @Index('clustermentoriadigital_pkey', ['id'], { unique: true })
 @Index('clstrmntrdgitalfkclstrmntradigitalidconfiguracaomentoriadigital', ['idconfiguracaomentoriadigital'], {})
