@@ -1,4 +1,5 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Produtocategoria } from '@modules/portfolio/entities/produtocategoria.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Despesa } from './Despesa';
 import { Fatoatendimento } from './Fatoatendimento';
@@ -12,7 +13,6 @@ import { Fatoresultadocompetencia } from './Fatoresultadocompetencia';
 import { Fatostatusatendimento } from './Fatostatusatendimento';
 import { Metafinanceira } from './Metafinanceira';
 import { Producao } from './Producao';
-import { Produtocategoria } from './Produtocategoria';
 import { Receita } from './Receita';
 import { Relatoriodn } from './Relatoriodn';
 import { Usuarioprodutolinha } from './Usuarioprodutolinha';
