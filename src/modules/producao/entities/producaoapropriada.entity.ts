@@ -1,10 +1,10 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Colaborador } from '@modules/usuario/entities/colaborador.entity';
 import { Usuario } from '@modules/usuario/entities/usuario.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Atendimentopraticabdigital } from './Atendimentopraticabdigital';
 import { Atendimentoproducaoapropriada } from './Atendimentoproducaoapropriada';
-import { Colaborador } from './Colaborador';
 import { Encontroalinhamentobdigital } from './Encontroalinhamentobdigital';
 import { Encontroconsultoriabdigital } from './Encontroconsultoriabdigital';
 import { Encontroconsultoriacdigital } from './Encontroconsultoriacdigital';

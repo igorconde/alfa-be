@@ -1,6 +1,6 @@
+import { Colaborador } from '@modules/usuario/entities/colaborador.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Atividadementoriateorica } from './Atividadementoriateorica';
-import { Colaborador } from './Colaborador';
 import { Turma } from './Turma';
 import { Visitateorica } from './Visitateorica';
 

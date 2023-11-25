@@ -10,8 +10,8 @@ import { Produtocategoria } from '@modules/portfolio/entities/produtocategoria.e
 import { Produtolinha } from '@modules/portfolio/entities/produtolinha.entity';
 import { Produtonacional } from '@modules/portfolio/entities/produtonacional.entity';
 import { Produtoregional } from '@modules/portfolio/entities/produtoregional.entity';
+import { Colaborador } from '@modules/usuario/entities/colaborador.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Colaborador } from './Colaborador';
 
 @Index('fatoproducaoapropriadametrologia_pkey', ['id'], { unique: true })
 @Index('ftprdcprpriadametrologiafkftprdcprpriadametrologiaidatendimento', ['idatendimento'], {})

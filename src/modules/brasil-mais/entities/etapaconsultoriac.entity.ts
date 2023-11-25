@@ -1,6 +1,6 @@
+import { Colaborador } from '@modules/usuario/entities/colaborador.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Atendimentoconsultoriac } from './Atendimentoconsultoriac';
-import { Colaborador } from './Colaborador';
 import { Turma } from './Turma';
 
 @Index('etapaconsultoriac_pkey', ['id'], { unique: true })

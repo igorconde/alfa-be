@@ -1,5 +1,5 @@
+import { Colaborador } from '@modules/usuario/entities/colaborador.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Colaborador } from './Colaborador';
 
 @Index('formacaocolaborador_pkey', ['id'], { unique: true })
 @Entity('formacaocolaborador', { schema: 'public' })
