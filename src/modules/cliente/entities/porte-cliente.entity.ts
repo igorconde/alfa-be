@@ -1,10 +1,11 @@
+import { Cliente, Clientebackup } from 'import { Cliente } from ';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Clientebackup } from './Clientebackup';
 import { Fatoproducaoapropriada } from './Fatoproducaoapropriada';
 import { Fatoproducaoapropriadametrologia } from './Fatoproducaoapropriadametrologia';
 import { Fatoreceitaapropriada } from './Fatoreceitaapropriada';
 import { Fatoreceitacompetencia } from './Fatoreceitacompetencia';
-import { Cliente } from './cliente.entity';
+@modules/cliente/entities/cliente.entity';backup';
+@modules/cliente/entities/cliente.entity';.entity';
 
 @Index('portecliente_pkey', ['id'], { unique: true })
 @Entity('portecliente', { schema: 'public' })

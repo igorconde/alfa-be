@@ -1,9 +1,10 @@
+import { Clienteabdi, Clienteabdidigital } from 'import { Cliente } from ';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Municipio } from './Municipio';
-import { Clienteabdi } from './Clienteabdi';
-import { Clienteabdidigital } from './Clienteabdidigital';
 import { Clusterbairro } from './Clusterbairro';
 import { Clusterbairromentoriadigital } from './Clusterbairromentoriadigital';
+import { Municipio } from './Municipio';
+@modules/cliente/entities/cliente.entity';abdi';
+@modules/cliente/entities/cliente.entity';abdidigital';
 
 @Index('bairro_pkey', ['id'], { unique: true })
 @Index('ix_bairro_fk_bairro_idmunicipio', ['idmunicipio'], {})

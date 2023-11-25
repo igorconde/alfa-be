@@ -1,6 +1,7 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Usuario } from '@modules/usuario/entities/usuario.entity';
+import { Clienteabdi, Clienteabdidigital } from 'import { Cliente } from ';
 import { Column, Entity, Index, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Clusterclientementoriadigital } from './Clusterclientementoriadigital';
 import { Cnaesecundariocliente } from './Cnaesecundariocliente';
@@ -40,8 +41,8 @@ import { Previsaoreceita } from './Previsaoreceita';
 import { Receitafaturamentofontepagadora } from './Receitafaturamentofontepagadora';
 import { Tipocnpj } from './Tipocnpj';
 import { Agenciareguladora } from './agencia-reguladora.entity';
-import { Clienteabdidigital } from './cliente-abdi-digital.entity';
-import { Clienteabdi } from './cliente-abdi.entity';
+@modules/cliente/entities/cliente.entity';-abdi-digital.entity';
+@modules/cliente/entities/cliente.entity';-abdi.entity';
 
 @Index('iclienteu1', ['cpfcnpj'], {})
 @Index('cliente_cpfcnpj', ['cpfcnpj'], { unique: true })

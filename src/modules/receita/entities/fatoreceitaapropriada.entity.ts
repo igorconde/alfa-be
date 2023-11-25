@@ -1,14 +1,14 @@
 import { Calendario } from '@modules/administracao/entities/calendario.entity';
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Cliente } from '@modules/cliente/entities/cliente.entity';
+import { Produtocategoria } from '@modules/portfolio/entities/produtocategoria.entity';
 import { Produtolinha } from '@modules/portfolio/entities/produtolinha.entity';
+import { Produtonacional } from '@modules/portfolio/entities/produtonacional.entity';
+import { Produtoregional } from '@modules/portfolio/entities/produtoregional.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Cliente } from './Cliente';
 import { Especialidadeunidade } from './Especialidadeunidade';
 import { Portecliente } from './Portecliente';
-import { Produtocategoria } from './Produtocategoria';
-import { Produtonacional } from './Produtonacional';
-import { Produtoregional } from './Produtoregional';
 import { Regiao } from './Regiao';
 import { Tipoprevisaoreceita } from './Tipoprevisaoreceita';
 

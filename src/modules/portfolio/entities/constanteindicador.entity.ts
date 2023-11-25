@@ -1,6 +1,6 @@
+import { Produtonacional } from '@modules/portfolio/entities/produtonacional.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Constanteprodutonacional } from './Constanteprodutonacional';
-import { Produtonacional } from './Produtonacional';
 
 @Index('constanteindicador_pkey', ['id'], { unique: true })
 @Index('cnstanteindicadorfkconstanteindicadoridconstanteprodutonacional', ['idconstanteprodutonacional'], {})

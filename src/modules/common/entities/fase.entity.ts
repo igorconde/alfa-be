@@ -1,6 +1,6 @@
+import { Produtonacional } from '@modules/portfolio/entities/produtonacional.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Atendimentofase } from './Atendimentofase';
-import { Produtonacional } from './Produtonacional';
 
 @Index('fase_pkey', ['id'], { unique: true })
 @Index('ix_fase_fk_fase_idprodutonacional', ['idprodutonacional'], {})

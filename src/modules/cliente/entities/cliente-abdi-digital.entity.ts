@@ -1,7 +1,8 @@
+import { Cliente } from 'import { Cliente } from ';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Bairro } from './Bairro';
 import { Contatoabdidigital } from './Contatoabdidigital';
-import { Cliente } from './cliente.entity';
+@modules/cliente/entities/cliente.entity';.entity';
 
 @Index('clienteabdidigital_pkey', ['id'], { unique: true })
 @Index('ix_clienteabdidigital_fk_clienteabdidigital_idbairro', ['idbairro'], {})

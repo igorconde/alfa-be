@@ -1,5 +1,6 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Produtonacional } from '@modules/portfolio/entities/produtonacional.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Colaboradorprodutoregional } from './Colaboradorprodutoregional';
 import { Despesa } from './Despesa';
@@ -14,7 +15,6 @@ import { Fatoresultadocompetencia } from './Fatoresultadocompetencia';
 import { Fatostatusatendimento } from './Fatostatusatendimento';
 import { Metafinanceira } from './Metafinanceira';
 import { Producao } from './Producao';
-import { Produtonacional } from './Produtonacional';
 import { Receita } from './Receita';
 
 @Index('produtoregional_pkey', ['id'], { unique: true })

@@ -1,7 +1,8 @@
+import { Clienteestadopresente } from 'import { Cliente } from ';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Anexoestadopresente } from './Anexoestadopresente';
-import { Clienteestadopresente } from './Clienteestadopresente';
 import { Atendimentopraticab } from './Atendimentopraticab';
+@modules/cliente/entities/cliente.entity';estadopresente';
 
 @Index('estadopresenteb_pkey', ['id'], { unique: true })
 @Index('ix_estadopresenteb_fk_estadopresenteb_idatendimentopratica', ['idatendimentopratica'], {})

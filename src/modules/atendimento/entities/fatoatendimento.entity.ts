@@ -3,10 +3,10 @@ import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Produtocategoria } from '@modules/portfolio/entities/produtocategoria.entity';
 import { Produtolinha } from '@modules/portfolio/entities/produtolinha.entity';
+import { Produtonacional } from '@modules/portfolio/entities/produtonacional.entity';
 import { Produtoregional } from '@modules/portfolio/entities/produtoregional.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Atendimentostatus } from './Atendimentostatus';
-import { Produtonacional } from './Produtonacional';
 
 @Index('fatoatendimento_pkey', ['id'], { unique: true })
 @Index('ifatoatendimentofkatendimentostatus', ['idatendimentostatus'], {})
