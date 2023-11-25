@@ -1,11 +1,11 @@
 import { Producaoapropriada } from '@modules/producao/entities/producaoapropriada.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Artefatosinstalacaopraticabdigital } from './Artefatosinstalacaopraticabdigital';
-import { Etapapraticabdigital } from './Etapapraticabdigital';
-import { Indicadorespraticabdigital } from './Indicadorespraticabdigital';
-import { Linhadeproducaopraticabdigital } from './Linhadeproducaopraticabdigital';
-import { Processoprodutivopraticabdigital } from './Processoprodutivopraticabdigital';
+import { Artefatosinstalacaopraticabdigital } from './artefatosinstalacaopraticabdigital.entity';
 import { Encontropraticabdigital } from './encontropraticabdigital.entity';
+import { Etapapraticabdigital } from './etapapraticabdigital.entity';
+import { Indicadorespraticabdigital } from './indicadorespraticabdigital.entity';
+import { Linhadeproducaopraticabdigital } from './linhadeproducaopraticabdigital.entity';
+import { Processoprodutivopraticabdigital } from './processoprodutivopraticabdigital.entity';
 
 @Index('atendimentopraticabdigital_pkey', ['id'], { unique: true })
 @Index('tndmentopraticabdigitalfktndimentopraticabdigitalidetapapratica', ['idetapapratica'], {})

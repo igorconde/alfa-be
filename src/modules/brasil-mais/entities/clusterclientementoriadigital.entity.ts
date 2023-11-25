@@ -1,7 +1,7 @@
 import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Clustermentoriadigital } from './Clustermentoriadigital';
-import { Tecnologiasdigitaisd } from './Tecnologiasdigitaisd';
+import { Tecnologiasdigitaisd } from './tecnologiasdigitaisd.entity';
 
 @Index('clusterclientementoriadigital_pkey', ['id'], { unique: true })
 @Index('clstrclntementoriadigitalfkclstrclientementoriadigitalidcliente', ['idcliente'], {})

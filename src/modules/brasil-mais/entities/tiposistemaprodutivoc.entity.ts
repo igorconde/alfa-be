@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Linhadeproducaoc } from './Linhadeproducaoc';
+import { Linhadeproducaoc } from './linhadeproducaoc.entity';
 
 @Index('tiposistemaprodutivoc_pkey', ['id'], { unique: true })
 @Index('tiposistemaprodutivocfk_tiposistemaprodutivoc_idlinhadeproducao', ['idlinhadeproducao'], {})

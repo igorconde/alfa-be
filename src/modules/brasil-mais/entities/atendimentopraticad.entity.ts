@@ -1,12 +1,12 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Desperdiciomasterd } from './Desperdiciomasterd';
-import { Etapapraticad } from './Etapapraticad';
-import { Linhadeproducaod } from './Linhadeproducaod';
-import { Mfvpraticad } from './Mfvpraticad';
-import { Planodeacaod } from './Planodeacaod';
-import { Processoprodutivod } from './Processoprodutivod';
-import { Visitapraticad } from './Visitapraticad';
 import { Atividadepraticad } from './atividadepraticad.entity';
+import { Desperdiciomasterd } from './desperdiciomasterd.entity';
+import { Etapapraticad } from './etapapraticad.entity';
+import { Linhadeproducaod } from './linhadeproducaod.entity';
+import { Mfvpraticad } from './mfvpraticad.entity';
+import { Planodeacaod } from './planodeacaod.entity';
+import { Processoprodutivod } from './processoprodutivod.entity';
+import { Visitapraticad } from './visitapraticad.entity';
 
 @Index('atendimentopraticad_pkey', ['id'], { unique: true })
 @Index('ix_atendimentopraticad_fk_atendimentopraticad_idetapapratica', ['idetapapratica'], {})

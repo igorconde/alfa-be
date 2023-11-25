@@ -1,7 +1,7 @@
 import { Visitaconsultoriac } from '@modules/brasil-mais/entities/visitaconsultoriac.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Etapaconsultoriac } from './Etapaconsultoriac';
 import { Atividadeconsultoriac } from './atividadeconsultoriac.entity';
+import { Etapaconsultoriac } from './etapaconsultoriac.entity';
 
 @Index('atendimentoconsultoriac_pkey', ['id'], { unique: true })
 @Index('tndimentoconsultoriacfktendimentoconsultoriacidetapaconsultoria', ['idetapaconsultoria'], {})

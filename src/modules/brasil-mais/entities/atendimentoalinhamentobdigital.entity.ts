@@ -1,8 +1,8 @@
 import { Encontroalinhamentobdigital } from '@modules/brasil-mais/entities/encontroalinhamentobdigital.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Etapaalinhamentob } from './Etapaalinhamentob';
-import { Linhadeproducaoalinhamentobdigital } from './Linhadeproducaoalinhamentobdigital';
-import { Processoprodutivoalinhamentobdigital } from './Processoprodutivoalinhamentobdigital';
+import { Etapaalinhamentob } from './etapaalinhamentob.entity';
+import { Linhadeproducaoalinhamentobdigital } from './linhadeproducaoalinhamentobdigital.entity';
+import { Processoprodutivoalinhamentobdigital } from './processoprodutivoalinhamentobdigital.entity';
 
 @Index('atendimentoalinhamentobdigital_pkey', ['id'], { unique: true })
 @Index('tndmntlnhmntobdigitalfktndmntlnhmentobdigitalidetapaalinhamento', ['idetapaalinhamento'], {})

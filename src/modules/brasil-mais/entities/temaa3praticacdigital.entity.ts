@@ -7,8 +7,8 @@ import { Itema3historicopraticacdigital } from './Itema3historicopraticacdigital
 import { Itema3metaspraticacdigital } from './Itema3metaspraticacdigital';
 import { Itema3praticacdigital } from './Itema3praticacdigital';
 import { Itema3verificacaopraticacdigital } from './Itema3verificacaopraticacdigital';
-import { Relatorioa3praticacdigital } from './Relatorioa3praticacdigital';
 import { Contramedidasa3praticacdigital } from './contramedidasa3praticacdigital.entity';
+import { Relatorioa3praticacdigital } from './relatorioa3praticacdigital.entity';
 
 @Index('temaa3praticacdigital_pkey', ['id'], { unique: true })
 @Index('ix_temaa3praticacdigital_fk_temaa3praticacdigital_idrelatorioa3', ['idrelatorioa3'], {})

@@ -1,8 +1,8 @@
 import { Encontroconsultoriacdigital } from '@modules/brasil-mais/entities/encontroconsultoriacdigital.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Etapaconsultoriacdigital } from './Etapaconsultoriacdigital';
-import { Ferramentaconsultoriacdigital } from './Ferramentaconsultoriacdigital';
-import { Relatorioa3consultoriacdigital } from './Relatorioa3consultoriacdigital';
+import { Etapaconsultoriacdigital } from './etapaconsultoriacdigital.entity';
+import { Ferramentaconsultoriacdigital } from './ferramentaconsultoriacdigital.entity';
+import { Relatorioa3consultoriacdigital } from './relatorioa3consultoriacdigital.entity';
 
 @Index('atendimentoconsultoriacdigital_pkey', ['id'], { unique: true })
 @Index('tndmntcnsltracdigitalfktndmntcnsltriacdigitalidetapaconsultoria', ['idetapaconsultoria'], {})

@@ -3,8 +3,8 @@ import { Analiseresultadospraticaddigital } from './Analiseresultadospraticaddig
 import { Encontropraticaddigital } from './Encontropraticaddigital';
 import { Etapapraticaddigital } from './Etapapraticaddigital';
 import { Indicadorespraticaddigital } from './Indicadorespraticaddigital';
-import { Relatorioa3consultoriacdigital } from './Relatorioa3consultoriacdigital';
 import { Autossuficienciapraticaddigital } from './autossuficienciapraticaddigital.entity';
+import { Relatorioa3consultoriacdigital } from './relatorioa3consultoriacdigital.entity';
 
 @Index('atendimentopraticaddigital_pkey', ['id'], { unique: true })
 @Index('tndmentopraticaddigitalfktndimentopraticaddigitalidetapapratica', ['idetapapratica'], {})

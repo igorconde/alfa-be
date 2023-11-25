@@ -1,6 +1,6 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Anexomaturidadepraticabdigital } from './Anexomaturidadepraticabdigital';
-import { Indicadorespraticabdigital } from './Indicadorespraticabdigital';
+import { Indicadorespraticabdigital } from './indicadorespraticabdigital.entity';
 
 @Index('maturidadepraticabdigital_pkey', ['id'], { unique: true })
 @Index('mtridadepraticabdigitalfkmaturidadepraticabdigitalidindicadores', ['idindicadores'], {})

@@ -1,12 +1,11 @@
 import { Visitaconsultoriad } from '@modules/brasil-mais/entities/visitaconsultoriad.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Assinaturaconsultoriad } from './Assinaturaconsultoriad';
-import { Avaliacaoconsultoriad } from './Avaliacaoconsultoriad';
-import { Etapaconsultoriad } from './Etapaconsultoriad';
-import { Resultadoconsultoriad } from './Resultadoconsultoriad';
-import { Tecnologiasdigitaisd } from './Tecnologiasdigitaisd';
+import { Assinaturaconsultoriad } from './assinaturaconsultoriad.entity';
 import { Atividadeconsultoriad } from './atividadeconsultoriad.entity';
-
+import { Avaliacaoconsultoriad } from './avaliacaoconsultoriad.entity';
+import { Etapaconsultoriad } from './etapaconsultoriad.entity';
+import { Resultadoconsultoriad } from './resultadoconsultoriad.entity';
+import { Tecnologiasdigitaisd } from './tecnologiasdigitaisd.entity';
 
 @Index('atendimentoconsultoriad_pkey', ['id'], { unique: true })
 @Index('tndimentoconsultoriadfktendimentoconsultoriadidetapaconsultoria', ['idetapaconsultoria'], {})

@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Estadopresenteb } from './Estadopresenteb';
+import { Estadopresenteb } from './estadopresenteb.entity';
 
 @Index('clienteestadopresente_pkey', ['id'], { unique: true })
 @Index('clienteestadopresente_fk_clienteestadopresente_idestadopresente', ['idestadopresente'], {})

@@ -7,8 +7,8 @@ import { Itema3consultoriacdigital } from './Itema3consultoriacdigital';
 import { Itema3historicoconsultoriacdigital } from './Itema3historicoconsultoriacdigital';
 import { Itema3metasconsultoriacdigital } from './Itema3metasconsultoriacdigital';
 import { Itema3verificacaoconsultoriacdigital } from './Itema3verificacaoconsultoriacdigital';
-import { Relatorioa3consultoriacdigital } from './Relatorioa3consultoriacdigital';
 import { Contramedidasa3consultoriacdigital } from './contramedidasa3consultoriacdigital.entity';
+import { Relatorioa3consultoriacdigital } from './relatorioa3consultoriacdigital.entity';
 
 @Index('temaa3consultoriacdigital_pkey', ['id'], { unique: true })
 @Index('tma3consultoriacdigitalfktemaa3consultoriacdigitalidrelatorioa3', ['idrelatorioa3'], {})

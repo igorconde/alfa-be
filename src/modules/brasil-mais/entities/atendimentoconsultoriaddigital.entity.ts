@@ -1,9 +1,9 @@
 import { Encontroconsultoriaddigital } from '@modules/brasil-mais/entities/encontroconsultoriaddigital.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Avaliacaoconsultoriaddigital } from './Avaliacaoconsultoriaddigital';
-import { Documentacaoconsultoriaddigital } from './Documentacaoconsultoriaddigital';
-import { Etapaconsultoriaddigital } from './Etapaconsultoriaddigital';
-import { Resultadoconsultoriaddigital } from './Resultadoconsultoriaddigital';
+import { Avaliacaoconsultoriaddigital } from './avaliacaoconsultoriaddigital.entity';
+import { Documentacaoconsultoriaddigital } from './documentacaoconsultoriaddigital.entity';
+import { Etapaconsultoriaddigital } from './etapaconsultoriaddigital.entity';
+import { Resultadoconsultoriaddigital } from './resultadoconsultoriaddigital.entity';
 
 @Index('atendimentoconsultoriaddigital_pkey', ['id'], { unique: true })
 @Index('tndmntcnsltraddigitalfktndmntcnsltriaddigitalidetapaconsultoria', ['idetapaconsultoria'], {})

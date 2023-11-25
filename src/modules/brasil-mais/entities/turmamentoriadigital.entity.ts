@@ -3,12 +3,12 @@ import { Atendimentoturmadigital } from './Atendimentoturmadigital';
 import { Etapaadigital } from './Etapaadigital';
 import { Etapaalinhamentob } from './Etapaalinhamentob';
 import { Etapaconsultoriabdigital } from './Etapaconsultoriabdigital';
-import { Etapaconsultoriacdigital } from './Etapaconsultoriacdigital';
-import { Etapaconsultoriaddigital } from './Etapaconsultoriaddigital';
-import { Etapapraticabdigital } from './Etapapraticabdigital';
-import { Etapapraticacdigital } from './Etapapraticacdigital';
 import { Etapapraticaddigital } from './Etapapraticaddigital';
 import { Etapateoricadigital } from './Etapateoricadigital';
+import { Etapaconsultoriacdigital } from './etapaconsultoriacdigital.entity';
+import { Etapaconsultoriaddigital } from './etapaconsultoriaddigital.entity';
+import { Etapapraticabdigital } from './etapapraticabdigital.entity';
+import { Etapapraticacdigital } from './etapapraticacdigital.entity';
 
 @Index('turmamentoriadigital_pkey', ['id'], { unique: true })
 @Entity('turmamentoriadigital', { schema: 'public' })

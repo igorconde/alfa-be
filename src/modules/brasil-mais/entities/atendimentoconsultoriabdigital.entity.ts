@@ -1,7 +1,7 @@
 import { Encontroconsultoriabdigital } from '@modules/brasil-mais/entities/encontroconsultoriabdigital.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Etapaconsultoriabdigital } from './Etapaconsultoriabdigital';
-import { Setupminaconsultoriabdigital } from './Setupminaconsultoriabdigital';
+import { Etapaconsultoriabdigital } from './etapaconsultoriabdigital.entity';
+import { Setupminaconsultoriabdigital } from './setupminaconsultoriabdigital.entity';
 
 @Index('atendimentoconsultoriabdigital_pkey', ['id'], { unique: true })
 @Index('tndmntcnsltrabdigitalfktndmntcnsltriabdigitalidetapaconsultoria', ['idetapaconsultoria'], {})
