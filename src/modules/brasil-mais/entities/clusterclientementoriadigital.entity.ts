@@ -1,5 +1,5 @@
+import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Cliente } from './Cliente';
 import { Clustermentoriadigital } from './Clustermentoriadigital';
 import { Tecnologiasdigitaisd } from './Tecnologiasdigitaisd';
 

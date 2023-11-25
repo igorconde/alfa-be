@@ -1,6 +1,6 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Cliente } from './Cliente';
 import { Condicaopagamento } from './Condicaopagamento';
 import { Formapagamento } from './Formapagamento';
 

@@ -1,9 +1,9 @@
 import { Calendario } from '@modules/administracao/entities/calendario.entity';
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Produtoregional } from '@modules/portfolio/entities/produtoregional.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Cliente } from './Cliente';
 import { Especialidadeunidade } from './Especialidadeunidade';
 import { Portecliente } from './Portecliente';
 import { Produtocategoria } from './Produtocategoria';

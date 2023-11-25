@@ -1,5 +1,5 @@
+import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Cliente } from './Cliente';
 import { Receitafaturamento } from './Receitafaturamento';
 
 @Index('receitafaturamentofontepagadora_pkey', ['id'], { unique: true })

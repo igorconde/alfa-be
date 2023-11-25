@@ -1,8 +1,8 @@
 import { Calendario } from '@modules/administracao/entities/calendario.entity';
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Atendimentostatus } from './Atendimentostatus';
-import { Cliente } from './Cliente';
 import { Unidadefederativa } from './Unidadefederativa';
 
 @Index('fatostatusatendimentoia_pkey', ['id'], { unique: true })

@@ -1,5 +1,5 @@
+import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Cliente } from './Cliente';
 
 @Index('pessoajuridica_pkey', ['id'], { unique: true })
 @Entity('pessoajuridica', { schema: 'public' })

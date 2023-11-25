@@ -1,4 +1,5 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Produtoregional } from '@modules/portfolio/entities/produtoregional.entity';
 import { Column, Entity, Index, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Anexoatendimentoreferencial } from './Anexoatendimentoreferencial';
@@ -17,7 +18,6 @@ import { Atendimentosi } from './Atendimentosi';
 import { Atendimentostatus } from './Atendimentostatus';
 import { Atendimentoturma } from './Atendimentoturma';
 import { Atendimentoturmadigital } from './Atendimentoturmadigital';
-import { Cliente } from './Cliente';
 import { Contrato } from './Contrato';
 import { Entrega } from './Entrega';
 import { Enviofaturamentoatendimento } from './Enviofaturamentoatendimento';

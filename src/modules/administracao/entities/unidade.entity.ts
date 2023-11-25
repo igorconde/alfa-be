@@ -1,4 +1,5 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Produtoregional } from '@modules/portfolio/entities/produtoregional.entity';
 import { Usuario } from '@modules/usuario/entities/usuario.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
@@ -6,7 +7,6 @@ import { Arquivocarga } from './Arquivocarga';
 import { Arquivounigestcsv } from './Arquivounigestcsv';
 import { Atendimentorede } from './Atendimentorede';
 import { Atendimentosi } from './Atendimentosi';
-import { Cliente } from './Cliente';
 import { Clientebackup } from './Clientebackup';
 import { Cluster } from './Cluster';
 import { Clustermentoriadigital } from './Clustermentoriadigital';

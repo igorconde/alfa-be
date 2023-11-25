@@ -1,9 +1,9 @@
 import { Calendario } from '@modules/administracao/entities/calendario.entity';
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Apl } from './Apl';
 import { Atendimentostatus } from './Atendimentostatus';
-import { Cliente } from './Cliente';
 import { Setor } from './Setor';
 import { Unidadefederativa } from './Unidadefederativa';
 
