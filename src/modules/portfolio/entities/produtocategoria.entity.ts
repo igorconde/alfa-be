@@ -1,3 +1,4 @@
+import { Produtolinha } from '@modules/portfolio/entities/produtolinha.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Despesa } from './Despesa';
 import { Fatoatendimento } from './Fatoatendimento';
@@ -11,7 +12,6 @@ import { Fatoresultadocompetencia } from './Fatoresultadocompetencia';
 import { Fatostatusatendimento } from './Fatostatusatendimento';
 import { Metafinanceira } from './Metafinanceira';
 import { Producao } from './Producao';
-import { Produtolinha } from './Produtolinha';
 import { Produtonacional } from './Produtonacional';
 import { Receita } from './Receita';
 

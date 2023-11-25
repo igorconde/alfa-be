@@ -1,12 +1,12 @@
 import { Calendario } from '@modules/administracao/entities/calendario.entity';
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Produtolinha } from '@modules/portfolio/entities/produtolinha.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Cliente } from './Cliente';
 import { Especialidadeunidade } from './Especialidadeunidade';
 import { Portecliente } from './Portecliente';
 import { Produtocategoria } from './Produtocategoria';
-import { Produtolinha } from './Produtolinha';
 import { Produtonacional } from './Produtonacional';
 import { Produtoregional } from './Produtoregional';
 import { Regiao } from './Regiao';

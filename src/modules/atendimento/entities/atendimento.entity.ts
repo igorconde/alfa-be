@@ -1,5 +1,6 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Cliente } from '@modules/cliente/entities/cliente.entity';
+import { Produtolinha } from '@modules/portfolio/entities/produtolinha.entity';
 import { Produtoregional } from '@modules/portfolio/entities/produtoregional.entity';
 import { Column, Entity, Index, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Anexoatendimentoreferencial } from './Anexoatendimentoreferencial';
@@ -36,7 +37,6 @@ import { Previsaoproducaocompartilhada } from './Previsaoproducaocompartilhada';
 import { Previsaoproducaoemrede } from './Previsaoproducaoemrede';
 import { Previsaoreceita } from './Previsaoreceita';
 import { Producaoapropriada } from './Producaoapropriada';
-import { Produtolinha } from './Produtolinha';
 import { Propostaatendimento } from './Propostaatendimento';
 import { Receitaapropriada } from './Receitaapropriada';
 import { Receitafaturamento } from './Receitafaturamento';
