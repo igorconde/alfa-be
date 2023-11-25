@@ -3,7 +3,7 @@ import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/commo
 import { Paginate, PaginateQuery, Paginated } from 'nestjs-paginate';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
-import { Usuario } from './entities/usuario.entity';
+import { Usuario } from './entities/OLD_usuario.entity';
 import { UsuarioService } from './usuario.service';
 
 @Controller('usuario')

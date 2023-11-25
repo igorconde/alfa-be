@@ -7,7 +7,7 @@ import getPostgresErrorMessage from '@/infrastructure/database/postgres-error-me
 import { FilterOperator, FilterSuffix, PaginateConfig, PaginateQuery, Paginated, paginate } from 'nestjs-paginate';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
-import { Usuario } from './entities/usuario.entity';
+import { Usuario } from './entities/OLD_usuario.entity';
 
 @Injectable()
 export class UsuarioService {

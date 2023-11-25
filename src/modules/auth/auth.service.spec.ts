@@ -5,7 +5,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import * as bcrypt from 'bcrypt';
 
 import { CryptoUtils } from '../../core/utils/crypto.utils';
-import { Usuario } from '../usuario/entities/usuario.entity';
+import { Usuario } from '../usuario/entities/OLD_usuario.entity';
 import { UsuarioService } from '../usuario/usuario.service';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';

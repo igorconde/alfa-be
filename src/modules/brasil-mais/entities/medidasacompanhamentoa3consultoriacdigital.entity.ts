@@ -1,0 +1,38 @@
+import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Acompanhamentoa3consultoriacdigital } from './Acompanhamentoa3consultoriacdigital';
+
+@Index('medidasacompanhamentoa3consultoriacdigital_pkey', ['id'], {
+  unique: true,
+})
+@Index('mddscmpnhmnt3cnsltrcdgtlmddscmpnhmnt3cnsltrcdgtldcmpanhamentoa3', ['idacompanhamentoa3'], {})
+@Entity('medidasacompanhamentoa3consultoriacdigital', { schema: 'public' })
+export class Medidasacompanhamentoa3consultoriacdigital {
+  @PrimaryGeneratedColumn({ type: 'integer', name: 'id' })
+  id: number;
+
+  @Column('character varying', { name: 'item', nullable: true, length: 255 })
+  item: string | null;
+
+  @Column('character varying', { name: 'nome', nullable: true, length: 255 })
+  nome: string | null;
+
+  @Column('timestamp without time zone', { name: 'prazo', nullable: true })
+  prazo: Date | null;
+
+  @Column('character varying', {
+    name: 'responsavel',
+    nullable: true,
+    length: 255,
+  })
+  responsavel: string | null;
+
+  @Column('character varying', { name: 'status', nullable: true, length: 255 })
+  status: string | null;
+
+  @Column('integer', { name: 'idacompanhamentoa3', nullable: true })
+  idacompanhamentoa3: number | null;
+
+  @ManyToOne(() => Acompanhamentoa3consultoriacdigital, (acompanhamentoa3consultoriacdigital) => acompanhamentoa3consultoriacdigital.medidasacompanhamentoa3consultoriacdigitals)
+  @JoinColumn([{ name: 'idacompanhamentoa3', referencedColumnName: 'id' }])
+  idacompanhamentoa: Acompanhamentoa3consultoriacdigital;
+}

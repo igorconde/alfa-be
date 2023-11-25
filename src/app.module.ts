@@ -10,9 +10,8 @@ import { UsuarioModule } from '@modules/usuario/usuario.module';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { APP_GUARD } from '@nestjs/core';
 import { PassportModule } from '@nestjs/passport';
-import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { ThrottlerModule } from '@nestjs/throttler';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { AppController } from './app.controller';
@@ -21,8 +20,25 @@ import { CoreModule } from './core/core.module';
 import { TypeOrmConfigService } from './infrastructure/database/typeorm-config.service';
 import { MailConfigService } from './mail/mail-config.service';
 import { MailModule } from './mail/mail.module';
-import { PublicRoutesGuard } from './modules/auth/guards/public-routes.guard';
+import { AdministracaoModule } from './modules/administracao/administracao.module';
+import { AtendimentoModule } from './modules/atendimento/atendimento.module';
+import { BrasilMaisModule } from './modules/brasil-mais/brasil-mais.module';
+import { ClienteModule } from './modules/cliente/cliente.module';
+import { CommonModule } from './modules/common/common.module';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { GeneralModule } from './modules/general/general.module';
 import { HealthCheckerModule } from './modules/health-checker/health-checker.module';
+import { IntegracaoModule } from './modules/integracao/integracao.module';
+import { KpiModule } from './modules/kpi/kpi.module';
+import { LaboratorioModule } from './modules/laboratorio/laboratorio.module';
+import { LocalidadeModule } from './modules/localidade/localidade.module';
+import { MetasModule } from './modules/metas/metas.module';
+import { PortfolioModule } from './modules/portfolio/portfolio.module';
+import { ProducaoModule } from './modules/producao/producao.module';
+import { ReceitaModule } from './modules/receita/receita.module';
+import { RelatorioModule } from './modules/relatorio/relatorio.module';
+import { SharedModule } from './modules/shared/shared.module';
+import { SolucaoIntegradoraModule } from './modules/solucao-integradora/solucao-integradora.module';
 
 @Module({
   imports: [
@@ -61,18 +77,36 @@ import { HealthCheckerModule } from './modules/health-checker/health-checker.mod
     CoreModule,
     MailModule,
     HealthCheckerModule,
+    AtendimentoModule,
+    ReceitaModule,
+    ProducaoModule,
+    PortfolioModule,
+    DashboardModule,
+    CommonModule,
+    GeneralModule,
+    LaboratorioModule,
+    RelatorioModule,
+    BrasilMaisModule,
+    ClienteModule,
+    AdministracaoModule,
+    LocalidadeModule,
+    SolucaoIntegradoraModule,
+    MetasModule,
+    SharedModule,
+    IntegracaoModule,
+    KpiModule,
   ],
   controllers: [AppController],
   providers: [
     AppService,
-    {
-      provide: APP_GUARD,
-      useClass: PublicRoutesGuard,
-    },
-    {
-      provide: APP_GUARD,
-      useClass: ThrottlerGuard,
-    },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: PublicRoutesGuard,
+    // },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: ThrottlerGuard,
+    // },
   ],
 })
 export class AppModule {}
