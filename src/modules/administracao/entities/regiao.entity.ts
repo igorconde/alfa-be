@@ -1,3 +1,4 @@
+import { Unidadefederativa } from '@modules/administracao/entities/unidadefederativa.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Fatodespesa } from './Fatodespesa';
 import { Fatoproducaoapropriada } from './Fatoproducaoapropriada';
@@ -6,7 +7,6 @@ import { Fatoreceitaapropriada } from './Fatoreceitaapropriada';
 import { Fatoreceitacompetencia } from './Fatoreceitacompetencia';
 import { Fatoresultado } from './Fatoresultado';
 import { Fatoresultadocompetencia } from './Fatoresultadocompetencia';
-import { Unidadefederativa } from './Unidadefederativa';
 
 @Index('regiao_pkey', ['id'], { unique: true })
 @Entity('regiao', { schema: 'public' })

@@ -1,9 +1,9 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Unidadefederativa } from '@modules/administracao/entities/unidadefederativa.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Bairro } from './Bairro';
 import { Endereco } from './Endereco';
 import { Enderecobackup } from './Enderecobackup';
-import { Unidadefederativa } from './Unidadefederativa';
 
 @Index('municipiobuscalivre', ['buscalivremunicipio'], {})
 @Index('imunicipio01', ['codigoibge'], {})

@@ -1,11 +1,11 @@
 import { Calendario } from '@modules/administracao/entities/calendario.entity';
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Unidadefederativa } from '@modules/administracao/entities/unidadefederativa.entity';
 import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Apl } from './Apl';
 import { Setor } from './Setor';
 import { Solicitacaostatus } from './Solicitacaostatus';
-import { Unidadefederativa } from './Unidadefederativa';
 
 @Index('fatosolicitacaoatendimentoie_pkey', ['id'], { unique: true })
 @Entity('fatosolicitacaoatendimentoie', { schema: 'public' })
