@@ -1,7 +1,6 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Acompanhamentoa3consultoriacdigital } from './Acompanhamentoa3consultoriacdigital';
 import { Conclusaoa3consultoriacdigital } from './Conclusaoa3consultoriacdigital';
-import { Contramedidasa3consultoriacdigital } from './Contramedidasa3consultoriacdigital';
 import { Itema3analiseconsultoriacdigital } from './Itema3analiseconsultoriacdigital';
 import { Itema3condicoesatuaisconsultoriacdigital } from './Itema3condicoesatuaisconsultoriacdigital';
 import { Itema3consultoriacdigital } from './Itema3consultoriacdigital';
@@ -9,6 +8,7 @@ import { Itema3historicoconsultoriacdigital } from './Itema3historicoconsultoria
 import { Itema3metasconsultoriacdigital } from './Itema3metasconsultoriacdigital';
 import { Itema3verificacaoconsultoriacdigital } from './Itema3verificacaoconsultoriacdigital';
 import { Relatorioa3consultoriacdigital } from './Relatorioa3consultoriacdigital';
+import { Contramedidasa3consultoriacdigital } from './contramedidasa3consultoriacdigital.entity';
 
 @Index('temaa3consultoriacdigital_pkey', ['id'], { unique: true })
 @Index('tma3consultoriacdigitalfktemaa3consultoriacdigitalidrelatorioa3', ['idrelatorioa3'], {})

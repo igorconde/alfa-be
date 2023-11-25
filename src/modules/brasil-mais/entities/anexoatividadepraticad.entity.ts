@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Atividadepraticad } from './Atividadepraticad';
+import { Atividadepraticad } from './atividadepraticad.entity';
 
 @Index('anexoatividadepraticad_pkey', ['id'], { unique: true })
 @Index('nexoatividadepraticadfkanexoatividadepraticadidatividadepratica', ['idatividadepratica'], {})

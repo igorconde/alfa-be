@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Artefatosinstalacaopraticabdigital } from './Artefatosinstalacaopraticabdigital';
+import { Artefatosinstalacaopraticabdigital } from './artefatosinstalacaopraticabdigital.entity';
 
 @Index('anexoartefatosinstalacaopraticabdigital_pkey', ['id'], { unique: true })
 @Index('nxrtftsnstlcprtcbdgtlnxrtftsnstlcprtcbdgtlidartefatosinstalacao', ['idartefatosinstalacao'], {})

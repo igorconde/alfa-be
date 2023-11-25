@@ -26,7 +26,6 @@ import { Atendimentopesquisa } from './Atendimentopesquisa';
 import { Atendimentorede } from './Atendimentorede';
 import { Atendimentoscriticas } from './Atendimentoscriticas';
 import { Atendimentosi } from './Atendimentosi';
-import { Atendimentoturma } from './Atendimentoturma';
 import { Atendimentoturmadigital } from './Atendimentoturmadigital';
 import { Contrato } from './Contrato';
 import { Historicotrocastatusdndr } from './Historicotrocastatusdndr';
@@ -43,6 +42,7 @@ import { Receitafaturamentobackup } from './Receitafaturamentobackup';
 import { Relatoriofinal } from './Relatoriofinal';
 import { Solicitacaostatus } from './Solicitacaostatus';
 import { Termoaceite } from './Termoaceite';
+import { Atendimentoturma } from './atendimentoturma.entity';
 import { Ordemfaturamento } from './ordemfaturamento.entity';
 import { Receitafaturamento } from './receitafaturamento.entity';
 

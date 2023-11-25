@@ -1,10 +1,10 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Analiseresultadospraticaddigital } from './Analiseresultadospraticaddigital';
-import { Etapapraticaddigital } from './Etapapraticaddigital';
-import { Relatorioa3consultoriacdigital } from './Relatorioa3consultoriacdigital';
-import { Autossuficienciapraticaddigital } from './Autossuficienciapraticaddigital';
 import { Encontropraticaddigital } from './Encontropraticaddigital';
+import { Etapapraticaddigital } from './Etapapraticaddigital';
 import { Indicadorespraticaddigital } from './Indicadorespraticaddigital';
+import { Relatorioa3consultoriacdigital } from './Relatorioa3consultoriacdigital';
+import { Autossuficienciapraticaddigital } from './autossuficienciapraticaddigital.entity';
 
 @Index('atendimentopraticaddigital_pkey', ['id'], { unique: true })
 @Index('tndmentopraticaddigitalfktndimentopraticaddigitalidetapapratica', ['idetapapratica'], {})
