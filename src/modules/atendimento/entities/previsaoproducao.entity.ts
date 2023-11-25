@@ -1,6 +1,6 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Atendimento } from './Atendimento';
 
 @Index('previsaoproducao_pkey', ['id'], { unique: true })
 @Entity('previsaoproducao', { schema: 'public' })

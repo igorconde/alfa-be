@@ -1,6 +1,6 @@
+import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Alunodigital } from './Alunodigital';
-import { Atendimento } from './Atendimento';
 import { Turmamentoriadigital } from './Turmamentoriadigital';
 
 @Index('atendimentoturmadigital_pkey', ['id'], { unique: true })

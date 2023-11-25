@@ -1,6 +1,6 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Atendimento } from './Atendimento';
 import { Colaboradorprodutoregional } from './Colaboradorprodutoregional';
 import { Despesa } from './Despesa';
 import { Fatoatendimento } from './Fatoatendimento';

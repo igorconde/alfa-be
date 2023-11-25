@@ -1,6 +1,6 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Atendimento } from './Atendimento';
 
 @Index('previsaoproducaocompartilhada_pkey', ['id'], { unique: true })
 @Index('iprevisaoproducaocompartilhadafkatendimento', ['idatendimento'], {})

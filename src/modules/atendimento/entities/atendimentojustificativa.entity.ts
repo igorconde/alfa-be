@@ -1,5 +1,5 @@
+import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Atendimento } from './Atendimento';
 import { Tipojustificativa } from './Tipojustificativa';
 
 @Index('atendimentojustificativa_pkey', ['id'], { unique: true })

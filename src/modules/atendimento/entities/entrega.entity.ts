@@ -1,5 +1,5 @@
+import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Atendimento } from './Atendimento';
 import { Entregafaturamento } from './Entregafaturamento';
 import { Receitafaturamentoentrega } from './Receitafaturamentoentrega';
 

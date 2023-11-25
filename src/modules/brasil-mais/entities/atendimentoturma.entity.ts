@@ -1,6 +1,6 @@
+import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Aluno } from './Aluno';
-import { Atendimento } from './Atendimento';
 import { Turma } from './Turma';
 
 @Index('atendimentoturma_pkey', ['id'], { unique: true })

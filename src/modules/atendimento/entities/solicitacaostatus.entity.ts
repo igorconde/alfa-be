@@ -1,6 +1,6 @@
+import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Anexoatendimentoreferencial } from './Anexoatendimentoreferencial';
-import { Atendimento } from './Atendimento';
 import { Fatofontepagadoraatendimentobp } from './Fatofontepagadoraatendimentobp';
 import { Fatofontepagadoraatendimentoia } from './Fatofontepagadoraatendimentoia';
 import { Fatofontepagadoraatendimentoie } from './Fatofontepagadoraatendimentoie';

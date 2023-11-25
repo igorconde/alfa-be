@@ -1,6 +1,6 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Atendimento } from './Atendimento';
 import { Clusterclientementoriadigital } from './Clusterclientementoriadigital';
 import { Cnaesecundariocliente } from './Cnaesecundariocliente';
 import { Contato } from './Contato';

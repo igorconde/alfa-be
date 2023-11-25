@@ -1,7 +1,5 @@
+import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Setor } from './Setor';
-import { Unidadefederativa } from './Unidadefederativa';
-import { Atendimento } from './Atendimento';
 import { Fatofontepagadoraatendimentobp } from './Fatofontepagadoraatendimentobp';
 import { Fatofontepagadoraatendimentoie } from './Fatofontepagadoraatendimentoie';
 import { Fatofontepagadoraatendimentoipea } from './Fatofontepagadoraatendimentoipea';
@@ -14,6 +12,8 @@ import { Fatostatusatendimentohistoricoie } from './Fatostatusatendimentohistori
 import { Fatostatusatendimentohistoricoipea } from './Fatostatusatendimentohistoricoipea';
 import { Fatostatusatendimentoie } from './Fatostatusatendimentoie';
 import { Fatostatusatendimentoipea } from './Fatostatusatendimentoipea';
+import { Setor } from './Setor';
+import { Unidadefederativa } from './Unidadefederativa';
 
 @Index('apl_pkey', ['id'], { unique: true })
 @Index('ix_apl_fk_apl_idsetor', ['idsetor'], {})

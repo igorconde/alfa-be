@@ -1,6 +1,6 @@
+import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Anexoreferencial } from './Anexoreferencial';
-import { Atendimento } from './Atendimento';
 import { Solicitacaostatus } from './Solicitacaostatus';
 
 @Index('anexoatendimentoreferencial_pkey', ['id'], { unique: true })
