@@ -1,5 +1,5 @@
+import { Enviofaturamento } from '@modules/common/entities/enviofaturamento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Enviofaturamento } from './Enviofaturamento';
 
 @Index('emailfaturamento_pkey', ['id'], { unique: true })
 @Index('iemailfaturamentofkenviofaturamento', ['idenviofaturamento'], {})

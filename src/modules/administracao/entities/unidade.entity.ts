@@ -2,6 +2,7 @@ import { Especialidadeunidade } from '@modules/administracao/entities/especialid
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Produtoregional } from '@modules/portfolio/entities/produtoregional.entity';
+import { Producaoapropriada } from '@modules/producao/entities/producaoapropriada.entity';
 import { Usuario } from '@modules/usuario/entities/usuario.entity';
 import { Clientebackup } from 'import { Cliente } from ';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
@@ -59,16 +60,15 @@ import { Previsaoproducao } from './Previsaoproducao';
 import { Previsaoproducaocompartilhada } from './Previsaoproducaocompartilhada';
 import { Previsaoproducaoemrede } from './Previsaoproducaoemrede';
 import { Producao } from './Producao';
-import { Producaoapropriada } from './Producaoapropriada';
 import { Proposta } from './Proposta';
 import { Publicacao } from './Publicacao';
-import { Rateioreceitaapropriada } from './Rateioreceitaapropriada';
 import { Rateioreceitafaturamento } from './Rateioreceitafaturamento';
 import { Receita } from './Receita';
 import { Relatoriodn } from './Relatoriodn';
 import { Tipounidade } from './Tipounidade';
 import { Treinamento } from './Treinamento';
 import { Visita } from './Visita';
+import { Rateioreceitaapropriada } from './rateioreceitaapropriada.entity';
 @modules/cliente/entities/cliente.entity';backup';
 
 @Index('unidadebuscalivre', ['buscalivre'], {})

@@ -1,7 +1,7 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Artefatosinstalacaopraticabdigital } from './Artefatosinstalacaopraticabdigital';
 import { Etapapraticabdigital } from './Etapapraticabdigital';
-import { Producaoapropriada } from './Producaoapropriada';
+import { Producaoapropriada } from '@modules/producao/entities/producaoapropriada.entity';
 import { Encontropraticabdigital } from './Encontropraticabdigital';
 import { Indicadorespraticabdigital } from './Indicadorespraticabdigital';
 import { Linhadeproducaopraticabdigital } from './Linhadeproducaopraticabdigital';

@@ -1,6 +1,6 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Receitafaturamento } from './Receitafaturamento';
+import { Receitafaturamento } from './receitafaturamento.entity';
 
 @Index('rateioreceitafaturamento_pkey', ['id'], { unique: true })
 @Index('rtreceitafaturamentofkrtoreceitafaturamentoidreceitafaturamento', ['idreceitafaturamento'], {})

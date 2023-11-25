@@ -1,6 +1,6 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Producaoapropriada } from '@modules/producao/entities/producaoapropriada.entity';
 import { Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Producaoapropriada } from './Producaoapropriada';
 
 @Index('atendimentoproducaoapropriada_pkey', ['id'], { unique: true })
 @Entity('atendimentoproducaoapropriada', { schema: 'public' })

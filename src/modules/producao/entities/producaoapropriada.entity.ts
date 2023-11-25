@@ -9,10 +9,10 @@ import { Encontroalinhamentobdigital } from './Encontroalinhamentobdigital';
 import { Encontroconsultoriabdigital } from './Encontroconsultoriabdigital';
 import { Encontroconsultoriacdigital } from './Encontroconsultoriacdigital';
 import { Encontroconsultoriaddigital } from './Encontroconsultoriaddigital';
-import { Receitaapropriada } from './Receitaapropriada';
-import { Receitaapropriadaproducaoapropriada } from './Receitaapropriadaproducaoapropriada';
 import { Visitaconsultoriac } from './Visitaconsultoriac';
 import { Visitaconsultoriad } from './Visitaconsultoriad';
+import { Receitaapropriada } from './receitaapropriada.entity';
+import { Receitaapropriadaproducaoapropriada } from './receitaapropriadaproducaoapropriada.entity';
 
 @Index('producaoapropriada_pkey', ['id'], { unique: true })
 @Index('iproducaoapropriadafkatendimento', ['idatendimento'], {})

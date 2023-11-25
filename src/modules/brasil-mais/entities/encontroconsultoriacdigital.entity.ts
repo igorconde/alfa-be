@@ -1,7 +1,7 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Anexoencontroconsultoriacdigital } from './Anexoencontroconsultoriacdigital';
 import { Atendimentoconsultoriacdigital } from './Atendimentoconsultoriacdigital';
-import { Producaoapropriada } from './Producaoapropriada';
+import { Producaoapropriada } from '@modules/producao/entities/producaoapropriada.entity';
 
 @Index('encontroconsultoriacdigital_pkey', ['id'], { unique: true })
 @Index('ncntrcnsltrcdgitalfkncntrcnsltrcdigitalidatendimentoconsultoria', ['idatendimentoconsultoria'], {})

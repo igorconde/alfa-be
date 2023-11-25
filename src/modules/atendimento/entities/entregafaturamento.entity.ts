@@ -1,5 +1,5 @@
+import { Entrega } from '@modules/atendimento/entities/entrega.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Entrega } from './Entrega';
 import { Enviofaturamentoatendimento } from './Enviofaturamentoatendimento';
 
 @Index('entregafaturamento_pkey', ['id'], { unique: true })

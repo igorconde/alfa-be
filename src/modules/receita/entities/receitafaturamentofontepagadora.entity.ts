@@ -1,6 +1,6 @@
 import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Receitafaturamento } from './Receitafaturamento';
+import { Receitafaturamento } from './receitafaturamento.entity';
 
 @Index('receitafaturamentofontepagadora_pkey', ['id'], { unique: true })
 @Index('rctftrmntofontepagadorafkrctftrmntofontepagadoraidfontepagadora', ['idfontepagadora'], {})

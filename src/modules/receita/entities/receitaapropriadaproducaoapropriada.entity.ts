@@ -1,6 +1,6 @@
+import { Producaoapropriada } from '@modules/producao/entities/producaoapropriada.entity';
 import { Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Producaoapropriada } from './Producaoapropriada';
-import { Receitaapropriada } from './Receitaapropriada';
+import { Receitaapropriada } from './receitaapropriada.entity';
 
 @Index('receitaapropriadaproducaoapropriada_pkey', ['id'], { unique: true })
 @Entity('receitaapropriadaproducaoapropriada', { schema: 'public' })

@@ -1,10 +1,10 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Enviofaturamento } from '@modules/common/entities/enviofaturamento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Entregafaturamento } from './Entregafaturamento';
-import { Enviofaturamento } from './Enviofaturamento';
 import { Proposta } from './Proposta';
-import { Receitafaturamento } from './Receitafaturamento';
 import { Receitafaturamentobackup } from './Receitafaturamentobackup';
+import { Receitafaturamento } from './receitafaturamento.entity';
 
 @Index('enviofaturamentoatendimento_pkey', ['id'], { unique: true })
 @Index('ienviofaturamentoatendimentofkatendimento', ['idatendimento'], {})

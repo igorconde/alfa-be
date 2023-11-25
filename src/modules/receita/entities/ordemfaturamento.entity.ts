@@ -1,8 +1,8 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Condicaopagamento } from './Condicaopagamento';
-import { Formapagamento } from './Formapagamento';
+import { Condicaopagamento } from './condicaopagamento.entity';
+import { Formapagamento } from './formapagamento.entity';
 
 @Index('ordemfaturamento_pkey', ['id'], { unique: true })
 @Index('ix_ordemfaturamento_fk_ordemfaturamento_idatendimento', ['idatendimento'], {})

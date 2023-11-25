@@ -2,7 +2,7 @@ import { Usuario } from '@modules/usuario/entities/usuario.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Emailfaturamento } from './Emailfaturamento';
 import { Enviofaturamentoatendimento } from './Enviofaturamentoatendimento';
-import { Receitaapropriada } from './Receitaapropriada';
+import { Receitaapropriada } from './receitaapropriada.entity';
 
 @Index('enviofaturamento_pkey', ['id'], { unique: true })
 @Index('ienviofaturamentofkusuario', ['idusuario'], {})

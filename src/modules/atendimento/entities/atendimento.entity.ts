@@ -1,7 +1,9 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Entrega } from '@modules/atendimento/entities/entrega.entity';
 import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Produtolinha } from '@modules/portfolio/entities/produtolinha.entity';
 import { Produtoregional } from '@modules/portfolio/entities/produtoregional.entity';
+import { Producaoapropriada } from '@modules/producao/entities/producaoapropriada.entity';
 import { Column, Entity, Index, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Anexoatendimentoreferencial } from './Anexoatendimentoreferencial';
 import { Anexoindicadorprodutividade } from './Anexoindicadorprodutividade';
@@ -20,7 +22,6 @@ import { Atendimentostatus } from './Atendimentostatus';
 import { Atendimentoturma } from './Atendimentoturma';
 import { Atendimentoturmadigital } from './Atendimentoturmadigital';
 import { Contrato } from './Contrato';
-import { Entrega } from './Entrega';
 import { Enviofaturamentoatendimento } from './Enviofaturamentoatendimento';
 import { Fatoproducaoapropriada } from './Fatoproducaoapropriada';
 import { Fatoproducaoapropriadametrologia } from './Fatoproducaoapropriadametrologia';
@@ -35,15 +36,14 @@ import { Previsaoproducao } from './Previsaoproducao';
 import { Previsaoproducaocompartilhada } from './Previsaoproducaocompartilhada';
 import { Previsaoproducaoemrede } from './Previsaoproducaoemrede';
 import { Previsaoreceita } from './Previsaoreceita';
-import { Producaoapropriada } from './Producaoapropriada';
 import { Propostaatendimento } from './Propostaatendimento';
-import { Receitaapropriada } from './Receitaapropriada';
-import { Receitafaturamento } from './Receitafaturamento';
 import { Receitafaturamentobackup } from './Receitafaturamentobackup';
 import { Relatoriofinal } from './Relatoriofinal';
 import { Solicitacaostatus } from './Solicitacaostatus';
 import { Termoaceite } from './Termoaceite';
 import { Ordemfaturamento } from './ordemfaturamento.entity';
+import { Receitaapropriada } from './receitaapropriada.entity';
+import { Receitafaturamento } from './receitafaturamento.entity';
 
 @Index('atendimentobuscalivre', ['buscalivreatendimento'], {})
 @Index('atendimento_pkey', ['id'], { unique: true })
