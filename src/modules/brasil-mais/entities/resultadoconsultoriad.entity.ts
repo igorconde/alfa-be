@@ -1,6 +1,6 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Atendimentoconsultoriad } from './Atendimentoconsultoriad';
 import { Assinaturaconsultoriad } from './assinaturaconsultoriad.entity';
+import { Atendimentoconsultoriad } from './atendimentoconsultoriad.entity';
 
 @Index('resultadoconsultoriad_pkey', ['id'], { unique: true })
 @Index('rsltdoconsultoriadfkrsltadoconsultoriadidatendimentoconsultoria', ['idatendimentoconsultoria'], {})

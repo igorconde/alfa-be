@@ -1,11 +1,11 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Tabelaco } from './tabelaco.entity';
 
-import { Parceirobolsatabelaco } from './Parceirobolsatabelaco';
-import { Parceiroempresatabelaco } from './Parceiroempresatabelaco';
-import { Parceirofomentotabelaco } from './Parceirofomentotabelaco';
-import { Parceiroicttabelaco } from './Parceiroicttabelaco';
-import { Parceirosenaitabelaco } from './Parceirosenaitabelaco';
+import { Parceirobolsatabelaco } from '@modules/common/entities/parceirobolsatabelaco.entity';
+import { Parceiroempresatabelaco } from '@modules/common/entities/parceiroempresatabelaco.entity';
+import { Parceirofomentotabelaco } from '@modules/common/entities/parceirofomentotabelaco.entity';
+import { Parceiroicttabelaco } from '@modules/common/entities/parceiroicttabelaco.entity';
+import { Parceirosenaitabelaco } from '@modules/common/entities/parceirosenaitabelaco.entity';
+import { Tabelaco } from '@modules/common/entities/tabelaco.entity';
 
 @Index('atendimentotabelaco_pkey', ['id'], { unique: true })
 @Index('ix_atendimentotabelaco_fk_atendimentotabelaco_idtabelaco', ['idtabelaco'], {})

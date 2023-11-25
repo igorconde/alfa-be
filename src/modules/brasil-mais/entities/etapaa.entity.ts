@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Turma } from './Turma';
+import { Turma } from './turma.entity';
 
 @Index('etapaa_pkey', ['id'], { unique: true })
 @Index('ix_etapaa_fk_etapaa_idturma', ['idturma'], {})

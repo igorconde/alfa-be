@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Turmamentoriadigital } from './Turmamentoriadigital';
+import { Turmamentoriadigital } from './turmamentoriadigital.entity';
 
 @Index('etapaadigital_pkey', ['id'], { unique: true })
 @Index('ix_etapaadigital_fk_etapaadigital_idturma', ['idturma'], {})

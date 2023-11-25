@@ -3,7 +3,6 @@ import { Atendimentoturmadigital } from './Atendimentoturmadigital';
 import { Etapaadigital } from './Etapaadigital';
 import { Etapaalinhamentob } from './Etapaalinhamentob';
 import { Etapaconsultoriabdigital } from './Etapaconsultoriabdigital';
-import { Etapapraticaddigital } from './Etapapraticaddigital';
 import { Etapateoricadigital } from './Etapateoricadigital';
 import { Etapaconsultoriacdigital } from './etapaconsultoriacdigital.entity';
 import { Etapaconsultoriaddigital } from './etapaconsultoriaddigital.entity';

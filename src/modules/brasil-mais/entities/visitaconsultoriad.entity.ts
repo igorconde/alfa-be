@@ -1,7 +1,7 @@
 import { Producaoapropriada } from '@modules/producao/entities/producaoapropriada.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Anexovisitaconsultoriad } from './Anexovisitaconsultoriad';
-import { Atendimentoconsultoriad } from './Atendimentoconsultoriad';
+import { Atendimentoconsultoriad } from './atendimentoconsultoriad.entity';
 
 @Index('visitaconsultoriad_pkey', ['id'], { unique: true })
 @Index('visitaconsultoriadfkvisitaconsultoriad_idatendimentoconsultoria', ['idatendimentoconsultoria'], {})

@@ -1,5 +1,5 @@
+import { Tabelaco } from '@modules/common/entities/tabelaco.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Tabelaco } from './tabelaco.entity';
 
 import { Tiporesponsavelescritorio } from './Tiporesponsavelescritorio';
 
