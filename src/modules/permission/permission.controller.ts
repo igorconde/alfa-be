@@ -1,12 +1,12 @@
 import { Body, Controller, Delete, Get, Logger, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { PermissionGuard } from '../auth/guards/permission.guard';
+// import { PermissionGuard } from '../auth/guards/permission.guard';
 import { CreatePermissionDto } from './dto/create-permission.dto';
 import { UpdatePermissionDto } from './dto/update-permission.dto';
 import { PermissionService } from './permission.service';
 
 @ApiTags('permissions')
-@UseGuards(PermissionGuard)
+// @UseGuards(PermissionGuard)
 @Controller('permission')
 export class PermissionController {
   private logger = new Logger(PermissionController.name);

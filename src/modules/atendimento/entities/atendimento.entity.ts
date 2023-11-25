@@ -21,7 +21,6 @@ import { Fatoreceitacompetencia } from '@modules/receita/entities/fatoreceitacom
 import { Ordemfaturamento } from '@modules/receita/entities/ordemfaturamento.entity';
 import { Receitaapropriada } from '@modules/receita/entities/receitaapropriada.entity';
 import { Receitafaturamento } from '@modules/receita/entities/receitafaturamento.entity';
-import { Receitafaturamentobackup } from '@modules/receita/entities/receitafaturamentobackup.entity';
 import { Atendimentosi } from '@modules/solucao-integradora/entities/atendimento-si.entity';
 import { Atendimentoscriticas } from '@modules/solucao-integradora/entities/atendimentos-criticas.entity';
 import { Column, Entity, Index, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
@@ -504,9 +503,6 @@ export class Atendimento {
 
   @OneToMany(() => Receitafaturamento, (receitafaturamento) => receitafaturamento.idatendimento2)
   receitafaturamentos: Receitafaturamento[];
-
-  @OneToMany(() => Receitafaturamentobackup, (receitafaturamentobackup) => receitafaturamentobackup.idatendimento2)
-  receitafaturamentobackups: Receitafaturamentobackup[];
 
   @OneToMany(() => Relatoriofinal, (relatoriofinal) => relatoriofinal.idatendimento2)
   relatoriofinals: Relatoriofinal[];

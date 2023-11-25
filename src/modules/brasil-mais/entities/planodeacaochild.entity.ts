@@ -1,4 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Planodeacao } from './planodeacao.entity';
 
 @Index('planodeacaochild_pkey', ['id'], { unique: true })
 @Index('ix_planodeacaochild_fk_planodeacaochild_idplanodeacao', ['idplanodeacao'], {})

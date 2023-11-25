@@ -1,7 +1,6 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Enviofaturamento } from '@modules/common/entities/enviofaturamento.entity';
 import { Receitafaturamento } from '@modules/receita/entities/receitafaturamento.entity';
-import { Receitafaturamentobackup } from '@modules/receita/entities/receitafaturamentobackup.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Entregafaturamento } from './entregafaturamento.entity';
 import { Proposta } from './proposta.entity';
@@ -77,7 +76,4 @@ export class Enviofaturamentoatendimento {
 
   @OneToMany(() => Receitafaturamento, (receitafaturamento) => receitafaturamento.idenviofaturamentoatendimento)
   receitafaturamentos: Receitafaturamento[];
-
-  @OneToMany(() => Receitafaturamentobackup, (receitafaturamentobackup) => receitafaturamentobackup.idenviofaturamentoatendimento)
-  receitafaturamentobackups: Receitafaturamentobackup[];
 }

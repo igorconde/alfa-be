@@ -3,7 +3,6 @@ import databaseConf from '@config/database.conf';
 import mailConfig from '@config/mail.config';
 import redisConf from '@config/redis.conf';
 import sessionConfig from '@config/session.config';
-import { AuthModule } from '@modules/auth/auth.module';
 import { PermissionModule } from '@modules/permission/permission.module';
 import { RoleModule } from '@modules/role/role.module';
 import { UsuarioModule } from '@modules/usuario/usuario.module';
@@ -26,12 +25,9 @@ import { BrasilMaisModule } from './modules/brasil-mais/brasil-mais.module';
 import { ClienteModule } from './modules/cliente/cliente.module';
 import { CommonModule } from './modules/common/common.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
-import { GeneralModule } from './modules/general/general.module';
 import { HealthCheckerModule } from './modules/health-checker/health-checker.module';
 import { IntegracaoModule } from './modules/integracao/integracao.module';
 import { KpiModule } from './modules/kpi/kpi.module';
-import { LaboratorioModule } from './modules/laboratorio/laboratorio.module';
-import { LocalidadeModule } from './modules/localidade/localidade.module';
 import { MetasModule } from './modules/metas/metas.module';
 import { PortfolioModule } from './modules/portfolio/portfolio.module';
 import { ProducaoModule } from './modules/producao/producao.module';
@@ -70,7 +66,6 @@ import { SolucaoIntegradoraModule } from './modules/solucao-integradora/solucao-
         ];
       },
     }),
-    AuthModule,
     UsuarioModule,
     PermissionModule,
     RoleModule,
@@ -83,13 +78,10 @@ import { SolucaoIntegradoraModule } from './modules/solucao-integradora/solucao-
     PortfolioModule,
     DashboardModule,
     CommonModule,
-    GeneralModule,
-    LaboratorioModule,
     RelatorioModule,
     BrasilMaisModule,
     ClienteModule,
     AdministracaoModule,
-    LocalidadeModule,
     SolucaoIntegradoraModule,
     MetasModule,
     SharedModule,

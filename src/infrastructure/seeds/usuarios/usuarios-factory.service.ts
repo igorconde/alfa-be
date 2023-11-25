@@ -14,14 +14,17 @@ export class UsuarioFactoryServiceService {
   async run() {
     const hashedPassword = await bcrypt.hash('123456', 10);
 
-    await this.repoUsuario.save(
-      this.repoUsuario.create({
-        nome: 'Administrador do Sistema',
-        password: hashedPassword,
-        email: 'admininistrador@teste.com',
-        roleId: 1,
-      }),
-    );
+    /* The code `await this.repoUsuario.save(this.repoUsuario.create({ nome: 'Administrador do Sistema',
+ password: hashedPassword, email: 'admininistrador@teste.com', roleId: 1 }))` is saving a new user
+ to the database. */
+    // await this.repoUsuario.save(
+    //   this.repoUsuario.create({
+    //     nome: 'Administrador do Sistema',
+    //     password: hashedPassword,
+    //     email: 'admininistrador@teste.com',
+    //     roleId: 1,
+    //   }),
+    // );
 
     //console.log(`Teste: ${faker.animal.bear()}}`);
 

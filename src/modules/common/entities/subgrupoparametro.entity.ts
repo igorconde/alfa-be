@@ -1,6 +1,6 @@
+import { Grupoparametro } from '@modules/administracao/entities/grupoparametro.entity';
+import { Parametro } from '@modules/administracao/entities/parametro.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Parametro } from './Parametro';
-import { Grupoparametro } from './Grupoparametro';
 
 @Index('subgrupoparametro_pkey', ['id'], { unique: true })
 @Entity('subgrupoparametro', { schema: 'public' })

@@ -1,5 +1,5 @@
-import { Configuracaograficodashboard } from '@modules/brasil-mais/entities/configuracaograficodashboard.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Configuracaograficodashboard } from './configuracaograficodashboard.entity';
 
 @Index('eixoconfiguracaolinhagraficodashboard_pkey', ['id'], { unique: true })
 @Index('ieixoconfiguracaolinhagraficodashboardfkatributo', ['idatributo'], {})

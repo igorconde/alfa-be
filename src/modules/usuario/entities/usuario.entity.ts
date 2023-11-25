@@ -7,7 +7,6 @@ import { Dashboardusuario } from '@modules/dashboard/entities/dashboardusuario.e
 import { Producaoapropriada } from '@modules/producao/entities/producaoapropriada.entity';
 import { Receitaapropriada } from '@modules/receita/entities/receitaapropriada.entity';
 import { Receitafaturamento } from '@modules/receita/entities/receitafaturamento.entity';
-import { Receitafaturamentobackup } from '@modules/receita/entities/receitafaturamentobackup.entity';
 import { Deparaloginsgtsi } from '@modules/solucao-integradora/entities/deparaloginsgtsi.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Colaborador } from './colaborador.entity';
@@ -120,9 +119,6 @@ export class Usuario {
 
   @OneToMany(() => Receitafaturamento, (receitafaturamento) => receitafaturamento.idusuario)
   receitafaturamentos: Receitafaturamento[];
-
-  @OneToMany(() => Receitafaturamentobackup, (receitafaturamentobackup) => receitafaturamentobackup.idusuario)
-  receitafaturamentobackups: Receitafaturamentobackup[];
 
   @OneToMany(() => Sessaousuario, (sessaousuario) => sessaousuario.idusuario2)
   sessaousuarios: Sessaousuario[];

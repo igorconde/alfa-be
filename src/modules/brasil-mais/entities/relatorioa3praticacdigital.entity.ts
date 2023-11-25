@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Anexorelatorioa3praticacdigital } from './Anexorelatorioa3praticacdigital';
+import { Anexorelatorioa3praticacdigital } from './anexorelatorioa3praticacdigital.entity';
 import { Atendimentopraticacdigital } from './atendimentopraticacdigital.entity';
 import { Temaa3praticacdigital } from './temaa3praticacdigital.entity';
 
