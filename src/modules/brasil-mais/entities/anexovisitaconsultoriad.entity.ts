@@ -1,5 +1,6 @@
+import { Visitaconsultoriad } from '@modules/brasil-mais/entities/visitaconsultoriad.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Visitaconsultoriad } from './Visitaconsultoriad';
+
 
 @Index('anexovisitaconsultoriad_pkey', ['id'], { unique: true })
 @Index('nxvisitaconsultoriadfknexovisitaconsultoriadidvisitaconsultoria', ['idvisitaconsultoria'], {})

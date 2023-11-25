@@ -1,6 +1,6 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Receitaapropriada } from '@modules/receita/entities/receitaapropriada.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Receitaapropriada } from './receitaapropriada.entity';
 
 @Index('rateioreceitaapropriada_pkey', ['id'], { unique: true })
 @Index('rtoreceitaapropriadafkrteioreceitaapropriadaidreceitaapropriada', ['idreceitaapropriada'], {})

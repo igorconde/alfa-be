@@ -1,5 +1,5 @@
+import { Encontroalinhamentobdigital } from '@modules/brasil-mais/entities/encontroalinhamentobdigital.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Encontroalinhamentobdigital } from './Encontroalinhamentobdigital';
 
 @Index('anexoencontroalinhamentobdigital_pkey', ['id'], { unique: true })
 @Index('nxncntrlnhmntbdgtalfknxncntrlnhmntbdigitalidencontroalinhamento', ['idencontroalinhamento'], {})

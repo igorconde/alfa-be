@@ -1,6 +1,6 @@
+import { Encontroconsultoriacdigital } from '@modules/brasil-mais/entities/encontroconsultoriacdigital.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Etapaconsultoriacdigital } from './Etapaconsultoriacdigital';
-import { Encontroconsultoriacdigital } from './Encontroconsultoriacdigital';
 import { Ferramentaconsultoriacdigital } from './Ferramentaconsultoriacdigital';
 import { Relatorioa3consultoriacdigital } from './Relatorioa3consultoriacdigital';
 

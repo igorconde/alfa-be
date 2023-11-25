@@ -1,5 +1,5 @@
+import { Atendimentopraticabdigital } from '@modules/brasil-mais/entities/atendimentopraticabdigital.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Atendimentopraticabdigital } from './Atendimentopraticabdigital';
 import { Turmamentoriadigital } from './Turmamentoriadigital';
 
 @Index('etapapraticabdigital_pkey', ['id'], { unique: true })

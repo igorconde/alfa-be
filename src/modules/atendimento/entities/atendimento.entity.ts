@@ -1,9 +1,11 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Entrega } from '@modules/atendimento/entities/entrega.entity';
 import { Cliente } from '@modules/cliente/entities/cliente.entity';
+import { Atendimentoproducaoapropriada } from '@modules/common/entities/atendimentoproducaoapropriada.entity';
 import { Produtolinha } from '@modules/portfolio/entities/produtolinha.entity';
 import { Produtoregional } from '@modules/portfolio/entities/produtoregional.entity';
 import { Producaoapropriada } from '@modules/producao/entities/producaoapropriada.entity';
+import { Receitaapropriada } from '@modules/receita/entities/receitaapropriada.entity';
 import { Column, Entity, Index, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Anexoatendimentoreferencial } from './Anexoatendimentoreferencial';
 import { Anexoindicadorprodutividade } from './Anexoindicadorprodutividade';
@@ -14,7 +16,6 @@ import { AtendimentoSubetapa } from './AtendimentoSubetapa';
 import { Atendimentofase } from './Atendimentofase';
 import { Atendimentojustificativa } from './Atendimentojustificativa';
 import { Atendimentopesquisa } from './Atendimentopesquisa';
-import { Atendimentoproducaoapropriada } from './Atendimentoproducaoapropriada';
 import { Atendimentorede } from './Atendimentorede';
 import { Atendimentoscriticas } from './Atendimentoscriticas';
 import { Atendimentosi } from './Atendimentosi';
@@ -42,7 +43,6 @@ import { Relatoriofinal } from './Relatoriofinal';
 import { Solicitacaostatus } from './Solicitacaostatus';
 import { Termoaceite } from './Termoaceite';
 import { Ordemfaturamento } from './ordemfaturamento.entity';
-import { Receitaapropriada } from './receitaapropriada.entity';
 import { Receitafaturamento } from './receitafaturamento.entity';
 
 @Index('atendimentobuscalivre', ['buscalivreatendimento'], {})

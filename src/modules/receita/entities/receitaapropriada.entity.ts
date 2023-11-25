@@ -1,10 +1,10 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Enviofaturamento } from '@modules/common/entities/enviofaturamento.entity';
 import { Producaoapropriada } from '@modules/producao/entities/producaoapropriada.entity';
+import { Receitaapropriadaproducaoapropriada } from '@modules/receita/entities/receitaapropriadaproducaoapropriada.entity';
 import { Usuario } from '@modules/usuario/entities/usuario.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Rateioreceitaapropriada } from './rateioreceitaapropriada.entity';
-import { Receitaapropriadaproducaoapropriada } from './receitaapropriadaproducaoapropriada.entity';
 
 @Index('receitaapropriada_pkey', ['id'], { unique: true })
 @Index('ireceitaapropriadafkatendimento', ['idatendimento'], {})

@@ -1,5 +1,5 @@
+import { Encontroconsultoriaddigital } from '@modules/brasil-mais/entities/encontroconsultoriaddigital.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Encontroconsultoriaddigital } from './Encontroconsultoriaddigital';
 
 @Index('anexoencontroconsultoriaddigital_pkey', ['id'], { unique: true })
 @Index('nxncntrcnsltrddgtalfknxncntrcnsltrddigitalidencontroconsultoria', ['idencontroconsultoria'], {})

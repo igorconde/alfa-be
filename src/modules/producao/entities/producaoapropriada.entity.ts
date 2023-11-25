@@ -1,18 +1,18 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Atendimentopraticabdigital } from '@modules/brasil-mais/entities/atendimentopraticabdigital.entity';
+import { Encontroalinhamentobdigital } from '@modules/brasil-mais/entities/encontroalinhamentobdigital.entity';
+import { Encontroconsultoriabdigital } from '@modules/brasil-mais/entities/encontroconsultoriabdigital.entity';
+import { Encontroconsultoriacdigital } from '@modules/brasil-mais/entities/encontroconsultoriacdigital.entity';
+import { Encontroconsultoriaddigital } from '@modules/brasil-mais/entities/encontroconsultoriaddigital.entity';
+import { Visitaconsultoriac } from '@modules/brasil-mais/entities/visitaconsultoriac.entity';
+import { Visitaconsultoriad } from '@modules/brasil-mais/entities/visitaconsultoriad.entity';
+import { Atendimentoproducaoapropriada } from '@modules/common/entities/atendimentoproducaoapropriada.entity';
+import { Receitaapropriada } from '@modules/receita/entities/receitaapropriada.entity';
+import { Receitaapropriadaproducaoapropriada } from '@modules/receita/entities/receitaapropriadaproducaoapropriada.entity';
 import { Colaborador } from '@modules/usuario/entities/colaborador.entity';
 import { Usuario } from '@modules/usuario/entities/usuario.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Atendimentopraticabdigital } from './Atendimentopraticabdigital';
-import { Atendimentoproducaoapropriada } from './Atendimentoproducaoapropriada';
-import { Encontroalinhamentobdigital } from './Encontroalinhamentobdigital';
-import { Encontroconsultoriabdigital } from './Encontroconsultoriabdigital';
-import { Encontroconsultoriacdigital } from './Encontroconsultoriacdigital';
-import { Encontroconsultoriaddigital } from './Encontroconsultoriaddigital';
-import { Visitaconsultoriac } from './Visitaconsultoriac';
-import { Visitaconsultoriad } from './Visitaconsultoriad';
-import { Receitaapropriada } from './receitaapropriada.entity';
-import { Receitaapropriadaproducaoapropriada } from './receitaapropriadaproducaoapropriada.entity';
 
 @Index('producaoapropriada_pkey', ['id'], { unique: true })
 @Index('iproducaoapropriadafkatendimento', ['idatendimento'], {})

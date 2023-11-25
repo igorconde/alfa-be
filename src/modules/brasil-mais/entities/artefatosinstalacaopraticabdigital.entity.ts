@@ -1,7 +1,7 @@
+import { Atendimentopraticabdigital } from '@modules/brasil-mais/entities/atendimentopraticabdigital.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Anexoartefatosinstalacaopraticabdigital } from './Anexoartefatosinstalacaopraticabdigital';
 import { Artefatokitdigital } from './Artefatokitdigital';
-import { Atendimentopraticabdigital } from './Atendimentopraticabdigital';
 import { Instalacaodigital } from './Instalacaodigital';
 
 @Index('artefatosinstalacaopraticabdigital_pkey', ['id'], { unique: true })

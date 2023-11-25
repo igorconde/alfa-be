@@ -1,8 +1,8 @@
+import { Encontroconsultoriaddigital } from '@modules/brasil-mais/entities/encontroconsultoriaddigital.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Etapaconsultoriaddigital } from './Etapaconsultoriaddigital';
 import { Avaliacaoconsultoriaddigital } from './Avaliacaoconsultoriaddigital';
 import { Documentacaoconsultoriaddigital } from './Documentacaoconsultoriaddigital';
-import { Encontroconsultoriaddigital } from './Encontroconsultoriaddigital';
+import { Etapaconsultoriaddigital } from './Etapaconsultoriaddigital';
 import { Resultadoconsultoriaddigital } from './Resultadoconsultoriaddigital';
 
 @Index('atendimentoconsultoriaddigital_pkey', ['id'], { unique: true })

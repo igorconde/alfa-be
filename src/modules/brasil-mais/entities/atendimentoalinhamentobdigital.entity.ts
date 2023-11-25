@@ -1,6 +1,6 @@
+import { Encontroalinhamentobdigital } from '@modules/brasil-mais/entities/encontroalinhamentobdigital.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Etapaalinhamentob } from './Etapaalinhamentob';
-import { Encontroalinhamentobdigital } from './Encontroalinhamentobdigital';
 import { Linhadeproducaoalinhamentobdigital } from './Linhadeproducaoalinhamentobdigital';
 import { Processoprodutivoalinhamentobdigital } from './Processoprodutivoalinhamentobdigital';
 
