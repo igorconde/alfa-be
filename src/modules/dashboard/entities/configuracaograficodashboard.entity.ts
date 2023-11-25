@@ -1,8 +1,7 @@
+import { Tipounidade } from '@modules/administracao/entities/tipounidade.entity';
+import { Eixoconfiguracaocolunagraficodashboard } from '@modules/dashboard/entities/eixoconfiguracaocolunagraficodashboard.entity';
+import { Eixoconfiguracaolinhagraficodashboard } from '@modules/dashboard/entities/eixoconfiguracaolinhagraficodashboard.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Classe } from './Classe';
-import { Tipounidade } from './Tipounidade';
-import { Eixoconfiguracaocolunagraficodashboard } from './Eixoconfiguracaocolunagraficodashboard';
-import { Eixoconfiguracaolinhagraficodashboard } from './Eixoconfiguracaolinhagraficodashboard';
 
 @Index('configuracaograficodashboard_pkey', ['id'], { unique: true })
 @Index('iconfiguracaograficodashboardfkfato', ['idfato'], {})
@@ -48,10 +47,6 @@ export class Configuracaograficodashboard {
     length: 10,
   })
   perfilusosistema: string | null;
-
-  @ManyToOne(() => Classe, (classe) => classe.configuracaograficodashboards)
-  @JoinColumn([{ name: 'idfato', referencedColumnName: 'id' }])
-  idfato2: Classe;
 
   @ManyToOne(() => Tipounidade, (tipounidade) => tipounidade.configuracaograficodashboards)
   @JoinColumn([{ name: 'idtipounidade', referencedColumnName: 'id' }])

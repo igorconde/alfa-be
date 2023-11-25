@@ -1,6 +1,6 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Grupomentoriadigital } from './Grupomentoriadigital';
+import { Grupomentoriadigital } from './grupomentoriadigital.entity';
 
 @Index('grupounidadementoriadigital_pkey', ['id'], { unique: true })
 @Index('grpnddmntriadigitalfkgrpnddmntoriadigitalidgrupomentoriadigital', ['idgrupomentoriadigital'], {})

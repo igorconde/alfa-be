@@ -1,6 +1,6 @@
 import { Atendimentopraticabdigital } from '@modules/brasil-mais/entities/atendimentopraticabdigital.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Anexolinhaproducaopraticabdigital } from './Anexolinhaproducaopraticabdigital';
+import { Anexolinhaproducaopraticabdigital } from './anexolinhaproducaopraticabdigital.entity';
 
 @Index('linhadeproducaopraticabdigital_pkey', ['id'], { unique: true })
 @Index('lnhdprdcprtcbdigitalfklnhdprdcprtcabdigitalidatendimentopratica', ['idatendimentopratica'], {})

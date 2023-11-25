@@ -1,7 +1,8 @@
-import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Anexoencontroconsultoriabdigital } from './Anexoencontroconsultoriabdigital';
-import { Atendimentoconsultoriabdigital } from './Atendimentoconsultoriabdigital';
 import { Producaoapropriada } from '@modules/producao/entities/producaoapropriada.entity';
+import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+
+import { Anexoencontroconsultoriabdigital } from './anexoencontroconsultoriabdigital.entity';
+import { Atendimentoconsultoriabdigital } from './atendimentoconsultoriabdigital.entity';
 
 @Index('encontroconsultoriabdigital_pkey', ['id'], { unique: true })
 @Index('ncntrcnsltrbdgitalfkncntrcnsltrbdigitalidatendimentoconsultoria', ['idatendimentoconsultoria'], {})

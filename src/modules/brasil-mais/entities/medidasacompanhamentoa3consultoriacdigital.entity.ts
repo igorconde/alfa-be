@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Acompanhamentoa3consultoriacdigital } from './Acompanhamentoa3consultoriacdigital';
+import { Acompanhamentoa3consultoriacdigital } from './acompanhamentoa3consultoriacdigital.entity';
 
 @Index('medidasacompanhamentoa3consultoriacdigital_pkey', ['id'], {
   unique: true,

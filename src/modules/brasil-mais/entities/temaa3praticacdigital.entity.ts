@@ -1,13 +1,13 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Acompanhamentoa3praticacdigital } from './Acompanhamentoa3praticacdigital';
-import { Conclusaoa3praticacdigital } from './Conclusaoa3praticacdigital';
-import { Itema3analisepraticacdigital } from './Itema3analisepraticacdigital';
-import { Itema3condicoesatuaispraticacdigital } from './Itema3condicoesatuaispraticacdigital';
-import { Itema3historicopraticacdigital } from './Itema3historicopraticacdigital';
-import { Itema3metaspraticacdigital } from './Itema3metaspraticacdigital';
-import { Itema3praticacdigital } from './Itema3praticacdigital';
-import { Itema3verificacaopraticacdigital } from './Itema3verificacaopraticacdigital';
+import { Acompanhamentoa3praticacdigital } from './acompanhamentoa3praticacdigital.entity';
+import { Conclusaoa3praticacdigital } from './conclusaoa3praticacdigital.entity';
 import { Contramedidasa3praticacdigital } from './contramedidasa3praticacdigital.entity';
+import { Itema3analisepraticacdigital } from './itema3analisepraticacdigital.entity';
+import { Itema3condicoesatuaispraticacdigital } from './itema3condicoesatuaispraticacdigital.entity';
+import { Itema3historicopraticacdigital } from './itema3historicopraticacdigital.entity';
+import { Itema3metaspraticacdigital } from './itema3metaspraticacdigital.entity';
+import { Itema3praticacdigital } from './itema3praticacdigital.entity';
+import { Itema3verificacaopraticacdigital } from './itema3verificacaopraticacdigital.entity';
 import { Relatorioa3praticacdigital } from './relatorioa3praticacdigital.entity';
 
 @Index('temaa3praticacdigital_pkey', ['id'], { unique: true })

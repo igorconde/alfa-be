@@ -1,13 +1,13 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Acompanhamentoa3consultoriacdigital } from './Acompanhamentoa3consultoriacdigital';
-import { Conclusaoa3consultoriacdigital } from './Conclusaoa3consultoriacdigital';
-import { Itema3analiseconsultoriacdigital } from './Itema3analiseconsultoriacdigital';
-import { Itema3condicoesatuaisconsultoriacdigital } from './Itema3condicoesatuaisconsultoriacdigital';
-import { Itema3consultoriacdigital } from './Itema3consultoriacdigital';
-import { Itema3historicoconsultoriacdigital } from './Itema3historicoconsultoriacdigital';
-import { Itema3metasconsultoriacdigital } from './Itema3metasconsultoriacdigital';
-import { Itema3verificacaoconsultoriacdigital } from './Itema3verificacaoconsultoriacdigital';
+import { Acompanhamentoa3consultoriacdigital } from './acompanhamentoa3consultoriacdigital.entity';
+import { Conclusaoa3consultoriacdigital } from './conclusaoa3consultoriacdigital.entity';
 import { Contramedidasa3consultoriacdigital } from './contramedidasa3consultoriacdigital.entity';
+import { Itema3analiseconsultoriacdigital } from './itema3analiseconsultoriacdigital.entity';
+import { Itema3condicoesatuaisconsultoriacdigital } from './itema3condicoesatuaisconsultoriacdigital.entity';
+import { Itema3consultoriacdigital } from './itema3consultoriacdigital.entity';
+import { Itema3historicoconsultoriacdigital } from './itema3historicoconsultoriacdigital.entity';
+import { Itema3metasconsultoriacdigital } from './itema3metasconsultoriacdigital.entity';
+import { Itema3verificacaoconsultoriacdigital } from './itema3verificacaoconsultoriacdigital.entity';
 import { Relatorioa3consultoriacdigital } from './relatorioa3consultoriacdigital.entity';
 
 @Index('temaa3consultoriacdigital_pkey', ['id'], { unique: true })

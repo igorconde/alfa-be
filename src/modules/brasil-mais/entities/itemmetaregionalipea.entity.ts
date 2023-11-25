@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Metaregionalipea } from './Metaregionalipea';
+import { Metaregionalipea } from './metaregionalipea.entity';
 
 @Index('itemmetaregionalipea_pkey', ['id'], { unique: true })
 @Index('itemmetaregionalipea_fk_itemmetaregionalipea_idmetaregionalipea', ['idmetaregionalipea'], {})

@@ -1,6 +1,6 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Anexoprocessoprodutivoc } from './Anexoprocessoprodutivoc';
-import { Atendimentopraticac } from './Atendimentopraticac';
+import { Anexoprocessoprodutivoc } from './anexoprocessoprodutivoc.entity';
+import { Atendimentopraticac } from './atendimentopraticac.entity';
 
 @Index('processoprodutivoc_pkey', ['id'], { unique: true })
 @Index('processoprodutivoc_fk_processoprodutivoc_idatendimentopratica', ['idatendimentopratica'], {})

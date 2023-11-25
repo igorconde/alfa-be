@@ -1,5 +1,5 @@
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Termoaceite } from './Termoaceite';
+import { Termoaceite } from './termoaceite.entity';
 
 @Index('tipotermo_pkey', ['id'], { unique: true })
 @Entity('tipotermo', { schema: 'public' })

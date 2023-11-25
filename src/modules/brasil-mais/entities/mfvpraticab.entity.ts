@@ -1,7 +1,7 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Anexomfvpratica } from './Anexomfvpratica';
-import { Maisinformacoesmfv } from './Maisinformacoesmfv';
-import { Atendimentopraticab } from './Atendimentopraticab';
+import { Anexomfvpratica } from './anexomfvpratica.entity';
+import { Atendimentopraticab } from './atendimentopraticab.entity';
+import { Maisinformacoesmfv } from './maisinformacoesmfv.entity';
 
 @Index('mfvpraticab_pkey', ['id'], { unique: true })
 @Index('ix_mfvpraticab_fk_mfvpraticab_idatendimentopratica', ['idatendimentopratica'], {})

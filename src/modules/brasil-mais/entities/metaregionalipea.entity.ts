@@ -1,6 +1,6 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Itemmetaregionalipea } from './Itemmetaregionalipea';
+import { Itemmetaregionalipea } from './itemmetaregionalipea.entity';
 
 @Index('metaregionalipea_pkey', ['id'], { unique: true })
 @Index('ix_metaregionalipea_fk_metaregionalipea_idunidade', ['idunidade'], {})

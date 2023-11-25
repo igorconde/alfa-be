@@ -1,6 +1,6 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Tipotermo } from './Tipotermo';
+import { Tipotermo } from './tipotermo.entity';
 
 @Index('termoaceite_pkey', ['id'], { unique: true })
 @Index('ix_termoaceite_fk_termoaceite_idatendimento', ['idatendimento'], {})

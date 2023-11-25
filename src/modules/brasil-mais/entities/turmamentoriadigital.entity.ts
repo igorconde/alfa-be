@@ -1,12 +1,13 @@
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Atendimentoturmadigital } from './Atendimentoturmadigital';
-import { Etapaadigital } from './Etapaadigital';
-import { Etapaalinhamentob } from './Etapaalinhamentob';
-import { Etapaconsultoriabdigital } from './Etapaconsultoriabdigital';
+import { Atendimentoturmadigital } from './atendimentoturmadigital.entity';
+import { Etapaadigital } from './etapaadigital.entity';
+import { Etapaalinhamentob } from './etapaalinhamentob.entity';
+import { Etapaconsultoriabdigital } from './etapaconsultoriabdigital.entity';
 import { Etapaconsultoriacdigital } from './etapaconsultoriacdigital.entity';
 import { Etapaconsultoriaddigital } from './etapaconsultoriaddigital.entity';
 import { Etapapraticabdigital } from './etapapraticabdigital.entity';
 import { Etapapraticacdigital } from './etapapraticacdigital.entity';
+import { Etapapraticaddigital } from './etapapraticaddigital.entity';
 import { Etapateoricadigital } from './etapateoricadigital.entity';
 
 @Index('turmamentoriadigital_pkey', ['id'], { unique: true })

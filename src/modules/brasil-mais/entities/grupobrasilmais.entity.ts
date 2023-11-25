@@ -1,5 +1,5 @@
+import { Grupounidade } from '@modules/administracao/entities/grupounidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Grupounidade } from './Grupounidade';
 import { Configuracaobrasilmais } from './configuracaobrasilmais.entity';
 
 @Index('grupobrasilmais_pkey', ['id'], { unique: true })

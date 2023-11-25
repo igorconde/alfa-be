@@ -1,11 +1,11 @@
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Etapaa } from './Etapaa';
-import { Etapaconsultoriac } from './Etapaconsultoriac';
-import { Etapapraticad } from './Etapapraticad';
 import { Atendimentoturma } from './atendimentoturma.entity';
+import { Etapaa } from './etapaa.entity';
+import { Etapaconsultoriac } from './etapaconsultoriac.entity';
 import { Etapaconsultoriad } from './etapaconsultoriad.entity';
 import { Etapapraticab } from './etapapraticab.entity';
 import { Etapapraticac } from './etapapraticac.entity';
+import { Etapapraticad } from './etapapraticad.entity';
 import { Etapateorica } from './etapateorica.entity';
 
 @Index('turmabuscalivre', ['buscalivreturma'], {})

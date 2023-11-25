@@ -1,7 +1,7 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Produtonacional } from '@modules/portfolio/entities/produtonacional.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Visitacolaborador } from './Visitacolaborador';
+import { Visitacolaborador } from './visitacolaborador.entity';
 
 @Index('visita_pkey', ['id'], { unique: true })
 @Index('ix_visita_fk_visita_idunidade', ['idunidade'], {})

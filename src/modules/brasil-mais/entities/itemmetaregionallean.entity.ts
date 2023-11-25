@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Metaregionallean } from './Metaregionallean';
+import { Metaregionallean } from './metaregionallean.entity';
 
 @Index('itemmetaregionallean_pkey', ['id'], { unique: true })
 @Index('ix_itemmetaregionallean_fk_itemmetaregionallean_idmetaregional', ['idmetaregional'], {})

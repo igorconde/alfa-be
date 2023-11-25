@@ -1,6 +1,6 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Anexosetupminaconsultoriabdigital } from './Anexosetupminaconsultoriabdigital';
-import { Atendimentoconsultoriabdigital } from './Atendimentoconsultoriabdigital';
+import { Anexosetupminaconsultoriabdigital } from './anexosetupminaconsultoriabdigital.entity';
+import { Atendimentoconsultoriabdigital } from './atendimentoconsultoriabdigital.entity';
 
 @Index('setupminaconsultoriabdigital_pkey', ['id'], { unique: true })
 @Index('stpmncnsltrbdgitalfkstpmncnsltrbdigitalidatendimentoconsultoria', ['idatendimentoconsultoria'], {})

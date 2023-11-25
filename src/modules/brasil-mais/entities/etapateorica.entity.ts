@@ -1,8 +1,8 @@
 import { Colaborador } from '@modules/usuario/entities/colaborador.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Visitateorica } from './Visitateorica';
 import { Atividadementoriateorica } from './atividadementoriateorica.entity';
 import { Turma } from './turma.entity';
+import { Visitateorica } from './visitateorica.entity';
 
 @Index('etapateorica_pkey', ['id'], { unique: true })
 @Index('ix_etapateorica_fk_etapateorica_idmentor', ['idmentor'], {})

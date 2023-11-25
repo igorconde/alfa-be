@@ -1,9 +1,9 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Anexoindicadorespraticacdigital } from './Anexoindicadorespraticacdigital';
-import { Atendimentopraticacdigital } from './Atendimentopraticacdigital';
-import { Maturidadepraticacdigital } from './Maturidadepraticacdigital';
-import { Oeepraticacdigital } from './Oeepraticacdigital';
-import { Produtividadepraticacdigital } from './Produtividadepraticacdigital';
+import { Anexoindicadorespraticacdigital } from './anexoindicadorespraticacdigital.entity';
+import { Atendimentopraticacdigital } from './atendimentopraticacdigital.entity';
+import { Maturidadepraticacdigital } from './maturidadepraticacdigital.entity';
+import { Oeepraticacdigital } from './oeepraticacdigital.entity';
+import { Produtividadepraticacdigital } from './produtividadepraticacdigital.entity';
 
 @Index('indicadorespraticacdigital_pkey', ['id'], { unique: true })
 @Index('ndcdrsprticacdigitalfkndcdrspraticacdigitalidatendimentopratica', ['idatendimentopratica'], {})

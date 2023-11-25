@@ -1,6 +1,6 @@
+import { Setor } from '@modules/atendimento/entities/setor.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Metaregional } from './Metaregional';
-import { Setor } from './Setor';
+import { Metaregional } from './metaregional.entity';
 
 @Index('itemmetaregional_pkey', ['id'], { unique: true })
 @Index('ix_itemmetaregional_fk_itemmetaregional_idmetaregional', ['idmetaregional'], {})

@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Atendimentoconsultoriacdigital } from './Atendimentoconsultoriacdigital';
+import { Atendimentoconsultoriacdigital } from './atendimentoconsultoriacdigital.entity';
 import { Turmamentoriadigital } from './turmamentoriadigital.entity';
 
 @Index('etapaconsultoriacdigital_pkey', ['id'], { unique: true })

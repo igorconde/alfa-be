@@ -1,8 +1,8 @@
 import { Atendimentopraticabdigital } from '@modules/brasil-mais/entities/atendimentopraticabdigital.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Anexoindicadorespraticabdigital } from './Anexoindicadorespraticabdigital';
-import { Maturidadepraticabdigital } from './Maturidadepraticabdigital';
-import { Produtividadepraticabdigital } from './Produtividadepraticabdigital';
+import { Anexoindicadorespraticabdigital } from './anexoindicadorespraticabdigital.entity';
+import { Maturidadepraticabdigital } from './maturidadepraticabdigital.entity';
+import { Produtividadepraticabdigital } from './produtividadepraticabdigital.entity';
 
 @Index('indicadorespraticabdigital_pkey', ['id'], { unique: true })
 @Index('ndcdrsprticabdigitalfkndcdrspraticabdigitalidatendimentopratica', ['idatendimentopratica'], {})

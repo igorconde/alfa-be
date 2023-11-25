@@ -1,4 +1,5 @@
 import { Especialidadeunidade } from '@modules/administracao/entities/especialidadeunidade.entity';
+import { Tipounidade } from '@modules/administracao/entities/tipounidade.entity';
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Fatoatendimento } from '@modules/atendimento/entities/fatoatendimento.entity';
 import { Fatostatusatendimento } from '@modules/atendimento/entities/fatostatusatendimento.entity';
@@ -63,7 +64,6 @@ import { Previsaoproducaoemrede } from './Previsaoproducaoemrede';
 import { Proposta } from './Proposta';
 import { Publicacao } from './Publicacao';
 import { Rateioreceitafaturamento } from './Rateioreceitafaturamento';
-import { Tipounidade } from './Tipounidade';
 import { Treinamento } from './Treinamento';
 import { Cluster } from './cluster.entity';
 import { Clustermentoriadigital } from './clustermentoriadigital.entity';

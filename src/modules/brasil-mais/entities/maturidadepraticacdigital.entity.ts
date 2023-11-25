@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Anexomaturidadepraticacdigital } from './Anexomaturidadepraticacdigital';
+import { Anexomaturidadepraticacdigital } from './anexomaturidadepraticacdigital.entity';
 import { Indicadorespraticacdigital } from './indicadorespraticacdigital.entity';
 
 @Index('maturidadepraticacdigital_pkey', ['id'], { unique: true })

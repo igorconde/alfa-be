@@ -1,6 +1,6 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Anexoferramentaconsultoriacdigital } from './Anexoferramentaconsultoriacdigital';
-import { Atendimentoconsultoriacdigital } from './Atendimentoconsultoriacdigital';
+import { Anexoferramentaconsultoriacdigital } from './anexoferramentaconsultoriacdigital.entity';
+import { Atendimentoconsultoriacdigital } from './atendimentoconsultoriacdigital.entity';
 
 @Index('ferramentaconsultoriacdigital_pkey', ['id'], { unique: true })
 @Index('frrmntcnsltrcdgtalfkfrrmntcnsltrcdgitalidatendimentoconsultoria', ['idatendimentoconsultoria'], {})

@@ -1,7 +1,7 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Coletordigital } from './Coletordigital';
-import { Instaladordigital } from './Instaladordigital';
 import { Artefatosinstalacaopraticabdigital } from './artefatosinstalacaopraticabdigital.entity';
+import { Coletordigital } from './coletordigital.entity';
+import { Instaladordigital } from './instaladordigital.entity';
 
 @Index('instalacaodigital_pkey', ['id'], { unique: true })
 @Index('ix_instalacaodigital_fk_instalacaodigital_idartefatosinstalacao', ['idartefatosinstalacao'], {})

@@ -1,6 +1,6 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Grupounidadementoriadigital } from './Grupounidadementoriadigital';
 import { Configuracaomentoriadigital } from './configuracaomentoriadigital.entity';
+import { Grupounidadementoriadigital } from './grupounidadementoriadigital.entity';
 
 @Index('grupomentoriadigital_pkey', ['id'], { unique: true })
 @Index('grpmntradigitalfkgrpmntoriadigitalidconfiguracaomentoriadigital', ['idconfiguracaomentoriadigital'], {})

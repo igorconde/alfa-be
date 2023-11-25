@@ -1,5 +1,5 @@
+import { Tipounidade } from '@modules/administracao/entities/tipounidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Tipounidade } from './Tipounidade';
 import { Tela } from './tela.entity';
 
 @Index('grupotela_pkey', ['id'], { unique: true })
