@@ -2,10 +2,10 @@ import { Calendario } from '@modules/administracao/entities/calendario.entity';
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Unidadefederativa } from '@modules/administracao/entities/unidadefederativa.entity';
 import { Cliente } from '@modules/cliente/entities/cliente.entity';
+import { Apl } from '@modules/common/entities/apl.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Apl } from './Apl';
-import { Setor } from './Setor';
-import { Solicitacaostatus } from './Solicitacaostatus';
+import { Setor } from './setor.entity';
+import { Solicitacaostatus } from './solicitacaostatus.entity';
 
 @Index('fatosolicitacaoatendimentobp_pkey', ['id'], { unique: true })
 @Index('fatosolicitacaoatendimentobpfkfatosolicitacaoatendimentobpidapl', ['idapl'], {})

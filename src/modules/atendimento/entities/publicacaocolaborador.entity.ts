@@ -1,6 +1,6 @@
 import { Colaborador } from '@modules/usuario/entities/colaborador.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Publicacao } from './Publicacao';
+import { Publicacao } from './publicacao.entity';
 
 @Index('publicacaocolaborador_pkey', ['id'], { unique: true })
 @Index('ix_publicacaocolaborador_fk_publicacaocolaborador_idcolaborador', ['idcolaborador'], {})

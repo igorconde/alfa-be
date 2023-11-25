@@ -1,6 +1,6 @@
 import { Tipounidade } from '@modules/administracao/entities/tipounidade.entity';
+import { Telatemp } from '@modules/common/entities/telatemp.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Telatemp } from './telatemp.entity';
 
 @Index('grupotelatemp_pkey', ['id'], { unique: true })
 @Index('ix_grupotelatemp_fk_grupotelatemp_idtipounidade', ['idtipounidade'], {})

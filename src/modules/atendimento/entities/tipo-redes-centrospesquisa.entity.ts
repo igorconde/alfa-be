@@ -1,5 +1,5 @@
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { RedesCentrospesquisa } from './RedesCentrospesquisa';
+import { RedesCentrospesquisa } from './redes-centrospesquisa.entity';
 
 @Index('tipo_redes_centrospesquisa_pkey', ['id'], { unique: true })
 @Entity('tipo_redes_centrospesquisa', { schema: 'public' })

@@ -3,15 +3,15 @@ import { Fatoatendimento } from '@modules/atendimento/entities/fatoatendimento.e
 import { Fatostatusatendimento } from '@modules/atendimento/entities/fatostatusatendimento.entity';
 import { Relatoriodn } from '@modules/common/entities/relatoriodn.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { AtendimentoSubetapa } from './AtendimentoSubetapa';
-import { Fatostatusatendimentobp } from './Fatostatusatendimentobp';
-import { Fatostatusatendimentohistoricobp } from './Fatostatusatendimentohistoricobp';
-import { Fatostatusatendimentohistoricoia } from './Fatostatusatendimentohistoricoia';
-import { Fatostatusatendimentohistoricoie } from './Fatostatusatendimentohistoricoie';
-import { Fatostatusatendimentohistoricoipea } from './Fatostatusatendimentohistoricoipea';
-import { Fatostatusatendimentoia } from './Fatostatusatendimentoia';
-import { Fatostatusatendimentoie } from './Fatostatusatendimentoie';
-import { Fatostatusatendimentoipea } from './Fatostatusatendimentoipea';
+import { AtendimentoSubetapa } from './atendimento-subetapa.entity';
+import { Fatostatusatendimentobp } from './fatostatusatendimentobp.entity';
+import { Fatostatusatendimentohistoricobp } from './fatostatusatendimentohistoricobp.entity';
+import { Fatostatusatendimentohistoricoia } from './fatostatusatendimentohistoricoia.entity';
+import { Fatostatusatendimentohistoricoie } from './fatostatusatendimentohistoricoie.entity';
+import { Fatostatusatendimentohistoricoipea } from './fatostatusatendimentohistoricoipea.entity';
+import { Fatostatusatendimentoia } from './fatostatusatendimentoia.entity';
+import { Fatostatusatendimentoie } from './fatostatusatendimentoie.entity';
+import { Fatostatusatendimentoipea } from './fatostatusatendimentoipea.entity';
 
 @Index('atendimentostatus_pkey', ['id'], { unique: true })
 @Entity('atendimentostatus', { schema: 'public' })

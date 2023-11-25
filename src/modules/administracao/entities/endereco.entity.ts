@@ -1,7 +1,7 @@
 import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Municipio } from './Municipio';
-import { Tipoendereco } from './Tipoendereco';
+import { Municipio } from './municipio.entity';
+import { Tipoendereco } from './tipoendereco.entity';
 
 @Index('endereco_pkey', ['id'], { unique: true })
 @Index('ienderecofkcliente', ['idcliente'], {})

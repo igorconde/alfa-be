@@ -1,5 +1,5 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { TipoRedesCentrospesquisa } from './TipoRedesCentrospesquisa';
+import { TipoRedesCentrospesquisa } from './tipo-redes-centrospesquisa.entity';
 
 @Entity('redes_centrospesquisa', { schema: 'public' })
 export class RedesCentrospesquisa {

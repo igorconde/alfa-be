@@ -1,5 +1,22 @@
 import { Fatoatendimento } from '@modules/atendimento/entities/fatoatendimento.entity';
+import { Fatofontepagadoraatendimentobp } from '@modules/atendimento/entities/fatofontepagadoraatendimentobp.entity';
+import { Fatofontepagadoraatendimentoia } from '@modules/atendimento/entities/fatofontepagadoraatendimentoia.entity';
+import { Fatofontepagadoraatendimentoie } from '@modules/atendimento/entities/fatofontepagadoraatendimentoie.entity';
+import { Fatofontepagadoraatendimentoipea } from '@modules/atendimento/entities/fatofontepagadoraatendimentoipea.entity';
+import { Fatosolicitacaoatendimentobp } from '@modules/atendimento/entities/fatosolicitacaoatendimentobp.entity';
+import { Fatosolicitacaoatendimentoia } from '@modules/atendimento/entities/fatosolicitacaoatendimentoia.entity';
+import { Fatosolicitacaoatendimentoie } from '@modules/atendimento/entities/fatosolicitacaoatendimentoie.entity';
+import { Fatosolicitacaoatendimentoipea } from '@modules/atendimento/entities/fatosolicitacaoatendimentoipea.entity';
 import { Fatostatusatendimento } from '@modules/atendimento/entities/fatostatusatendimento.entity';
+import { Fatostatusatendimentobp } from '@modules/atendimento/entities/fatostatusatendimentobp.entity';
+import { Fatostatusatendimentohistoricobp } from '@modules/atendimento/entities/fatostatusatendimentohistoricobp.entity';
+import { Fatostatusatendimentohistoricoia } from '@modules/atendimento/entities/fatostatusatendimentohistoricoia.entity';
+import { Fatostatusatendimentohistoricoie } from '@modules/atendimento/entities/fatostatusatendimentohistoricoie.entity';
+import { Fatostatusatendimentohistoricoipea } from '@modules/atendimento/entities/fatostatusatendimentohistoricoipea.entity';
+import { Fatostatusatendimentoia } from '@modules/atendimento/entities/fatostatusatendimentoia.entity';
+import { Fatostatusatendimentoie } from '@modules/atendimento/entities/fatostatusatendimentoie.entity';
+import { Fatostatusatendimentoipea } from '@modules/atendimento/entities/fatostatusatendimentoipea.entity';
+import { Fatostatusatendimentosi } from '@modules/atendimento/entities/fatostatusatendimentosi.entity';
 import { Fatodespesa } from '@modules/common/entities/fatodespesa.entity';
 import { Fatoresultado } from '@modules/metas/entities/fatoresultado.entity';
 import { Fatoresultadocompetencia } from '@modules/metas/entities/fatoresultadocompetencia.entity';
@@ -7,25 +24,8 @@ import { Fatoproducaoapropriada } from '@modules/producao/entities/fatoproducaoa
 import { Fatoproducaoapropriadametrologia } from '@modules/producao/entities/fatoproducaoapropriadametrologia.entity';
 import { Fatoreceitaapropriada } from '@modules/receita/entities/fatoreceitaapropriada.entity';
 import { Fatoreceitacompetencia } from '@modules/receita/entities/fatoreceitacompetencia.entity';
+import { Atendimentosi } from '@modules/solucao-integradora/entities/atendimento-si.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Atendimentosi } from './Atendimentosi';
-import { Fatofontepagadoraatendimentobp } from './Fatofontepagadoraatendimentobp';
-import { Fatofontepagadoraatendimentoia } from './Fatofontepagadoraatendimentoia';
-import { Fatofontepagadoraatendimentoie } from './Fatofontepagadoraatendimentoie';
-import { Fatofontepagadoraatendimentoipea } from './Fatofontepagadoraatendimentoipea';
-import { Fatosolicitacaoatendimentobp } from './Fatosolicitacaoatendimentobp';
-import { Fatosolicitacaoatendimentoia } from './Fatosolicitacaoatendimentoia';
-import { Fatosolicitacaoatendimentoie } from './Fatosolicitacaoatendimentoie';
-import { Fatosolicitacaoatendimentoipea } from './Fatosolicitacaoatendimentoipea';
-import { Fatostatusatendimentobp } from './Fatostatusatendimentobp';
-import { Fatostatusatendimentohistoricobp } from './Fatostatusatendimentohistoricobp';
-import { Fatostatusatendimentohistoricoia } from './Fatostatusatendimentohistoricoia';
-import { Fatostatusatendimentohistoricoie } from './Fatostatusatendimentohistoricoie';
-import { Fatostatusatendimentohistoricoipea } from './Fatostatusatendimentohistoricoipea';
-import { Fatostatusatendimentoia } from './Fatostatusatendimentoia';
-import { Fatostatusatendimentoie } from './Fatostatusatendimentoie';
-import { Fatostatusatendimentoipea } from './Fatostatusatendimentoipea';
-import { Fatostatusatendimentosi } from './Fatostatusatendimentosi';
 
 @Index('calendario_pkey', ['id'], { unique: true })
 @Entity('calendario', { schema: 'public' })

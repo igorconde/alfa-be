@@ -1,7 +1,7 @@
 import { Fatoreceitaapropriada } from '@modules/receita/entities/fatoreceitaapropriada.entity';
 import { Fatoreceitacompetencia } from '@modules/receita/entities/fatoreceitacompetencia.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Previsaoreceita } from './Previsaoreceita';
+import { Previsaoreceita } from './previsaoreceita.entity';
 
 @Index('tipoprevisaoreceita_pkey', ['id'], { unique: true })
 @Entity('tipoprevisaoreceita', { schema: 'public' })

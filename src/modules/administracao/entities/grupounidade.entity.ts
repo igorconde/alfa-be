@@ -1,6 +1,6 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Grupobrasilmais } from '@modules/brasil-mais/entities/grupobrasilmais.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Grupobrasilmais } from './grupobrasilmais.entity';
 
 @Index('grupounidade_pkey', ['id'], { unique: true })
 @Index('ix_grupounidade_fk_grupounidade_idgrupobrasilmais', ['idgrupobrasilmais'], {})

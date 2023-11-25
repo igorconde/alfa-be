@@ -1,8 +1,8 @@
 import { Tipounidade } from '@modules/administracao/entities/tipounidade.entity';
+import { Subgrupoparametro } from '@modules/common/entities/subgrupoparametro.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Grupoparametro } from './Grupoparametro';
-import { Parametrounidade } from './Parametrounidade';
-import { Subgrupoparametro } from './Subgrupoparametro';
+import { Grupoparametro } from './grupoparametro.entity';
+import { Parametrounidade } from './parametrounidade.entity';
 
 @Index('iparametros1', ['chave'], {})
 @Index('iparametrou1', ['chave'], { unique: true })

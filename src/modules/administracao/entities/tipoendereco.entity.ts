@@ -1,6 +1,5 @@
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Endereco } from './Endereco';
-import { Enderecobackup } from './Enderecobackup';
+import { Endereco } from './endereco.entity';
 
 @Index('tipoendereco_pkey', ['id'], { unique: true })
 @Entity('tipoendereco', { schema: 'public' })
@@ -26,7 +25,4 @@ export class Tipoendereco {
 
   @OneToMany(() => Endereco, (endereco) => endereco.idtipoendereco2)
   enderecos: Endereco[];
-
-  @OneToMany(() => Enderecobackup, (enderecobackup) => enderecobackup.idtipoendereco2)
-  enderecobackups: Enderecobackup[];
 }

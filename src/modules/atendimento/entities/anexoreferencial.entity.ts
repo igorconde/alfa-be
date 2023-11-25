@@ -1,5 +1,5 @@
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Anexoatendimentoreferencial } from './Anexoatendimentoreferencial';
+import { Anexoatendimentoreferencial } from './anexoatendimentoreferencial.entity';
 
 @Index('anexoreferencial_pkey', ['id'], { unique: true })
 @Entity('anexoreferencial', { schema: 'public' })

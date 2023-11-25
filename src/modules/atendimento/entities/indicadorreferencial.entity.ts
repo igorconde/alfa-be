@@ -1,5 +1,5 @@
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Indicadoratendimentoreferencial } from './Indicadoratendimentoreferencial';
+import { Indicadoratendimentoreferencial } from './indicadoratendimentoreferencial.entity';
 
 @Index('indicadorreferencial_pkey', ['id'], { unique: true })
 @Entity('indicadorreferencial', { schema: 'public' })

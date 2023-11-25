@@ -1,5 +1,5 @@
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Atendimentorede } from './Atendimentorede';
+import { Atendimentorede } from './atendimentorede.entity';
 
 @Index('statusnotificacao_pkey', ['id'], { unique: true })
 @Entity('statusnotificacao', { schema: 'public' })

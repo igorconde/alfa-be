@@ -1,6 +1,6 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Parametro } from './Parametro';
+import { Parametro } from './parametro.entity';
 
 @Index('parametrounidade_pkey', ['id'], { unique: true })
 @Index('iparametrounidadefkparametro', ['idparametro'], {})

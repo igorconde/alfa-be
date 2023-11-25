@@ -1,7 +1,7 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
+import { Receitafaturamentoentrega } from '@modules/receita/entities/receitafaturamentoentrega.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Entregafaturamento } from './Entregafaturamento';
-import { Receitafaturamentoentrega } from './Receitafaturamentoentrega';
+import { Entregafaturamento } from './entregafaturamento.entity';
 
 @Index('entrega_pkey', ['id'], { unique: true })
 @Index('ix_entrega_fk_entrega_idatendimento', ['idatendimento'], {})

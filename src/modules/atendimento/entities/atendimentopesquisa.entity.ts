@@ -1,7 +1,7 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToOne } from 'typeorm';
-import { Tipoproduto } from './Tipoproduto';
-import { Tipovenda } from './Tipovenda';
+import { Tipoproduto } from './tipoproduto.entity';
+import { Tipovenda } from './tipovenda.entity';
 
 @Index('atendimentopesquisa_pkey', ['atendimentoId'], { unique: true })
 @Index('ix_atendimentopesquisa_fk_atendimentopesquisa_tipoproduto_id', ['tipoprodutoId'], {})

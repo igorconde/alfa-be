@@ -1,9 +1,9 @@
 import { Grupotela } from '@modules/administracao/entities/grupotela.entity';
 import { Grupotelatemp } from '@modules/administracao/entities/grupotelatemp.entity';
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
+import { Configuracaograficodashboard } from '@modules/dashboard/entities/configuracaograficodashboard.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Configuracaograficodashboard } from './Configuracaograficodashboard';
-import { Parametro } from './Parametro';
+import { Parametro } from './parametro.entity';
 
 @Index('tipounidade_pkey', ['id'], { unique: true })
 @Entity('tipounidade', { schema: 'public' })

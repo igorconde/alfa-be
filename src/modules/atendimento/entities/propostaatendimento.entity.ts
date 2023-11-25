@@ -1,6 +1,6 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Proposta } from './Proposta';
+import { Proposta } from './proposta.entity';
 
 @Index('propostaatendimento_pkey', ['id'], { unique: true })
 @Entity('propostaatendimento', { schema: 'public' })

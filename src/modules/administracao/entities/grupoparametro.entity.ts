@@ -1,6 +1,6 @@
+import { Subgrupoparametro } from '@modules/common/entities/subgrupoparametro.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Parametro } from './Parametro';
-import { Subgrupoparametro } from './Subgrupoparametro';
+import { Parametro } from './parametro.entity';
 
 @Index('igrupoparametros1', ['chave', 'nome'], {})
 @Index('igrupoparametrou1', ['chave'], { unique: true })

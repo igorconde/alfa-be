@@ -1,8 +1,8 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Enviofaturamentoatendimento } from '@modules/atendimento/entities/enviofaturamentoatendimento.entity';
+import { Anexoproposta } from '@modules/brasil-mais/entities/anexoproposta.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Anexoproposta } from './Anexoproposta';
-import { Propostaatendimento } from './Propostaatendimento';
+import { Propostaatendimento } from './propostaatendimento.entity';
 
 @Index('proposta_pkey', ['id'], { unique: true })
 @Entity('proposta', { schema: 'public' })

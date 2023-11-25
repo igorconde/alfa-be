@@ -1,20 +1,20 @@
+import { Itemmetaregional } from '@modules/brasil-mais/entities/itemmetaregional.entity';
+import { Itemmetaregionalie } from '@modules/brasil-mais/entities/itemmetaregionalie.entity';
+import { Secao } from '@modules/cliente/entities/secao.entity';
+import { Apl } from '@modules/common/entities/apl.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Apl } from './Apl';
-import { Fatofontepagadoraatendimentobp } from './Fatofontepagadoraatendimentobp';
-import { Fatofontepagadoraatendimentoie } from './Fatofontepagadoraatendimentoie';
-import { Fatofontepagadoraatendimentoipea } from './Fatofontepagadoraatendimentoipea';
-import { Fatosolicitacaoatendimentobp } from './Fatosolicitacaoatendimentobp';
-import { Fatosolicitacaoatendimentoie } from './Fatosolicitacaoatendimentoie';
-import { Fatosolicitacaoatendimentoipea } from './Fatosolicitacaoatendimentoipea';
-import { Fatostatusatendimentobp } from './Fatostatusatendimentobp';
-import { Fatostatusatendimentohistoricobp } from './Fatostatusatendimentohistoricobp';
-import { Fatostatusatendimentohistoricoie } from './Fatostatusatendimentohistoricoie';
-import { Fatostatusatendimentohistoricoipea } from './Fatostatusatendimentohistoricoipea';
-import { Fatostatusatendimentoie } from './Fatostatusatendimentoie';
-import { Fatostatusatendimentoipea } from './Fatostatusatendimentoipea';
-import { Itemmetaregional } from './Itemmetaregional';
-import { Itemmetaregionalie } from './Itemmetaregionalie';
-import { Secao } from './Secao';
+import { Fatofontepagadoraatendimentobp } from './fatofontepagadoraatendimentobp.entity';
+import { Fatofontepagadoraatendimentoie } from './fatofontepagadoraatendimentoie.entity';
+import { Fatofontepagadoraatendimentoipea } from './fatofontepagadoraatendimentoipea.entity';
+import { Fatosolicitacaoatendimentobp } from './fatosolicitacaoatendimentobp.entity';
+import { Fatosolicitacaoatendimentoie } from './fatosolicitacaoatendimentoie.entity';
+import { Fatosolicitacaoatendimentoipea } from './fatosolicitacaoatendimentoipea.entity';
+import { Fatostatusatendimentobp } from './fatostatusatendimentobp.entity';
+import { Fatostatusatendimentohistoricobp } from './fatostatusatendimentohistoricobp.entity';
+import { Fatostatusatendimentohistoricoie } from './fatostatusatendimentohistoricoie.entity';
+import { Fatostatusatendimentohistoricoipea } from './fatostatusatendimentohistoricoipea.entity';
+import { Fatostatusatendimentoie } from './fatostatusatendimentoie.entity';
+import { Fatostatusatendimentoipea } from './fatostatusatendimentoipea.entity';
 
 @Index('setor_pkey', ['id'], { unique: true })
 @Entity('setor', { schema: 'public' })

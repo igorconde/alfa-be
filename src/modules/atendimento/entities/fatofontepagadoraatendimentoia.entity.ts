@@ -3,7 +3,7 @@ import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Unidadefederativa } from '@modules/administracao/entities/unidadefederativa.entity';
 import { Cliente } from '@modules/cliente/entities/cliente.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Solicitacaostatus } from './Solicitacaostatus';
+import { Solicitacaostatus } from './solicitacaostatus.entity';
 
 @Index('fatofontepagadoraatendimentoia_pkey', ['id'], { unique: true })
 @Index('ftfntpgdoraatendimentoiafkftfntpgadoraatendimentoiaidcalendario', ['idcalendario'], {})

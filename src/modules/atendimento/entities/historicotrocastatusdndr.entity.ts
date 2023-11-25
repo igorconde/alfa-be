@@ -1,6 +1,6 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Solicitacaostatus } from './Solicitacaostatus';
+import { Solicitacaostatus } from './solicitacaostatus.entity';
 
 @Index('historicotrocastatusdndr_pkey', ['id'], { unique: true })
 @Index('historicotrocastatusdndrfkhistoricotrocastatusdndridatendimento', ['idatendimento'], {})

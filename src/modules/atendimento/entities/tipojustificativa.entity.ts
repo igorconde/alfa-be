@@ -1,5 +1,5 @@
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Atendimentojustificativa } from './Atendimentojustificativa';
+import { Atendimentojustificativa } from './atendimentojustificativa.entity';
 
 @Index('tipojustificativa_pkey', ['id'], { unique: true })
 @Entity('tipojustificativa', { schema: 'public' })

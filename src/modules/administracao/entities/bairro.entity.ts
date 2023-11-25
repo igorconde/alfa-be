@@ -1,10 +1,9 @@
-import { Clienteabdi, Clienteabdidigital } from 'import { Cliente } from ';
+import { Clusterbairro } from '@modules/brasil-mais/entities/clusterbairro.entity';
+import { Clusterbairromentoriadigital } from '@modules/brasil-mais/entities/clusterbairromentoriadigital.entity';
+import { Clienteabdidigital } from '@modules/cliente/entities/cliente-abdi-digital.entity';
+import { Clienteabdi } from '@modules/cliente/entities/cliente-abdi.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Municipio } from './Municipio';
-import { Clusterbairro } from './clusterbairro.entity';
-import { Clusterbairromentoriadigital } from './clusterbairromentoriadigital.entity';
-@modules/cliente/entities/cliente.entity';abdi';
-@modules/cliente/entities/cliente.entity';abdidigital';
+import { Municipio } from './municipio.entity';
 
 @Index('bairro_pkey', ['id'], { unique: true })
 @Index('ix_bairro_fk_bairro_idmunicipio', ['idmunicipio'], {})

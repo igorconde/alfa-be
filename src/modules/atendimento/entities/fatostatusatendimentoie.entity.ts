@@ -3,9 +3,9 @@ import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Unidadefederativa } from '@modules/administracao/entities/unidadefederativa.entity';
 import { Atendimentostatus } from '@modules/atendimento/entities/atendimentostatus.entity';
 import { Cliente } from '@modules/cliente/entities/cliente.entity';
+import { Apl } from '@modules/common/entities/apl.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Apl } from './Apl';
-import { Setor } from './Setor';
+import { Setor } from './setor.entity';
 
 @Index('fatostatusatendimentoie_pkey', ['id'], { unique: true })
 @Entity('fatostatusatendimentoie', { schema: 'public' })

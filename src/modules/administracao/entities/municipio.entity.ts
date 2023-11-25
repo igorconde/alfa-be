@@ -2,8 +2,7 @@ import { Bairro } from '@modules/administracao/entities/bairro.entity';
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Unidadefederativa } from '@modules/administracao/entities/unidadefederativa.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Endereco } from './Endereco';
-import { Enderecobackup } from './Enderecobackup';
+import { Endereco } from './endereco.entity';
 
 @Index('municipiobuscalivre', ['buscalivremunicipio'], {})
 @Index('imunicipio01', ['codigoibge'], {})
@@ -50,9 +49,6 @@ export class Municipio {
 
   @OneToMany(() => Endereco, (endereco) => endereco.idmunicipio2)
   enderecos: Endereco[];
-
-  @OneToMany(() => Enderecobackup, (enderecobackup) => enderecobackup.idmunicipio2)
-  enderecobackups: Enderecobackup[];
 
   @ManyToOne(() => Unidadefederativa, (unidadefederativa) => unidadefederativa.municipios)
   @JoinColumn([{ name: 'idunidadefederativa', referencedColumnName: 'id' }])

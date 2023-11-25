@@ -1,16 +1,16 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Anexoatendimentoreferencial } from './Anexoatendimentoreferencial';
-import { Fatofontepagadoraatendimentobp } from './Fatofontepagadoraatendimentobp';
-import { Fatofontepagadoraatendimentoia } from './Fatofontepagadoraatendimentoia';
-import { Fatofontepagadoraatendimentoie } from './Fatofontepagadoraatendimentoie';
-import { Fatofontepagadoraatendimentoipea } from './Fatofontepagadoraatendimentoipea';
-import { Fatosolicitacaoatendimentobp } from './Fatosolicitacaoatendimentobp';
-import { Fatosolicitacaoatendimentoia } from './Fatosolicitacaoatendimentoia';
-import { Fatosolicitacaoatendimentoie } from './Fatosolicitacaoatendimentoie';
-import { Fatosolicitacaoatendimentoipea } from './Fatosolicitacaoatendimentoipea';
-import { Historicotrocastatusdndr } from './Historicotrocastatusdndr';
-import { Indicadoratendimentoreferencial } from './Indicadoratendimentoreferencial';
+import { Anexoatendimentoreferencial } from './anexoatendimentoreferencial.entity';
+import { Fatofontepagadoraatendimentobp } from './fatofontepagadoraatendimentobp.entity';
+import { Fatofontepagadoraatendimentoia } from './fatofontepagadoraatendimentoia.entity';
+import { Fatofontepagadoraatendimentoie } from './fatofontepagadoraatendimentoie.entity';
+import { Fatofontepagadoraatendimentoipea } from './fatofontepagadoraatendimentoipea.entity';
+import { Fatosolicitacaoatendimentobp } from './fatosolicitacaoatendimentobp.entity';
+import { Fatosolicitacaoatendimentoia } from './fatosolicitacaoatendimentoia.entity';
+import { Fatosolicitacaoatendimentoie } from './fatosolicitacaoatendimentoie.entity';
+import { Fatosolicitacaoatendimentoipea } from './fatosolicitacaoatendimentoipea.entity';
+import { Historicotrocastatusdndr } from './historicotrocastatusdndr.entity';
+import { Indicadoratendimentoreferencial } from './indicadoratendimentoreferencial.entity';
 
 @Index('solicitacaostatus_pkey', ['id'], { unique: true })
 @Entity('solicitacaostatus', { schema: 'public' })

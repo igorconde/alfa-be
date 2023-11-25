@@ -1,6 +1,6 @@
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Publicacaocolaborador } from './Publicacaocolaborador';
+import { Publicacaocolaborador } from './publicacaocolaborador.entity';
 
 @Index('publicacao_pkey', ['id'], { unique: true })
 @Index('ix_publicacao_fk_publicacao_idunidade', ['idunidade'], {})

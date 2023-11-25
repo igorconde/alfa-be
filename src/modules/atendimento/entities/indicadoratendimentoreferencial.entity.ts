@@ -1,7 +1,7 @@
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Indicadorreferencial } from './Indicadorreferencial';
-import { Solicitacaostatus } from './Solicitacaostatus';
+import { Indicadorreferencial } from './indicadorreferencial.entity';
+import { Solicitacaostatus } from './solicitacaostatus.entity';
 
 @Index('indicadoratendimentoreferencial_pkey', ['id'], { unique: true })
 @Index('ndcdrtndmntoreferencialfkndcdrtndimentoreferencialidatendimento', ['idatendimento'], {})
