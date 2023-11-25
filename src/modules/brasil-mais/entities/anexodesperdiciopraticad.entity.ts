@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Desperdiciomasterd } from './Desperdiciomasterd';
+import { Desperdiciomasterd } from './desperdiciomasterd.entity';
 
 @Index('anexodesperdiciopraticad_pkey', ['id'], { unique: true })
 @Index('anexodesperdiciopraticadfkanexodesperdiciopraticadiddesperdicio', ['iddesperdicio'], {})

@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Indicadorespraticabdigital } from './Indicadorespraticabdigital';
+import { Indicadorespraticabdigital } from './indicadorespraticabdigital.entity';
 
 @Index('anexoindicadorespraticabdigital_pkey', ['id'], { unique: true })
 @Index('nxndcdrspraticabdigitalfknxndcdorespraticabdigitalidindicadores', ['idindicadores'], {})

@@ -1,5 +1,5 @@
+import { Proposta } from '@modules/atendimento/entities/proposta.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Proposta } from './Proposta';
 
 @Index('anexoproposta_pkey', ['id'], { unique: true })
 @Index('ianexopropostafkproposta', ['idproposta'], {})

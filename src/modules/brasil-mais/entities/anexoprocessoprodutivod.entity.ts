@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Processoprodutivod } from './Processoprodutivod';
+import { Processoprodutivod } from './processoprodutivod.entity';
 
 @Index('anexoprocessoprodutivod_pkey', ['id'], { unique: true })
 @Index('nxprocessoprodutivodfknexoprocessoprodutivodidprocessoprodutivo', ['idprocessoprodutivo'], {})

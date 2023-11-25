@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Processoprodutivopraticabdigital } from './Processoprodutivopraticabdigital';
+import { Processoprodutivopraticabdigital } from './processoprodutivopraticabdigital.entity';
 
 @Index('anexoprocessoprodutivopraticabdigital_pkey', ['id'], { unique: true })
 @Index('nxprcssprdtvprtcbdgtlnxprcssprdtvprtcbdgtldprcssprdutivodigital', ['idprocessoprodutivodigital'], {})

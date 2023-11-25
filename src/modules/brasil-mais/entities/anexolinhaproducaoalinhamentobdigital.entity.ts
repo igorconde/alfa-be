@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Linhadeproducaoalinhamentobdigital } from './Linhadeproducaoalinhamentobdigital';
+import { Linhadeproducaoalinhamentobdigital } from './linhadeproducaoalinhamentobdigital.entity';
 
 @Index('anexolinhaproducaoalinhamentobdigital_pkey', ['id'], { unique: true })
 @Index('nxlnhprdclnhmntbdgtlnxlnhprdclnhmntbdgtldlinhadeproducaodigital', ['idlinhadeproducaodigital'], {})

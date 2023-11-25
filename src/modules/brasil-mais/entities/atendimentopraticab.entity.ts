@@ -1,9 +1,9 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Etapapraticab } from './Etapapraticab';
-import { Desperdiciomasterb } from './Desperdiciomasterb';
 import { Estadopresenteb } from './Estadopresenteb';
+import { Etapapraticab } from './Etapapraticab';
 import { Mfvpraticab } from './Mfvpraticab';
 import { Visitapraticab } from './Visitapraticab';
+import { Desperdiciomasterb } from './desperdiciomasterb.entity';
 
 @Index('atendimentopraticab_pkey', ['id'], { unique: true })
 @Index('ix_atendimentopraticab_fk_atendimentopraticab_idetapapratica', ['idetapapratica'], {})

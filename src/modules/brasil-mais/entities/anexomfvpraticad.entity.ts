@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Mfvpraticad } from './Mfvpraticad';
+import { Mfvpraticad } from './mfvpraticad.entity';
 
 @Index('anexomfvpraticad_pkey', ['id'], { unique: true })
 @Index('ix_anexomfvpraticad_fk_anexomfvpraticad_idmfv', ['idmfv'], {})

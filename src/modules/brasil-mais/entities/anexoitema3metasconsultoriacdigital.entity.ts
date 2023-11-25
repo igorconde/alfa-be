@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Itema3metasconsultoriacdigital } from './Itema3metasconsultoriacdigital';
+import { Itema3metasconsultoriacdigital } from './itema3metasconsultoriacdigital.entity';
 
 @Index('anexoitema3metasconsultoriacdigital_pkey', ['id'], { unique: true })
 @Index('nxtm3mtscnsultoriacdigitalfknxtm3mtsconsultoriacdigitaliditema3', ['iditema3'], {})

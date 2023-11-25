@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Oeepraticaddigital } from './Oeepraticaddigital';
+import { Oeepraticaddigital } from './oeepraticaddigital.entity';
 
 @Index('anexooeepraticaddigital_pkey', ['id'], { unique: true })
 @Index('anexooeepraticaddigital_fk_anexooeepraticaddigital_idoeepratica', ['idoeepratica'], {})

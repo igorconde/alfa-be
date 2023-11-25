@@ -8,11 +8,11 @@ import { Etapapraticac } from '@modules/brasil-mais/entities/etapapraticac.entit
 import { Etapapraticad } from '@modules/brasil-mais/entities/etapapraticad.entity';
 import { Etapateorica } from '@modules/brasil-mais/entities/etapateorica.entity';
 import { Visitacolaborador } from '@modules/brasil-mais/entities/visitacolaborador.entity';
-import { Formacaocolaborador } from '@modules/cliente/entities/formacao-colaborador.entity';
 import { Grupousuariocolaborador } from '@modules/common/entities/grupousuariocolaborador.entity';
 import { Fatoproducaoapropriada } from '@modules/producao/entities/fatoproducaoapropriada.entity';
 import { Fatoproducaoapropriadametrologia } from '@modules/producao/entities/fatoproducaoapropriadametrologia.entity';
 import { Producaoapropriada } from '@modules/producao/entities/producaoapropriada.entity';
+import { Formacaocolaborador } from '@modules/usuario/entities/formacao-colaborador.entity';
 import { Colaboradorprodutoregional } from './colaborador-produto-regional.entity';
 import { Colaboradorskill } from './colaborador-skill.entity';
 import { Colaboradortabelaco } from './colaborador-tabelaco.entity';
