@@ -1,7 +1,7 @@
+import { Calendario } from '@modules/administracao/entities/calendario.entity';
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Atendimentostatus } from './Atendimentostatus';
-import { Calendario } from './Calendario';
 import { Cliente } from './Cliente';
 import { Produtocategoria } from './Produtocategoria';
 import { Produtolinha } from './Produtolinha';

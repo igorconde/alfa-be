@@ -1,7 +1,7 @@
+import { Calendario } from '@modules/administracao/entities/calendario.entity';
 import { Unidade } from '@modules/administracao/entities/unidade.entity';
 import { Atendimento } from '@modules/atendimento/entities/atendimento.entity';
 import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Calendario } from './Calendario';
 import { Cliente } from './Cliente';
 import { Especialidadeunidade } from './Especialidadeunidade';
 import { Portecliente } from './Portecliente';
