@@ -33,7 +33,6 @@ import { PortfolioModule } from './modules/portfolio/portfolio.module';
 import { ProducaoModule } from './modules/producao/producao.module';
 import { ReceitaModule } from './modules/receita/receita.module';
 import { RelatorioModule } from './modules/relatorio/relatorio.module';
-import { SharedModule } from './modules/shared/shared.module';
 import { SolucaoIntegradoraModule } from './modules/solucao-integradora/solucao-integradora.module';
 
 @Module({
@@ -84,7 +83,6 @@ import { SolucaoIntegradoraModule } from './modules/solucao-integradora/solucao-
     AdministracaoModule,
     SolucaoIntegradoraModule,
     MetasModule,
-    SharedModule,
     IntegracaoModule,
     KpiModule,
   ],
