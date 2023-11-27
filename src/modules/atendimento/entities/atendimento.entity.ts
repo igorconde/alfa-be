@@ -383,9 +383,9 @@ export class Atendimento {
   @JoinColumn([{ name: 'idsolicitacaostatus', referencedColumnName: 'id' }])
   idsolicitacaostatus: Solicitacaostatus;
 
-  @ManyToOne(() => Unidade, (unidade) => unidade.atendimentos2)
+  @ManyToOne(() => Unidade, (unidade) => unidade.atendimento)
   @JoinColumn([{ name: 'idunidade', referencedColumnName: 'id' }])
-  idunidade2: Unidade;
+  unidade: Unidade;
 
   @ManyToMany(() => Cliente, (cliente) => cliente.atendimentos2)
   @JoinTable({

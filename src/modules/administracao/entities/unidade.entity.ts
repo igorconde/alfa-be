@@ -153,8 +153,8 @@ export class Unidade {
   @OneToMany(() => Atendimento, (atendimento) => atendimento.idregional)
   atendimentos: Atendimento[];
 
-  @OneToMany(() => Atendimento, (atendimento) => atendimento.idunidade2)
-  atendimentos2: Atendimento[];
+  @OneToMany(() => Atendimento, (atendimento) => atendimento.unidade)
+  atendimento: Atendimento[];
 
   @OneToMany(() => Atendimentorede, (atendimentorede) => atendimentorede.idunidadeparceira2)
   atendimentoredes: Atendimentorede[];
